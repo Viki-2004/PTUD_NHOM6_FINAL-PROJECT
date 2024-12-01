@@ -1,15 +1,16 @@
 /* Responsive Design for max-width: 480px */
 @media screen and (max-width: 480px) {
-    /* Adjust dropdown styles for mobile */
     .dropdown-content {
         position: relative;
         box-shadow: none;
+        text-align: center;
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
     .dropdown-content a {
         font-size: 14px;
         padding: 10px 15px;
+        display: block;
     }
     .navbar {
         display: none;
@@ -29,11 +30,11 @@
         color: #f25a8c;
         cursor: pointer;
         margin-left: 10%;
+        margin-right: auto;
     }
 
     .menu-toggle.active+.navbar {
         display: flex;
-        /* Show navbar on menu toggle click */
     }
 
     /* Icons Section Responsive */
@@ -52,3 +53,59 @@
     }   
 }
 
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .header {
+        padding: 10px 20px;
+    }
+
+    .navbar {
+        gap: 10px;
+    }
+
+    .form-container {
+        padding: 20px;
+        max-width: 600px;
+    }
+
+    .footer-container {
+        gap: 8px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .header {
+        padding: 20px 30px;
+    }
+
+    .navbar {
+        gap: 15px;
+    }
+
+    .form-container {
+        max-width: 700px;
+        padding: 25px;
+    }
+
+    .footer-container {
+        gap: 12px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .header {
+        padding: 15px 40px;
+    }
+
+    .navbar {
+        gap: 20px;
+    }
+
+    .form-container {
+        max-width: 800px;
+        padding: 30px;
+    }
+
+    .footer-container {
+        gap: 10px;
+    }
+}
