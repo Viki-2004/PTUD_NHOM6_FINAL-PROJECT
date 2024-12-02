@@ -235,16 +235,9 @@ h2::after {
     width: 280%;
     height: 1px;
     background: #ccc;
-}
-
-h2::before {
     left: -290%;
-}
-
-h2::after {
     right: -290%;
 }
-
 .card-container {
     max-width: 95%;
     margin: 0 auto;
