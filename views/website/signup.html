@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ĐĂNG KÝ TÀI KHOẢN</title>
+        <link rel="stylesheet" href="../../assets/css/signup.css">
+        <link rel="stylesheet" href="../../assets/css/signup_queries.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+</head>
+<body>
+    <div id="wrapper">
+        <form action="" id="form-signup" method = "post">
+            <h1 class="form-heading">ĐĂNG KÝ TÀI KHOẢN</h1>
+            <div class="form-group">
+                <i class="far fa-envelope"></i>
+                <input type="email" class="form-input" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <i class="far fa-phone"></i>
+                <input type="tel" class="form-input" placeholder="Số điện thoại" required pattern="[0-9]{10,11}" title="Vui lòng nhập số điện thoại hợp lệ (10-11 chữ số)">
+            </div>
+            <div class="form-group">
+                <i class="far fa-user"></i>
+                <input type="text" class="form-input" placeholder="Tên đăng nhập" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-key"></i>
+                <input type="password" class="form-input" placeholder="Mật khẩu" required>
+                <div id="eye">
+                    <i class="far fa-eye"></i>
+                </div>
+            </div>
+            <input type="submit" value="Đăng ký" class="form-submit">
+            <div id="password-strength-bar">
+                <div id="power-point" style="width: 0%; background-color: #D73F40; height: 20px;"></div>
+                <div id="password-strength"></div> 
+                </div>
+        </form>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="../../assets/js/signup.js"></script>
+</html>

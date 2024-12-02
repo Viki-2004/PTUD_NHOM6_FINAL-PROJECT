@@ -1,0 +1,80 @@
+@media screen and (max-width: 480px) {
+    body {
+        background-position-y: -50px;
+    }
+
+    #form-signup {
+        max-width: 90%;
+        padding: 20px 15px 30px;
+        border-radius: 8px;
+    }
+
+    .form-heading {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        border-bottom: 1px solid #fdf2f7;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .form-group i {
+        font-size: 14px;
+        padding-bottom: 5px;
+    }
+
+    .form-input {
+        font-size: 14px;
+    }
+
+    .form-submit {
+        padding: 5px 8px;
+        font-size: 14px;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    #form-signup {
+        max-width: 85%;
+        padding: 25px 20px 35px;
+    }
+
+    .form-heading {
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-top: 12px;
+        margin-bottom: 18px;
+    }
+
+    .form-input {
+        font-size: 15px;
+    }
+
+    .form-submit {
+        padding: 6px 10px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    #form-signup {
+        max-width: 450px;
+        padding: 30px 25px 40px;
+    }
+
+    .form-heading {
+        font-size: 28px;
+    }
+
+    .form-submit {
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+}
