@@ -1,3 +1,4 @@
+//Ẩn hiện mật khẩu
 $(document).ready(function(){
     $('#eye').click(function(){
         $(this).toggleClass('open');

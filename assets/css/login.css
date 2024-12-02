@@ -33,7 +33,7 @@ body {
 }
 
 #wrapper {
-    flex: 1; /* Chiếm 50% chiều rộng */
+    flex: 1; 
     display: flex;
     justify-content: center;
     align-items: center;
