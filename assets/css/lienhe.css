@@ -125,6 +125,13 @@ body {
         margin-bottom: 15px; 
         position: relative;
     }
+
+  .form-container textarea {
+      font-family: Arial, sans-serif; 
+      font-size: 16px; 
+      color: #000; 
+      padding: 10px; 
+  }
   
   .form-submit {
       background-color: #f7bacd; 

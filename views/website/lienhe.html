@@ -50,22 +50,22 @@
         </header>
         <div class="form-container">
             <h1>LIÊN HỆ VỚI POLIDOLL</h1>
-            <form>
+            <form id ="contactform" action = "" method = "post">
                 <div class = "form-group">
                     <label for="name">Họ tên</label>
-                    <input type = "text" id = "name" name ="name">
+                    <input type = "text" id = "name" name ="name" required>
                 </div>
                 <div class = "form-group">
                     <label for="email">Email</label>
-                    <input type = "email" id = "email" name ="email">
+                    <input type = "email" id = "email" name ="email" required>
                 </div>
                 <div class = "form-group">
                     <label for="phone">Số điện thoại</label>
-                    <input type = "tel" name = "phone" id = "phone">
+                    <input type = "tel" name = "phone" id = "phone" required pattern="[0-9]{10,11}" title="Vui lòng nhập số điện thoại hợp lệ (10-11 chữ số)">
                 </div>
                 <div class = "form-group">
                     <label for="message">Tin nhắn của bạn</label>
-                    <textarea id = "message" name = "message"></textarea>
+                    <textarea id = "message" name = "message" required></textarea>
                 </div>
                 <input type="submit" value="GỬI TIN NHẮN" class="form-submit">
             </form>
@@ -118,4 +118,5 @@
             </div>
         </footer>
     </body>
+    <script src="../../assets/js/lienhe.js"></script>
 </html>
