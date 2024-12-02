@@ -1,0 +1,724 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.header {
+    background-color: #fff;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f8c3d6;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f25a8c;
+}
+
+.navbar {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-grow: 1;
+    position: relative;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #f25a8c;
+    padding: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+    /* Đặt cao nhất */
+    min-width: 150px;
+    border-radius: 5px;
+    overflow: visible;
+    /* Ngăn menu bị cắt */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f8c3d6;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icons a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #fa8db2;
+}
+
+.icons a:hover {
+    color: rgb(255, 4, 4);
+    transition: all.3s;
+}
+
+/* Main Banner*/
+.main-banner img {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #ffe4ec;
+    color: #000;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section a {
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #000;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.footer-section ul li {
+    margin-top: 5px;
+}
+
+.newsletter {
+    display: flex;
+    flex-direction: column;
+}
+
+.newsletter P {
+    margin-top: 0px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+.newsletter input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.newsletter button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsletter button:hover {
+    background-color: #e61010;
+}
+
+.social-icons a {
+    font-size: 25px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+}
+
+.social-icons a:hover {
+    color: red;
+}
+
+.scroll-top {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.scroll-top a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* MENU TOGGLE */
+.menu-toggle {
+    display: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: #f25a8c;
+}
+
+h4 {
+    color: rgb(163, 28, 10);
+}
+
+/* BODY */
+/* SHOP BY CATEGORY */
+section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #f48c94;
+    display: inline-block;
+    margin: 0;
+    padding: 0 10px;
+    position: relative;
+    font-weight: bold;
+}
+
+h2::before,
+h2::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 280%;
+    height: 1px;
+    background: #ccc;
+}
+
+h2::before {
+    left: -290%;
+}
+
+h2::after {
+    right: -290%;
+}
+
+.card-container {
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.category {
+    width: 23%;
+}
+
+.category img {
+    border-radius: 6px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.category img:hover {
+    transform: scale(1.02);
+    filter: brightness(85%) blur(1px);
+    cursor: pointer;
+    transition: 0.3s;
+}
+/* TRENDING NOW */
+.trending-now-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.content-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Left: Product Carousel */
+.products-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.products-carousel-wrapper {
+    width: 440px; /* Hiển thị đúng 2 ảnh */
+    overflow: hidden;
+}
+
+.products-carousel {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.product-item {
+    flex-shrink: 0;
+    width: 200px;
+}
+.product-image {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+.product-image:hover .nav-buy-now-btn{
+    opacity: 1;
+    transition: 0.5s ease-in-out;
+}
+.default-img,
+.hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.default-img {
+    opacity: 1;
+}
+
+.hover-img {
+    opacity: 0;
+}
+
+.product-image:hover .default-img {
+    opacity: 0;
+}
+
+.product-image:hover .hover-img {
+    opacity: 1;
+}
+
+.product-name,
+.product-price {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.product-price {
+    font-weight: bold;
+    color: #000;
+}
+
+/* Arrows */
+.arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 47%;
+}
+
+.left-btn {
+    left: 20px;
+}
+
+.right-btn {
+    right: 30px;
+}
+
+/* Right: Banner */
+.banner-container {
+    flex: 1;
+    max-width: 40%;
+}
+
+.banner-container img {
+    width: 80%;
+    height: auto;
+}
+/* Top Selling Collection */
+.top-selling-img {
+    margin-top: 20px;
+}
+
+.top-selling-img img {
+    width: 100%;
+}
+
+/* PRODUCT LIST */
+/* Tổng quan carousel */
+.nav-carousel {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.nav-carousel-wrapper {
+    overflow: hidden;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.nav-carousel-wrapper ul {
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.nav-carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.nav-carousel-item {
+    flex: 0 0 20%;
+    /* Hiển thị 5 sản phẩm cùng lúc */
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    /* Đảm bảo padding không làm giãn nở item */
+    position: relative;
+}
+
+/* Hình ảnh sản phẩm */
+.nav-product-image {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.nav-product-image img {
+    width: 100%;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.nav-main-image {
+    display: block;
+}
+
+.nav-hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.nav-carousel-item:hover .nav-hover-image {
+    opacity: 1;
+}
+
+.nav-carousel-item:hover .nav-main-image {
+    opacity: 0;
+}
+
+/* Nút "Buy Now" */
+.nav-buy-now-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 10;
+    border: 0.2px solid black;
+}
+.nav-carousel-item:hover .nav-buy-now-btn {
+    opacity: 1;
+}
+.nav-buy-now-btn:hover {
+    background-color: #f45c5c;
+    color:#ffffff;
+    transition: 0.4s;
+    border: none;
+}
+
+/* Thông tin sản phẩm */
+.nav-product-info {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.nav-product-info p {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.nav-product-info span {
+    font-size: 14px;
+    color: rgb(123, 110, 110);
+}
+
+/* Nút điều hướng */
+.nav-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 20;
+    border-radius: 50%;
+}
+
+.nav-carousel-btn-left {
+    left: 6px;
+}
+
+.nav-carousel-btn-right {
+    right: 6px;
+}
+
+.nav-carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* ARRIVAL*/
+.arrivals {
+    margin-top: 20px;
+}
+
+.arrivals img {
+    width: 100%;
+}
+
+/* why us */
+.why-us-section {
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.why-us-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    /* Responsive cho màn hình nhỏ */
+    margin: 40px 0;
+}
+
+.why-us-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 250px;
+}
+
+.why-us-icon {
+    font-size: 55px;
+    color: #e94b6e;
+    margin-bottom: 20px;
+}
+
+.why-us-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e94b6e;
+}
+
+.why-us-item:hover {
+    cursor: pointer;
+    scale: 1.08;
+    transition: 0.5s;
+}
+
+/* POLIDOLL ON INSTAGRAM */
+.carousel-section {
+    background-color: #ffe6e6;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 0;
+}
+
+
+.carousel-container {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 20%;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.carousel-item img {
+    width: 100%;
+    border-radius: 3px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-item img:hover {
+    transform: scale(1.02);
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(233, 75, 110, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-button.left {
+    left: 10px;
+}
+
+.carousel-button.right {
+    right: 10px;
+}
+
+.view-gallery {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e94b6e;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.view-gallery:hover {
+    background-color: #d73d61;
+}
+
+/* Parallax Section Styles */
+.parallax-section {
+    position: relative;
+    height: 450px;
+    background: url('../../assets/img/trang chu/parallax.png') no-repeat center center fixed;
+    /* Thay 'your-image.jpg' bằng đường dẫn ảnh */
+    background-size: cover;
+    background-attachment: fixed;
+    /* Hiệu ứng parallax */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.parallax-content {
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    /* Tạo lớp phủ đen mờ */
+    padding: 20px 40px;
+    border-radius: 10px;
+}
+
+.parallax-content p {
+    font-size: 17px;
+    margin-bottom: 20px;
+    line-height: 30px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.newsletter-form input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid white;
+    border-radius: 5px;
+    outline: none;
+    flex: 1;
+}
+
+.newsletter-form button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background: rgb(247, 4, 4);
+}
