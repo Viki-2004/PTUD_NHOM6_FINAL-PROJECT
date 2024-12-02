@@ -40,7 +40,7 @@ body {
     padding: 40px;
 }
 
-#form-signup {
+#form-login {
     width: 100%;
     max-width: 400px;
     background: rgba(254, 252, 252, 0.9);
@@ -64,7 +64,7 @@ body {
         padding: 20px;
     }
 
-    #form-signup {
+    #form-login {
         padding: 20px 15px 30px;
     }
 }
@@ -84,7 +84,7 @@ body {
         padding: 30px;
     }
 
-    #form-signup {
+    #form-login {
         padding: 25px 20px 35px;
         max-width: 350px; /* Giảm chiều rộng */
     }
@@ -105,7 +105,7 @@ body {
         padding: 35px;
     }
 
-    #form-signup {
+    #form-login {
         padding: 25px 20px 35px;
         max-width: 400px; /* Giữ chiều rộng lớn hơn */
     }

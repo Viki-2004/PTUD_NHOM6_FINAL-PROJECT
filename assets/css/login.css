@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,7 +41,7 @@ body {
     padding: 40px; 
 }
 
-#form-signup {
+#form-login {
     width: 100%; 
     max-width: 400px; 
     background: rgba(254, 252, 252, 0.9);
