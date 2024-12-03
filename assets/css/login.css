@@ -113,6 +113,27 @@ body {
 
 .form-submit:hover {
     background-color: #f6c9d7;
-    transform: scale(1.1);
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.signup-prompt {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup-prompt p {
+    font-size: 14px;
+    color: #262626;
+}
+
+.signup-prompt a {
+    color: #f67aa6;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.signup-prompt a:hover {
+    color: #ff5c8a;
+    text-decoration: underline;
 }
