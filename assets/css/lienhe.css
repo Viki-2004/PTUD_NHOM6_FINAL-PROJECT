@@ -13,7 +13,7 @@ body {
     align-items: center;
     border-bottom: 2px solid #f8c3d6;
   }
-  
+  a{text-decoration: none;}
   .logo {
     font-size: 24px;
     font-weight: bold;
