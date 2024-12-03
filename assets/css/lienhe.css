@@ -86,6 +86,7 @@ body {
   }
   
   h1 {
+      color: #fc6c9a;
       text-align: center;
       font-size: 35px;
       margin-bottom: 20px;
@@ -135,7 +136,7 @@ body {
   
   .form-submit {
       background-color: #f7bacd; 
-      color: #fff5f5fd;
+      color: #000;
       font-weight: bold; 
       border: none;
       padding: 6px 10px;
