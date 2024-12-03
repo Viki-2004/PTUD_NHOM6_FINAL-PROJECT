@@ -93,6 +93,10 @@ html {
   transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
+.shop_function--sort select:hover {
+  background-color: rgb(255, 234, 238);
+}
+
 
 /* Header */
   .header {
