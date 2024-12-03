@@ -4,7 +4,25 @@ body {
     padding: 0;
     overflow-x: hidden;
   }
-  
+html {
+  scroll-behavior: smooth;
+}
+:root {
+    --pink: #fa8db2;
+    --pinklight: #ffe4ec;
+    --pinksolid:#f25a8c;
+    --smooth: all 0.3s ease-in;
+  }
+.shop_breadcrumb {
+  color:#ccc
+}
+
+.shop_breadcrumb a {
+  text-decoration: none;
+  color: gray;
+}
+
+/* Header */
   .header {
     background-color: #fff;
     padding: 20px 20px;
