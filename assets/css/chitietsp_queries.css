@@ -1,0 +1,250 @@
+@media screen and (max-width: 480px) {
+
+    /* Adjust dropdown styles for mobile */
+    .dropdown-content {
+        position: relative;
+        box-shadow: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .dropdown-content a {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .navbar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 25px;
+        color: #f25a8c;
+        cursor: pointer;
+        margin-left: 10%;
+    }
+
+    .menu-toggle.active+.navbar {
+        display: flex;
+        /* Show navbar on menu toggle click */
+    }
+
+    /* Icons Section Responsive */
+    .icons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .navbar.active {
+        display: block;
+        /* Hiện menu khi có class active */
+    }
+
+    .navbar a {
+        padding: 10px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .category {
+        width: 65%;
+    }
+
+    .content-container {
+        max-width: 95%;
+        margin: 0 auto;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        /* Xếp chồng các phần tử */
+        gap: 6px;
+        padding: 0 8px;
+        /* Giảm khoảng cách bên trong */
+    }
+
+    .newsletter-form input {
+        padding: 6px;
+        font-size: 0.8rem;
+        /* Thu nhỏ font và padding */
+        border-radius: 3px;
+    }
+
+    .newsletter-form button {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        /* Giảm kích thước nút thêm nữa */
+        border-radius: 3px;
+    }
+    /* START */
+    .product-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Căn giữa các thành phần theo chiều ngang */
+        text-align: center; /* Căn giữa nội dung văn bản */
+        gap: 15px; /* Khoảng cách giữa các phần tử */
+    }
+
+    .quantity-selector,
+    .action-buttons,
+    .wishlist,
+    .policy {
+        width: 100%; /* Chiếm toàn bộ chiều rộng */
+    }
+
+    /* Nút hành động */
+    .add-to-cart,
+    .buy-now {
+        width: 20%; /* Giảm chiều rộng nút */
+        text-align: center; /* Đảm bảo nội dung nút căn giữa */
+    }
+
+    /* Chính sách sản phẩm */
+    .policy-item {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Căn giữa icon và văn bản */
+        gap: 8px;
+        text-align: center; /* Văn bản căn giữa */
+    }
+
+    .policy {
+        margin-top: 20px;
+    }
+    .product {
+        margin-top: 20px;
+        width: 100%;
+        margin-right: 0px;
+    }
+
+    .container {
+        flex-direction: column; /* Chuyển các thành phần trong container theo chiều dọc */
+        gap: 10px;
+    }
+
+    /* Bố cục ảnh sản phẩm */
+    .image-gallery {
+        flex-direction: column; /* Chuyển thành cột */
+        align-items: center;
+    }
+
+    .main-image {
+        width: 90%; /* Chiếm 90% chiều rộng màn hình */
+        margin-bottom: 10px;
+    }
+
+    .thumbnail-wrapper {
+        flex-direction: row; /* Chuyển hình ảnh nhỏ thành hàng ngang */
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .thumbnail {
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Chi tiết sản phẩm */
+    .product-details {
+        text-align: center;
+    }
+
+    .product-title {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .product-price {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .product-color-options {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .color-option {
+        width: 25px;
+        height: 25px;
+    }
+
+    .add-to-cart,
+    .buy-now {
+        width: 80%;
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    /* Chính sách sản phẩm */
+    .policy-item i {
+        font-size: 16px;
+    }
+
+    .policy-item span {
+        font-size: 14px;
+        text-align: justify;
+    }
+
+    /* Sản phẩm liên quan */
+    .related-products h2 {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .products-wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .product-card {
+        width: 45%; /* Giảm chiều rộng từng card */
+    }
+
+    /* Đánh giá sản phẩm */
+    .danhgia {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .danhgia-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .danhgia-score {
+        font-size: 36px;
+    }
+
+    .danhgia-score .score-total {
+        font-size: 16px;
+    }
+
+    .danhgia-write {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .review {
+        font-size: 14px;
+    }
+    .quantity-selector{
+        margin-left: 27%
+    }
+    .quantity-selector label{
+        margin-left: 10%
+
+    }
+    .product-intro h2{
+        left: 27%
+    }
+}

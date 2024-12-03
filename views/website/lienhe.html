@@ -14,7 +14,7 @@
     </head>
     <body> 
         <header class="header">
-            <div class="logo">POLIDOLL</div>
+            <a href="trangchu.html"><div class="logo">POLIDOLL</div></a>
             <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
             <nav class="navbar">
                 <div class="dropdown">
@@ -48,28 +48,30 @@
                 <a href="#" title="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </header>
-        <div class="form-container">
-            <h1>LIÊN HỆ VỚI POLIDOLL</h1>
-            <form id ="contactform" action = "" method = "post">
-                <div class = "form-group">
-                    <label for="name">Họ tên</label>
-                    <input type = "text" id = "name" name ="name" required>
-                </div>
-                <div class = "form-group">
-                    <label for="email">Email</label>
-                    <input type = "email" id = "email" name ="email" required>
-                </div>
-                <div class = "form-group">
-                    <label for="phone">Số điện thoại</label>
-                    <input type = "tel" name = "phone" id = "phone" required pattern="[0-9]{10,11}" title="Vui lòng nhập số điện thoại hợp lệ (10-11 chữ số)">
-                </div>
-                <div class = "form-group">
-                    <label for="message">Tin nhắn của bạn</label>
-                    <textarea id = "message" name = "message" required></textarea>
-                </div>
-                <input type="submit" value="GỬI TIN NHẮN" class="form-submit">
+        <div class="container">
+            <!-- Phần ảnh bên trái -->
+            <div class="image-section">
+                <img src="../../assets/img/lienhe.jpg" alt="Ảnh liên hệ">
+            </div> 
+            <div id="wrapper">
+                <form action="" id="form-login" method = "post">
+            <h1>Bạn cần hỗ trợ?</h1>
+            <p>POLIDOLL rất hân hạnh được hỗ trợ bạn, hãy để lại thông tin cho chúng tôi nhé. Yêu cầu của bạn sẽ được xử lý và phản hồi trong thời gian sớm nhất.</p>
+              <div class="form-group">
+                <label for="name">Họ tên</label>
+                <input type="text" class="form-input" placeholder="Tên của bạn" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-input" placeholder="Email" required>
+              </div>
+              <div class="form-group">
+                <label for="message">Tin nhắn</label>
+                <textarea id="message" placeholder="Đừng ngại hỏi về đơn hàng của bạn" required></textarea>
+              </div>
+              <button type="submit" class="form-submit">Gửi tin nhắn</button>
             </form>
-        </div>
+          </div>
         <footer class="footer">
             <div class="footer-container">
                 <!-- Customer Service Section -->
