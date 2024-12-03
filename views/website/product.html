@@ -46,8 +46,36 @@
         </div>
     </header>
 
-    <main class="shop-container">
-        
+    <main class="shop_container">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="shop_breadcrumb">
+                <a href="./trangchu.html">Trang chủ</a>
+                &gt; 
+                <a href="./product.html">Trang sản phẩm</a>
+            </div>
+            <!-- Tính năng lọc -->
+            <div class="shop_functions">
+                <div class="shop_function">
+                    <i class="fa-solid fa-list"></i>
+                </div>
+                <div class="shop_function">
+                    <div class="shop_function--searchbar">
+                        <input type="text" placeholder="Tìm kiếm sản phẩm ...">
+                        <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </div>
+                <div class="shop_function">
+                    <label for="sort">Sắp xếp theo</label>
+                    <select id="sort">
+                        <option value="default">Mặc định</option>
+                        <option value="price-asc">Giá tăng dần</option>
+                        <option value="price-desc">Giá giảm dần</option>
+                        <option value="trending">Trending Now</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
