@@ -1,0 +1,211 @@
+/* Responsive Design for max-width: 480px */
+@media screen and (max-width: 480px) {
+    /* Adjust dropdown styles for mobile */
+    .dropdown-content {
+        position: relative;
+        box-shadow: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .dropdown-content a {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+    .navbar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 25px;
+        color: #f25a8c;
+        cursor: pointer;
+        margin-left: 10%;
+    }
+
+    .menu-toggle.active+.navbar {
+        display: flex;
+        /* Show navbar on menu toggle click */
+    }
+
+    /* Icons Section Responsive */
+    .icons {
+        display: flex;
+        gap: 10px;
+    }
+    .navbar.active {
+        display: block;
+        /* Hiện menu khi có class active */
+    }
+    .navbar a {
+        padding: 10px;
+        text-decoration: none;
+        display: block;
+    }   
+    .category {
+        width: 65%;
+    }
+    .content-container{
+        max-width: 95%;
+        margin: 0 auto;
+    }
+    .trending-now-section .content-container {
+        display: block;
+        text-align: center;
+    }
+
+    .products-container {
+        width: 100%;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .products-carousel-wrapper {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .products-carousel {
+        display: flex;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .product-item {
+        min-width: 100%;
+        box-sizing: border-box;
+        margin-top: 20px;
+    }
+
+    .product-image {
+        margin: 0 auto;
+        margin-bottom: 15px;
+    }
+
+    .product-name,
+    .product-price {
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        z-index: 10;
+    }
+    .left-btn {
+        left: 10px;
+    }
+    
+    .right-btn {
+        right: 10px;
+    }
+    
+    .banner-container {
+        width: 100%;
+        margin-left: 25%;
+        margin-top: 20px;
+    }
+    .banner-container img{
+        width: 170%;
+        margin-left: -20px;
+    }
+    .why-us-item{
+        font-size: 12px;
+    }
+    .nav-carousel-item {
+        flex: 0 0 100%;
+        /* Hiển thị chỉ 1 sản phẩm */
+        padding: 5px;
+        /* Giảm padding để tiết kiệm không gian */
+    }
+
+    .nav-product-image {
+        max-width: 80%;
+        margin: 0 auto;
+        /* Giảm kích thước khung hình ảnh và căn giữa */
+    }
+
+    .nav-product-image img {
+        width: 100%;
+        /* Đảm bảo hình ảnh không vượt quá khung */
+    }
+
+    .nav-product-info p {
+        font-size: 16px;
+        /* Tăng kích thước chữ mô tả sản phẩm */
+    }
+
+    .nav-product-info span {
+        font-size: 16px;
+        /* Tăng kích thước chữ giá sản phẩm */
+    }
+
+    .nav-buy-now-btn {
+        font-size: 18px;
+        padding: 6px 12px;
+        /* Điều chỉnh kích thước nút phù hợp */
+    }
+
+    .nav-carousel-btn {
+        padding: 8px;
+        /* Giảm kích thước nút điều hướng */
+    } 
+    .parallax-section {
+        height: 280px;
+        /* Giảm chiều cao thêm */
+        background-size: cover;
+        background-attachment: scroll;
+        /* Tắt hiệu ứng parallax */
+    }
+
+    .parallax-content {
+        margin: 10px 15px;
+        padding: 10px 15px;
+        /* Thu gọn padding */
+        border-radius: 6px;
+        font-size: 13px;
+        /* Giảm kích thước tổng thể */
+    }
+
+    .parallax-content p {
+        font-size: 14px;
+        margin-bottom: 10px;
+        line-height: 22px;
+        /* Điều chỉnh kích thước và khoảng cách dòng */
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        /* Xếp chồng các phần tử */
+        gap: 6px;
+        padding: 0 8px;
+        /* Giảm khoảng cách bên trong */
+    }
+
+    .newsletter-form input {
+        padding: 6px;
+        font-size: 0.8rem;
+        /* Thu nhỏ font và padding */
+        border-radius: 3px;
+    }
+
+    .newsletter-form button {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        /* Giảm kích thước nút thêm nữa */
+        border-radius: 3px;
+    }
+}
