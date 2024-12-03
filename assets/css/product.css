@@ -4,6 +4,11 @@ body {
     padding: 0;
     overflow-x: hidden;
   }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
 html {
   scroll-behavior: smooth;
 }
@@ -13,17 +18,81 @@ html {
     --pinksolid:#f25a8c;
     --smooth: all 0.3s ease-in;
   }
+/* Breadcrumb */
 .shop_breadcrumb {
-  color:#ccc
+  color:#ccc;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .shop_breadcrumb a {
   text-decoration: none;
-<<<<<<< HEAD
   color: gray;
-=======
->>>>>>> origin/main
 }
+
+/* toolbar */
+.shop_functions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--pinklight);
+  padding: 10px 10px;
+}
+.shop_function--logo {
+  display: none;
+}
+
+.shop_function--searchbar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.shop_function--searchbar input {
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  color: var(--pinksolid);
+  background-color: white;
+}
+.shop_function--searchbar input::placeholder { color: var(--pink);}
+
+.shop_function--searchbar button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.shop_function--searchbar button:hover {
+  background-color: #ddd;
+}
+
+.shop_function--searchbar button i {
+  font-size: 18px;
+  color: var(--pink);
+}
+
+.shop_function--sort label {
+  color: var(--pinksolid);
+}
+
+.shop_function--sort select {
+  color: var(--pink);
+  padding: 5px;
+  border: 1px solid var(--pinksolid);
+  border-radius: 10px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
 
 /* Header */
   .header {
