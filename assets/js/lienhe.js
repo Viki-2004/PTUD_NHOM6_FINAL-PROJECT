@@ -9,7 +9,7 @@ document.getElementById('contactform').addEventListener('submit', function(event
 
     // Kiểm tra nếu dữ liệu hợp lệ
     if (name && email && phone && message) {
-        alert('Gửi tin nhắn thành công! Cảm ơn bạn đã liên hệ với POLIDOLL.');
+        alert('Cảm ơn bạn đã liên hệ với LOLIDOLL! Chúng tôi sẽ trả lời bạn trong thời gian sớm nhất');
     } else {
         alert('Vui lòng điền đầy đủ thông tin trước khi gửi.');
     }

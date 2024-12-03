@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +33,7 @@ body {
 }
 
 #wrapper {
-    flex: 1; /* Chiếm 50% chiều rộng */
+    flex: 1; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,7 +41,7 @@ body {
     padding: 40px; 
 }
 
-#form-signup {
+#form-login {
     width: 100%; 
     max-width: 400px; 
     background: rgba(254, 252, 252, 0.9);
@@ -116,24 +116,24 @@ body {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.login-prompt {
+.signup-prompt {
     text-align: center;
     margin-top: 20px;
 }
 
-.login-prompt p {
+.signup-prompt p {
     font-size: 14px;
     color: #262626;
 }
 
-.login-prompt a {
+.signup-prompt a {
     color: #f67aa6;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
 }
 
-.login-prompt a:hover {
+.signup-prompt a:hover {
     color: #ff5c8a;
     text-decoration: underline;
 }
