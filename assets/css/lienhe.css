@@ -90,66 +90,67 @@ body {
       font-size: 35px;
       margin-bottom: 20px;
       text-align: center;
+      color:#000;
       margin-bottom: 20px;
       color: #fa8db2;
   }
   
   .form-container {
-      max-width: 700px;
-      margin: 50px auto;
-      background-color: #fff; 
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-  
-    .form-group {
-      display: flex;
-      flex-direction: column; 
-      gap: 5px; 
-  }
-  
-  .form-container label {
-      display: block;
-      font-size: 16px;
-      color: #fa8db2; 
-      font-weight: bold;
-    }
-  
-  .form-container input,
-  .form-container textarea {
-        width: 100%;
-        box-sizing: border-box; 
-        border: 1px solid #000; 
-        border-radius: 5px;
-        font-size: 16px;
-        padding: 20px;
-        margin-bottom: 15px; 
-        position: relative;
-    }
+    max-width: 700px;
+    margin: 50px auto;
+    background:  #f9e8ed;
+    padding: 30px 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(248, 131, 174, 0.2); 
+    border: 1px solid rgba(154, 154, 154, 0.2); /* Viền nhạt hơn */
+}
 
-  .form-container textarea {
-      font-family: Arial, sans-serif; 
-      font-size: 16px; 
-      color: #000; 
-      padding: 10px; 
-  }
-  
-  .form-submit {
-      background-color: #f7bacd; 
-      color: #fff5f5fd;
-      font-weight: bold; 
-      border: none;
-      padding: 6px 10px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: 0.25s ease-in-out;
-      margin-top: 30px
-    }
-    
-  .form-submit:hover {
-      background-color: #f6c9d7; 
-    }
+.form-container label {
+    display: block;
+    font-size: 16px;
+    color: #333; /* Màu chữ nhẹ nhàng */
+    font-weight: bold;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc; /* Viền nhẹ */
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 15px; /* Padding được điều chỉnh */
+    margin-bottom: 15px;
+    background-color: #fff; /* Màu nền trắng nhẹ */
+    color: #333; /* Màu chữ */
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form-container textarea {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.form-submit {
+  background-color: #fbe6f0; 
+  color: #000; 
+  font-weight: bold;
+  border: none;
+  padding: 6px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.25s ease-in-out;
+  margin-top: 30px;
+  box-shadow: 0 4px 8px rgba(248, 131, 174, 0.3); 
+}
+
+.form-submit:hover {
+    background-color: #fc7fa6; 
+    transform: scale(1.1);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); 
+}
   
     .footer {
       background-color: #ffe4ec;
