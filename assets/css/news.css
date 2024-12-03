@@ -1,0 +1,462 @@
+/* Tổng quát */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #353334;
+  display: flex; /* Dùng để căn chỉnh cả trang */
+  flex-direction: column;
+  align-items: center; /* Canh giữa nội dung theo chiều ngang */
+  justify-content: center; /* Canh giữa nội dung theo chiều dọc */
+  min-height: 100vh; /* Đảm bảo trang chiếm toàn bộ chiều cao màn hình */
+  
+
+/* Header */
+.header {
+  background-color: #ffccd5;
+  text-align: center;
+}
+
+.top-bar {
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background: #ff6f91;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 20;
+  margin: 20;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  border-spacing: 20;
+}
+
+/* Main Content */
+
+
+.content {
+    display: flex;
+  justify-content: center; /* Canh giữa theo chiều ngang */
+  align-items: flex-start; /* Canh trên theo chiều dọc */
+  gap: 20px; /* Khoảng cách giữa sidebar và articles */
+  width: 100%;
+  text-spacing-trim: 20;
+  
+}
+
+.sidebar {
+  flex: 1.5;
+  margin-right: 20px;
+  margin-left: 20;
+  padding: 50px 50px 50px 200px;
+  border-radius: 8px;
+  transition: transform 0.3s;
+  background: none;
+  
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  gap: 20px;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+  transition: color 0.3s, transform 0.3s;
+  gap: 20px;
+  line-height: 2;
+}
+
+.sidebar ul li:hover {
+  color: #ff6f91;
+  transform: translateX(10px);
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #ff6f91;
+  font-weight: bold;
+  padding-left: 0.45cm;
+}
+
+.sidebar .promo {
+  background-color: #ffe5e5;
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+}
+.under-promo {
+  background-color: #ffffff; /* Màu nền nhạt để phân biệt */
+  padding: 20px;
+  border-radius: 10px; /* Bo góc nhẹ */
+ 
+  margin-top: 20px;
+}
+
+.under-promo h2 {
+  color: #ff6f91; /* Màu sắc nổi bật */
+  font-size: 25px;
+  margin-bottom: 0px;
+  border-bottom: 2px solid #ff6f91; /* Gạch chân tiêu đề */
+  padding-bottom: 5px;
+  
+}
+
+.under-promo h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.under-promo h3:hover {
+  color: #ff6f91; /* Thay đổi màu khi hover */
+}
+
+.under-promo p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.under-promo a {
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.under-promo a:hover {
+  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}
+
+/* Articles */
+.articles {
+  flex: 5;
+  text-decoration: none;
+}
+
+.articles article {
+  margin-bottom: 50px;
+  border-radius: 0px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.articles img {
+  width: 70%;
+  height: auto;
+  transition: transform 0.3s, filter 0.3s;
+  cursor: pointer;
+}
+
+.articles img:hover {
+  transform: scale(1.1); /* Giảm kích thước hiệu ứng */
+  filter: brightness(0.95);
+}
+
+.articles h2 {
+  font-size: 25px;
+  margin: 10px 0;
+  transition: color 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: #ff6f91; /* Đặt lại màu mặc định */
+}
+
+.articles h2:hover {
+  color: #ff6f91;
+}
+
+.articles h2 a {
+  text-decoration: none; /* Xóa gạch chân */
+  color: inherit; /* Kế thừa màu từ h2 */
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(45deg, #ff6f91, #ff3d68);
+  border: 2px solid transparent;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #ff3d68, #ff6f91);
+  border-color: #ffccd5;
+
+ 
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #ff6f91;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.pagination a:hover {
+  background-color: #ff3d68;
+  transform: scale(1.1);
+}
+
+.pagination a.active {
+  background-color: #ff3d68;
+}
+
+/* Footer */
+.footer {
+  background-color: #ffccd5;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  display: flex;
+  gap: 40px;
+}
+
+.newsletter {
+  text-align: center;
+}
+
+.payment-methods img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+      flex-direction: column;
+  }
+
+  .articles img {
+      width: 100%;
+  }
+
+  .footer {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .footer-links {
+      flex-direction: column;
+      align-items: center;
+  }
+}
+.header {
+  background-color: #fff;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f8c3d6;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #f25a8c;
+}
+
+.navbar {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-grow: 1;
+  position: relative;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #f25a8c;
+  padding: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1100;
+  /* Đặt cao nhất */
+  min-width: 150px;
+  border-radius: 5px;
+  overflow: visible;
+  /* Ngăn menu bị cắt */
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  font-size: 15px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f8c3d6;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icons a {
+  text-decoration: none;
+  font-size: 25px;
+  color: #fa8db2;
+}
+
+.icons a:hover {
+  color: rgb(255, 4, 4);
+  transition: all.3s;
+}
+/* FOOTER */
+.footer {
+  background-color: #ffe4ec;
+  color: #000;
+  padding: 40px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h4 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-decoration: none;
+  color: #000;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding-inline-start: 0px;
+}
+
+.footer-section ul li {
+  margin-top: 5px;
+}
+
+.newsletter {
+  display: flex;
+  flex-direction: column;
+}
+
+.newsletter P {
+  margin-top: 0px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+.newsletter input[type="email"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.newsletter button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background-color: #e61010;
+}
+
+.social-icons a {
+  font-size: 25px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.social-icons a:hover {
+  color: red;
+}
+
+.scroll-top {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.scroll-top a {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+}
