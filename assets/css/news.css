@@ -3,67 +3,30 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  color: #353334;
-  display: flex; /* Dùng để căn chỉnh cả trang */
-  flex-direction: column;
-  align-items: center; /* Canh giữa nội dung theo chiều ngang */
-  justify-content: center; /* Canh giữa nội dung theo chiều dọc */
-  min-height: 100vh; /* Đảm bảo trang chiếm toàn bộ chiều cao màn hình */
-  
-
-/* Header */
-.header {
-  background-color: #ffccd5;
-  text-align: center;
-}
-
-.top-bar {
-  padding: 10px 0;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  background: #ff6f91;
-}
-
-.navbar ul {
-  list-style: none;
-  padding: 20;
-  margin: 20;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-}
-
-.navbar ul li a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-  font-size: 16px;
-  border-spacing: 20;
+  overflow-x: hidden;
 }
 
 /* Main Content */
-
-
 .content {
-    display: flex;
-  justify-content: center; /* Canh giữa theo chiều ngang */
-  align-items: flex-start; /* Canh trên theo chiều dọc */
-  gap: 20px; /* Khoảng cách giữa sidebar và articles */
+  display: flex;
+  justify-content: center;
+  /* Canh giữa theo chiều ngang */
+  align-items: flex-start;
+  /* Canh trên theo chiều dọc */
+  gap: 20px;
+  /* Khoảng cách giữa sidebar và articles */
   width: 100%;
-  text-spacing-trim: 20;
-  
 }
 
 .sidebar {
+  width: 25%;
   flex: 1.5;
   margin-right: 20px;
-  margin-left: 20;
-  padding: 50px 50px 50px 200px;
+  margin-left: 20px;
   border-radius: 8px;
   transition: transform 0.3s;
   background: none;
-  
+
 }
 
 .sidebar ul {
@@ -80,7 +43,6 @@ body {
 }
 
 .sidebar ul li:hover {
-  color: #ff6f91;
   transform: translateX(10px);
 }
 
@@ -99,32 +61,38 @@ body {
   font-weight: bold;
   border-radius: 8px;
 }
+
 .under-promo {
-  background-color: #ffffff; /* Màu nền nhạt để phân biệt */
+  background-color: #ffffff;
+  /* Màu nền nhạt để phân biệt */
   padding: 20px;
-  border-radius: 10px; /* Bo góc nhẹ */
- 
+  border-radius: 10px;
+  /* Bo góc nhẹ */
+
   margin-top: 20px;
 }
 
 .under-promo h2 {
-  color: #ff6f91; /* Màu sắc nổi bật */
+  color: #ff6f91;
+  /* Màu sắc nổi bật */
   font-size: 25px;
   margin-bottom: 0px;
-  border-bottom: 2px solid #ff6f91; /* Gạch chân tiêu đề */
+  border-bottom: 2px solid #ff6f91;
+  /* Gạch chân tiêu đề */
   padding-bottom: 5px;
-  
+
 }
 
 .under-promo h3 {
-  font-size: 16px;
+  font-size: 15px;
   color: #333;
   margin-bottom: 5px;
   transition: color 0.3s ease;
 }
 
 .under-promo h3:hover {
-  color: #ff6f91; /* Thay đổi màu khi hover */
+  color: #ff6f91;
+  /* Thay đổi màu khi hover */
 }
 
 .under-promo p {
@@ -139,71 +107,61 @@ body {
 }
 
 .under-promo a:hover {
-  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+  transform: scale(1.05);
+  /* Phóng to nhẹ khi hover */
 }
-
-/* Articles */
-.articles {
-  flex: 5;
+a{
   text-decoration: none;
+  color:#645e5e;
+}
+.blog-grid {
+  width: 75%;
+  padding: 20px;
+  background: #fff;
 }
 
-.articles article {
-  margin-bottom: 50px;
-  border-radius: 0px;
+.post {
+  background: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  border-radius: 8px;
   overflow: hidden;
-  text-decoration: none;
-  transition: transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.articles img {
-  width: 70%;
-  height: auto;
-  transition: transform 0.3s, filter 0.3s;
-  cursor: pointer;
+.post img {
+  width: 100%;
+  height: 310px;;
 }
 
-.articles img:hover {
-  transform: scale(1.1); /* Giảm kích thước hiệu ứng */
-  filter: brightness(0.95);
+.post h2 {
+  font-size: 140%;
+  margin-left: 15px;
+  margin-top: 15px;
+  color: #da4d6e;
 }
 
-.articles h2 {
-  font-size: 25px;
-  margin: 10px 0;
-  transition: color 0.3s;
-  cursor: pointer;
-  text-decoration: none;
-  color: #ff6f91; /* Đặt lại màu mặc định */
+.post p {
+  padding: 2px 15px;
+  color: #666;
+  text-align: justify;
 }
-
-.articles h2:hover {
-  color: #ff6f91;
-}
-
-.articles h2 a {
-  text-decoration: none; /* Xóa gạch chân */
-  color: inherit; /* Kế thừa màu từ h2 */
-}
-
-button {
+.post .btn {
   display: inline-block;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: bold;
+  margin: 15px;
+  padding: 7px 20px;
+  background-color: #ff6f91;
   color: #fff;
-  background: linear-gradient(45deg, #ff6f91, #ff3d68);
-  border: 2px solid transparent;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
-button:hover {
-  background: linear-gradient(45deg, #ff3d68, #ff6f91);
-  border-color: #ffccd5;
-
- 
+.post .btn:hover {
+  background-color: #d41d1a;
+}
+a{
+  text-decoration: none;
 }
 
 .pagination {
@@ -234,49 +192,29 @@ button:hover {
   background-color: #ff3d68;
 }
 
-/* Footer */
-.footer {
-  background-color: #ffccd5;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.footer-links {
-  display: flex;
-  gap: 40px;
-}
-
-.newsletter {
-  text-align: center;
-}
-
-.payment-methods img {
-  width: 50px;
-  margin-right: 10px;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .content {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .articles img {
-      width: 100%;
+    width: 80%;
   }
 
   .footer {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .footer-links {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 }
+
+/* HEADER & FOOTER */
+
 .header {
   background-color: #fff;
   padding: 20px 20px;
@@ -303,7 +241,11 @@ button:hover {
 .dropdown {
   position: relative;
 }
+.dropbtn a{
+  text-decoration: none;
+  color: #df376f;
 
+}
 .dropbtn {
   background: none;
   border: none;
@@ -358,6 +300,14 @@ button:hover {
   color: rgb(255, 4, 4);
   transition: all.3s;
 }
+
+/* Main Banner*/
+.main-banner img {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
 /* FOOTER */
 .footer {
   background-color: #ffe4ec;
@@ -459,4 +409,16 @@ button:hover {
   color: #000;
   font-size: 18px;
   font-weight: bold;
+}
+
+/* MENU TOGGLE */
+.menu-toggle {
+  display: none;
+  font-size: 25px;
+  cursor: pointer;
+  color: #f25a8c;
+}
+
+h4 {
+  color: rgb(163, 28, 10);
 }
