@@ -430,7 +430,11 @@ html {
 /* Responsive */
 @media screen and (max-width: 480px) {
   .shop_breadcrumb {margin-left: 20px;}
-  .shop_functions {padding: 0 10px;}
+  .shop_functions {padding: 0 10px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
   .shop_function--logo {
     display: block;
     visibility: visible;
@@ -440,11 +444,13 @@ html {
   }
   .shop_function--searchbar {
     max-width: 80%;
-    overflow: hidden;
+    overflow:visible;
   }
   .shop_function {
     width: 75%;
   }
+  .shop_function--searchbar input {width: 80%;}
+  .shop_function--searchbar button {width: 20%;}
   .shop_function--sort {width: 15%;}
 
   .shop_function--sort label {
