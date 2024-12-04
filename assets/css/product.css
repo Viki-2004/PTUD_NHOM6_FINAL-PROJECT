@@ -159,14 +159,21 @@ html {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+<<<<<<< HEAD
   gap: 3%;
+=======
+  gap: 1%;
+>>>>>>> origin/main
 }
 .product_item {
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 50px;
   flex: 1 1 25%;
+<<<<<<< HEAD
   max-width: 30%;
+=======
+>>>>>>> origin/main
   /* border: 1px solid var(--pinksolid); */
   border-radius: 10px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
