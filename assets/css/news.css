@@ -5,14 +5,19 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
+
 /* Main Content */
 .content {
-    display: flex;
-  justify-content: center; /* Canh giữa theo chiều ngang */
-  align-items: flex-start; /* Canh trên theo chiều dọc */
-  gap: 20px; /* Khoảng cách giữa sidebar và articles */
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  /* Canh giữa theo chiều ngang */
+  align-items: flex-start;
+  /* Canh trên theo chiều dọc */
+  gap: 20px;
+  /* Khoảng cách giữa sidebar và articles */
   width: 100%;
-  text-spacing-trim: 20px;
 }
 
 .sidebar {
@@ -23,7 +28,7 @@ body {
   border-radius: 8px;
   transition: transform 0.3s;
   background: none;
-  
+
 }
 
 .sidebar ul {
@@ -58,32 +63,38 @@ body {
   font-weight: bold;
   border-radius: 8px;
 }
+
 .under-promo {
-  background-color: #ffffff; /* Màu nền nhạt để phân biệt */
+  background-color: #ffffff;
+  /* Màu nền nhạt để phân biệt */
   padding: 20px;
-  border-radius: 10px; /* Bo góc nhẹ */
- 
+  border-radius: 10px;
+  /* Bo góc nhẹ */
+
   margin-top: 20px;
 }
 
 .under-promo h2 {
-  color: #ff6f91; /* Màu sắc nổi bật */
+  color: #ff6f91;
+  /* Màu sắc nổi bật */
   font-size: 25px;
   margin-bottom: 0px;
-  border-bottom: 2px solid #ff6f91; /* Gạch chân tiêu đề */
+  border-bottom: 2px solid #ff6f91;
+  /* Gạch chân tiêu đề */
   padding-bottom: 5px;
-  
+
 }
 
 .under-promo h3 {
-  font-size: 16px;
+  font-size: 15px;
   color: #333;
   margin-bottom: 5px;
   transition: color 0.3s ease;
 }
 
 .under-promo h3:hover {
-  color: #ff6f91; /* Thay đổi màu khi hover */
+  color: #ff6f91;
+  /* Thay đổi màu khi hover */
 }
 
 .under-promo p {
@@ -98,7 +109,8 @@ body {
 }
 
 .under-promo a:hover {
-  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+  transform: scale(1.05);
+  /* Phóng to nhẹ khi hover */
 }
 
 /* Articles */
@@ -108,7 +120,7 @@ body {
 }
 
 .articles article {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   border-radius: 0px;
   overflow: hidden;
   text-decoration: none;
@@ -116,14 +128,13 @@ body {
 }
 
 .articles img {
-  width: 70%;
+  width: 65%;
   height: auto;
   transition: transform 0.3s, filter 0.3s;
   cursor: pointer;
 }
 
 .articles img:hover {
-  transform: scale(1.1); /* Giảm kích thước hiệu ứng */
   filter: brightness(0.95);
 }
 
@@ -133,12 +144,24 @@ body {
   transition: color 0.3s;
   cursor: pointer;
   text-decoration: none;
-  color: #ff6f91; /* Đặt lại màu mặc định */
+  color: #ff6f91;
+  /* Đặt lại màu mặc định */
 }
 
 .articles h2 a {
-  text-decoration: none; /* Xóa gạch chân */
-  color: inherit; /* Kế thừa màu từ h2 */
+  text-decoration: none;
+  /* Xóa gạch chân */
+  color: inherit;
+  /* Kế thừa màu từ h2 */
+}
+
+a {
+  text-decoration: none;
+  color: rgb(134, 133, 133)
+}
+
+.button-more {
+  margin-top: 15px;
 }
 
 .more {
@@ -186,26 +209,28 @@ body {
 .pagination a.active {
   background-color: #ff3d68;
 }
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .content {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .articles img {
-      width: 100%;
+    width: 80%;
   }
 
   .footer {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .footer-links {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 }
+
 /* HEADER & FOOTER */
 
 .header {
