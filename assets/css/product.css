@@ -436,8 +436,7 @@ p{
   .shop_breadcrumb {margin-left: 20px;}
   .shop_functions {padding: 0 10px;
     display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    justify-content: space-between;
   }
   .shop_function--logo {
     display: block;
