@@ -1,0 +1,363 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #fff;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    height: 250px;
+    background: url('../../assets/img/ABOUTUS/TOPHEAD.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .hero-section .breadcrumb {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    z-index: 10; /* Đảm bảo breadcrumb ở trên cùng */
+  }
+  
+  .hero-section .breadcrumb a {
+    text-decoration: none;
+    color: #ffffff;
+    opacity: 0.9;
+    transition: color 0.3s ease;
+  }
+  
+  .hero-section .breadcrumb a:hover {
+    color: #ff4081; /* Màu sắc khi hover */
+  }
+  
+  .hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5; /* Đảm bảo overlay nằm dưới breadcrumb */
+  }
+  
+  .hero-section .page-title {
+    font-size: 36px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    z-index: 5;
+  }
+  
+  /* Intro Section */
+  .intro-section {
+    text-align: center;
+    margin: 40px 20px;
+  }
+  
+  .intro-title {
+    font-size: 140%;
+    font-weight: bold;
+    color: #f25a8c;
+    margin-bottom: 10px;
+  }
+  
+  .intro-section hr {
+    width: 50px;
+    border: 1px solid #333;
+    margin: 10px auto;
+  }
+  
+  .intro-text {
+    font-size: 110%;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Content Section */
+  .content-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fef4fa;
+    border-radius: 10px;
+  }
+  .text-content {
+    flex: 1;
+    max-width: 50%;
+    padding-right: 20px;
+  }
+  
+  .text-content h2 {
+    font-size: 150%;
+    font-weight: bold;
+    text-align: center;
+    color: #f25a8c;
+    margin-bottom: 15px;
+  }
+  
+  .text-content p {
+    font-size: 110%;
+    color: #555;
+    text-align: justify;
+    margin: 0 20px;
+    margin-bottom: 15px;
+  }
+  
+  .image-content {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Đảm bảo hình ảnh không tràn khỏi khung */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .image-content img {
+    width: 100%;
+    height: 100%; /* Đảm bảo ảnh luôn phủ kín khung */
+    object-fit: cover; /* Tự động crop ảnh để vừa khung */
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .image-content img:hover {
+    transform: scale(1.1); /* Phóng to nhẹ trong khung */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .content-section {
+      flex-direction: column;
+      text-align: center;
+    }
+    .text-content {
+      max-width: 100%;
+      padding-right: 0;
+      margin-bottom: 20px;
+    }
+    .image-content {
+      max-width: 100%;
+    }
+  }
+  .header {
+    background-color: #fff;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f8c3d6;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f25a8c;
+}
+
+.navbar {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-grow: 1;
+    position: relative;
+}
+.dropbtn a{
+    text-decoration: none;
+    color: #df376f;
+
+}
+.dropdown {
+    position: relative;
+}
+.dropbtn a{
+  text-decoration: none;
+  color: #df376f;
+
+}
+.dropbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #f25a8c;
+    padding: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+    /* Đặt cao nhất */
+    min-width: 150px;
+    border-radius: 5px;
+    overflow: visible;
+    /* Ngăn menu bị cắt */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f8c3d6;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icons a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #fa8db2;
+}
+
+.icons a:hover {
+    color: rgb(255, 4, 4);
+    transition: all.3s;
+}
+
+/* Main Banner*/
+.main-banner img {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #ffe4ec;
+    color: #000;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section a {
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #000;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.footer-section ul li {
+    margin-top: 5px;
+}
+
+.newsletter {
+    display: flex;
+    flex-direction: column;
+}
+
+.newsletter P {
+    margin-top: 0px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+.newsletter input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.newsletter button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsletter button:hover {
+    background-color: #e61010;
+}
+
+.social-icons a {
+    font-size: 25px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+}
+
+.social-icons a:hover {
+    color: red;
+}
+
+.scroll-top {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.scroll-top a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+}
