@@ -159,15 +159,14 @@ html {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 5%;
+  gap: 3%;
 }
 .product_item {
-  width: 30%;
-  margin-left: 12px;
-  margin-right: 12px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 50px;
   flex: 1 1 25%;
-  max-width: 25%;
+  max-width: 30%;
   /* border: 1px solid var(--pinksolid); */
   border-radius: 10px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
@@ -176,7 +175,7 @@ html {
 }
 
 .product_item:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 /* Hình ảnh */
