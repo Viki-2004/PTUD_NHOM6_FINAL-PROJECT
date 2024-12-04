@@ -8,8 +8,6 @@ body {
 
 /* Main Content */
 .content {
-  max-width: 1300px;
-  margin: 0 auto;
   display: flex;
   justify-content: center;
   /* Canh giữa theo chiều ngang */
@@ -21,10 +19,10 @@ body {
 }
 
 .sidebar {
+  width: 25%;
   flex: 1.5;
   margin-right: 20px;
-  margin-left: 20;
-  padding: 50px 50px 50px 200px;
+  margin-left: 20px;
   border-radius: 8px;
   transition: transform 0.3s;
   background: none;
@@ -112,74 +110,54 @@ body {
   transform: scale(1.05);
   /* Phóng to nhẹ khi hover */
 }
-
-/* Articles */
-.articles {
-  flex: 5;
-  text-decoration: none;
+.blog-grid {
+  width: 75%;
+  padding: 20px;
+  background: #fff;
 }
 
-.articles article {
+.post {
+  background: #fff;
+  border: 1px solid #ddd;
   margin-bottom: 20px;
-  border-radius: 0px;
+  border-radius: 8px;
   overflow: hidden;
-  text-decoration: none;
-  transition: transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.articles img {
-  width: 65%;
-  height: auto;
-  transition: transform 0.3s, filter 0.3s;
-  cursor: pointer;
+.post img {
+  width: 100%;
+  height: 310px;;
 }
 
-.articles img:hover {
-  filter: brightness(0.95);
-}
-
-.articles h2 {
-  font-size: 25px;
-  margin: 10px 0;
-  transition: color 0.3s;
-  cursor: pointer;
-  text-decoration: none;
-  color: #ff6f91;
-  /* Đặt lại màu mặc định */
-}
-
-.articles h2 a {
-  text-decoration: none;
-  /* Xóa gạch chân */
-  color: inherit;
-  /* Kế thừa màu từ h2 */
-}
-
-a {
-  text-decoration: none;
-  color: rgb(134, 133, 133)
-}
-
-.button-more {
+.post h2 {
+  font-size: 23px;
+  margin-left: 15px;
   margin-top: 15px;
+  color: rgb(227, 127, 5);
 }
 
-.more {
-  background-color: #d3215c;
+.post p {
+  padding: 2px 15px;
+  color: #666;
+  text-align: justify;
+}
+.post .btn {
   display: inline-block;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: bold;
+  margin: 15px;
+  padding: 7px 20px;
+  background-color: #f5a851;
   color: #fff;
-  border: 2px solid transparent;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
-.more:hover {
-  background: linear-gradient(45deg, #ff3d68, #ff6f91);
-  border-color: #ffccd5;
+.post .btn:hover {
+  background-color: #ff5900;
+}
+a{
+  text-decoration: none;
 }
 
 .pagination {
