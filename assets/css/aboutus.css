@@ -73,9 +73,9 @@
   }
   
   .intro-title {
-    font-size: 24px;
+    font-size: 140%;
     font-weight: bold;
-    color: #000000;
+    color: #f25a8c;
     margin-bottom: 10px;
   }
   
@@ -86,7 +86,7 @@
   }
   
   .intro-text {
-    font-size: 16px;
+    font-size: 110%;
     color: #555;
     max-width: 800px;
     margin: 0 auto;
@@ -97,13 +97,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
     background-color: #fef4fa;
     border-radius: 10px;
   }
-  
   .text-content {
     flex: 1;
     max-width: 50%;
@@ -111,18 +110,19 @@
   }
   
   .text-content h2 {
-    font-size: 28px;
+    font-size: 150%;
     font-weight: bold;
     text-align: center;
-    color: #333;
+    color: #f25a8c;
     margin-bottom: 15px;
   }
   
   .text-content p {
-    font-size: 16px;
+    font-size: 110%;
     color: #555;
+    text-align: justify;
+    margin: 0 20px;
     margin-bottom: 15px;
-    text-align: center;
   }
   
   .image-content {
@@ -137,8 +137,8 @@
   }
   
   .image-content img {
-    width: 100%; /* Đảm bảo ảnh luôn phủ kín khung */
-    height: 1000%;
+    width: 100%;
+    height: 100%; /* Đảm bảo ảnh luôn phủ kín khung */
     object-fit: cover; /* Tự động crop ảnh để vừa khung */
     transition: transform 0.3s, box-shadow 0.3s;
   }
@@ -162,7 +162,104 @@
       max-width: 100%;
     }
   }
-  /* FOOTER */
+  .header {
+    background-color: #fff;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f8c3d6;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f25a8c;
+}
+
+.navbar {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-grow: 1;
+    position: relative;
+}
+.dropbtn a{
+    text-decoration: none;
+    color: #df376f;
+
+}
+.dropdown {
+    position: relative;
+}
+.dropbtn a{
+  text-decoration: none;
+  color: #df376f;
+
+}
+.dropbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #f25a8c;
+    padding: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+    /* Đặt cao nhất */
+    min-width: 150px;
+    border-radius: 5px;
+    overflow: visible;
+    /* Ngăn menu bị cắt */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f8c3d6;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icons a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #fa8db2;
+}
+
+.icons a:hover {
+    color: rgb(255, 4, 4);
+    transition: all.3s;
+}
+
+/* Main Banner*/
+.main-banner img {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* FOOTER */
 .footer {
     background-color: #ffe4ec;
     color: #000;
@@ -263,85 +360,4 @@
     color: #000;
     font-size: 18px;
     font-weight: bold;
-}
-.header {
-    background-color: #fff;
-    padding: 20px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #f8c3d6;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #f25a8c;
-}
-
-.navbar {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    flex-grow: 1;
-    position: relative;
-}
-
-.dropdown {
-    position: relative;
-}
-
-.dropbtn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    color: #f25a8c;
-    padding: 5px;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1100;
-    /* Đặt cao nhất */
-    min-width: 150px;
-    border-radius: 5px;
-    overflow: visible;
-    /* Ngăn menu bị cắt */
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 10px;
-    text-decoration: none;
-    display: block;
-    font-size: 15px;
-}
-
-.dropdown-content a:hover {
-    background-color: #f8c3d6;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.icons {
-    display: flex;
-    gap: 15px;
-}
-
-.icons a {
-    text-decoration: none;
-    font-size: 25px;
-    color: #fa8db2;
-}
-
-.icons a:hover {
-    color: rgb(255, 4, 4);
-    transition: all.3s;
 }
