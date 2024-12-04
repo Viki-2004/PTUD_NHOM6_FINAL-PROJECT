@@ -8,7 +8,10 @@ body {
     max-width: 1200px;
     margin: 0 auto;
   }
-  
+
+.shop_container {
+  margin-bottom: 5rem;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -62,7 +65,6 @@ html {
   color: var(--pinksolid);
   background-color: white;
 }
-.shop_function--searchbar input::placeholder { color: var(--pink);}
 
 .shop_function--searchbar button {
   background-color: transparent;
@@ -90,11 +92,9 @@ html {
 }
 .shop_function--sort label {
   margin-right: 10px;
-  color: var(--pinksolid);
 }
 
 .shop_function--sort select {
-  color: var(--pink);
   padding: 5px;
   border: 1px solid var(--pinksolid);
   border-radius: 10px;
