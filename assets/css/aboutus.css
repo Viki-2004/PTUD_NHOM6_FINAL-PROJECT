@@ -97,7 +97,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 40px auto;
     padding: 20px;
     background-color: #fef4fa;
@@ -138,7 +138,7 @@
   
   .image-content img {
     width: 100%; /* Đảm bảo ảnh luôn phủ kín khung */
-    height: 100%;
+    height: 1000%;
     object-fit: cover; /* Tự động crop ảnh để vừa khung */
     transition: transform 0.3s, box-shadow 0.3s;
   }
