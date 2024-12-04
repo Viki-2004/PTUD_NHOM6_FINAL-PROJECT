@@ -225,19 +225,6 @@ h2 {
     position: relative;
     font-weight: bold;
 }
-
-h2::before,
-h2::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 50%;
-    width: 280%;
-    height: 1px;
-    background: #ccc;
-    left: -290%;
-    right: -290%;
-}
 .card-container {
     max-width: 95%;
     margin: 0 auto;
