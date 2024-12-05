@@ -287,7 +287,10 @@ p{
   .dropdown {
     position: relative;
   }
-  
+  .dropbtn a{
+    text-decoration: none;
+    color: #df376f;
+}
   .dropbtn {
     background: none;
     border: none;
