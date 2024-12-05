@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+.admin-panel {
+    display: flex;
+    height: 100vh; /* Chiều cao toàn màn hình */
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f6c9d7;
+    padding: 10px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Thêm đổ bóng */
+}
+
+.sidebar ul {
+    list-style: none;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li:hover {
+    background-color: #ff7fa8;
+    color: #fff;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    overflow-x: auto;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 22px;
+    text-align: center;
+}
+
+/* Bảng */
+table {
+    width: 100%; /* Kéo dài bảng cả chiều ngang */
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    text-align: center; 
+    vertical-align: middle;
+}
+
+table th {
+    background-color: #f688ab; /* Nền cho tiêu đề */
+    color: white;
+}
+
+table td {
+    font-size: 14px;
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center; 
+    vertical-align: middle;
+}
+
+button {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.3s ease;
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 0 auto; 
+}
+
+button:hover {
+    transform: scale(1.05); 
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.95); 
+}
+
+/* Nút riêng biệt */
+button.visible {
+    background-color: #4caf50;
+    color: white;
+}
+
+button.invisible {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Nút icon */
+button.icon-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+button.icon-btn:hover {
+    background-color: #0056b3;
+}
+
+button.icon-btn.delete {
+    background-color: #f44336;
+}
+
+button.icon-btn.delete:hover {
+    background-color: #d32f2f;
+}
+
+/* Thêm icon */
+button i {
+    font-size: 14px;
+    color: white;
+}
+
+
+
