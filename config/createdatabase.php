@@ -29,7 +29,7 @@
     id_category INT(3),
     FOREIGN KEY (id_category) REFERENCES category(category_id)
 );
-    CREATE TABLE order (
+    CREATE TABLE orders (
     order_id INT(3) AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(100) NOT NULL,
     customer_address TEXT NOT NULL,
@@ -42,7 +42,7 @@
     CREATE TABLE order_details (
     sku VARCHAR(10),
     order_id INT(3),
-    user_id INT(3)
+    user_id INT(3),
     order_quantity INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     total DECIMAL(10, 2) NOT NULL,
@@ -57,19 +57,18 @@
     user_email VARCHAR(100) NOT NULL,
     user_phone VARCHAR(10) NOT NULL,
     user_password VARCHAR(100) NOT NULL
-);
-    "
+)";
 
 //Kiểm tra kết nối
-   if ($conn->multi_query($create)){
+    if ($conn->multi_query($create)){
     do {
         if ($conn->errno) {
             echo "Lỗi: " .$conn->error. "<br>";
         }
     } while ($conn->next_result());
     echo "Tạo bảng thành công";
-} else {
-    echo "Tạo bảng thất bại!";
-} 
+    } else {
+        echo "Tạo bảng thất bại!";
+    } 
 
 ?>
