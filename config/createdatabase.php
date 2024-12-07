@@ -57,6 +57,11 @@
     user_email VARCHAR(100) NOT NULL,
     user_phone VARCHAR(10) NOT NULL,
     user_password VARCHAR(100) NOT NULL
+)
+    CREATE TABLE product_img (
+    img_id INT(3) AUTO_INCREMENT PRIMARY KEY,
+    img_url VARCHAR(255) NOT NULL,
+    FOREIGN KEY (sku) REFERENCES product(sku)
 )";
 
 //Kiểm tra kết nối
