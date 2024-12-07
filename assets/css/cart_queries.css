@@ -47,7 +47,6 @@
       /* Hiện menu khi có class active */
   }
   .navbar a {
-      padding: 10px;
       text-decoration: none;
       display: block;
   }   
