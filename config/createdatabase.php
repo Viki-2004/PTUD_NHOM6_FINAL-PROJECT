@@ -10,6 +10,7 @@
     news_title VARCHAR(255) NOT NULL,
     publish_date DATE NOT NULL,
     news_content TEXT NOT NULL,
+    news_img VARCHAR(255),
     id_admin INT(2),
     FOREIGN KEY (id_admin) REFERENCES admin(id_admin)
 );  
@@ -20,7 +21,7 @@
     CREATE TABLE product (
     sku VARCHAR(20) PRIMARY KEY,
     product_name VARCHAR(255) NOT NULL,
-    product_img VARCHAR(100),
+    product_img VARCHAR(255),
     product_price DECIMAL(10, 2) NOT NULL,
     product_description TEXT,
     product_quantity INT NOT NULL,
@@ -28,7 +29,16 @@
     new_arrival BOOLEAN DEFAULT FALSE,
     id_category INT(3),
     FOREIGN KEY (id_category) REFERENCES category(category_id)
+);    
+
+    CREATE TABLE users (
+    user_id INT(3) AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(100) NOT NULL,
+    user_email VARCHAR(100) NOT NULL,
+    user_phone VARCHAR(10) NOT NULL,
+    user_password VARCHAR(100) NOT NULL
 );
+
     CREATE TABLE orders (
     order_id INT(3) AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(100) NOT NULL,
@@ -39,8 +49,9 @@
     user_id INT(3),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
     CREATE TABLE order_details (
-    sku VARCHAR(10),
+    sku VARCHAR(20),
     order_id INT(3),
     user_id INT(3),
     order_quantity INT NOT NULL,
@@ -51,16 +62,11 @@
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
-    CREATE TABLE user (
-    user_id INT(3) AUTO_INCREMENT PRIMARY KEY,
-    user_name VARCHAR(100) NOT NULL,
-    user_email VARCHAR(100) NOT NULL,
-    user_phone VARCHAR(10) NOT NULL,
-    user_password VARCHAR(100) NOT NULL
-)
+
     CREATE TABLE product_img (
     img_id INT(3) AUTO_INCREMENT PRIMARY KEY,
     img_url VARCHAR(255) NOT NULL,
+    sku VARCHAR(20),
     FOREIGN KEY (sku) REFERENCES product(sku)
 )";
 
