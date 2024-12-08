@@ -33,17 +33,6 @@ function changeImage(element) {
     element.classList.add('active');
 }
 
-// Xử lý chọn màu
-function selectColor(element) {
-    const colorOptions = document.querySelectorAll('.color-option');
-
-    // Gỡ class active từ tất cả các màu
-    colorOptions.forEach(option => option.classList.remove('active'));
-
-    // Thêm class active vào màu được chọn
-    element.classList.add('active');
-}
-
 // Xử lý tăng/giảm số lượng
 document.addEventListener("DOMContentLoaded", function () {
     const quantityInput = document.getElementById("quantity");

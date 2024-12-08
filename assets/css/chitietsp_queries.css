@@ -9,7 +9,8 @@
 
     .dropdown-content a {
         font-size: 14px;
-        padding: 10px 15px;
+      padding: 10px 15px;
+      display: block;
     }
 
     .navbar {
@@ -49,7 +50,6 @@
     }
 
     .navbar a {
-        padding: 10px;
         text-decoration: none;
         display: block;
     }
@@ -166,17 +166,6 @@
         font-size: 18px;
         margin-bottom: 10px;
     }
-
-    .product-color-options {
-        text-align: center;
-        margin-bottom: 15px;
-    }
-
-    .color-option {
-        width: 25px;
-        height: 25px;
-    }
-
     .add-to-cart,
     .buy-now {
         width: 80%;

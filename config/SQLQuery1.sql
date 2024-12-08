@@ -1,0 +1,2 @@
+SELECT * FROM orders
+insert into orders (customer_name, customer_address, customer_phone, customer_email, USER_ID) values ('V?nh Kim','25/50/13 Nguy?n H?u C?nh, Th?ng Nh?t, V?ng Tàu', '0377123486','kim29042004@gmail.com','001')
