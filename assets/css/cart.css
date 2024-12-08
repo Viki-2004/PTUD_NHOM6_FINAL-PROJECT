@@ -107,6 +107,7 @@ body {
         border-radius: 5px; /* Bo tròn góc */
     }
 .order-summary {
+    display:block;
     width: 35%; 
     border: 1px solid #ffd8f7; 
     padding: 20px; }
@@ -134,22 +135,24 @@ body {
 .order-summary .discount-row {
     display: flex;         /* Đặt các phần tử trong cùng một hàng */
     align-items: center;   /* Căn giữa theo chiều dọc */
-    gap: 10px;             /* Khoảng cách giữa input và button */
+    gap: 20px;             /* Khoảng cách giữa input và button */
+    text-align: center;
 }
 
 .order-summary input[type="text"] {
-    width: 60%;            /* Chiếm 70% chiều rộng */
+    width: 95%;          /* Chiếm 70% chiều rộng */
     padding: 10px;
+    text-align: center;
+    margin-bottom: 3px;
 }
 
 .order-summary .apply-btn {
-    width: 20%;            /* Chiếm 30% chiều rộng */
     background-color: #000000;
     color: #fff;
     padding: 10px;
-    border: none;
     cursor: pointer;
     text-align: center;
+    border-radius: 5px; /* Bo tròn góc */
 }
 .order-summary button {
     padding: 10px;
@@ -159,17 +162,30 @@ body {
     color: white;
     border: none;
     cursor: pointer;
+    border: 1px solid #ffffff; /* Viền */
+    border-radius: 5px; /* Bo tròn góc */
 }
 .order-summary .Momo {
     background-color: #ffc439;
     color: black;
     font-family: 'Poppins', sans-serif;
+    border: 1px solid #ffffff; /* Viền */
+    border-radius: 5px; /* Bo tròn góc */
 }
 .order-summary .continue {
     background-color: #00000000;
     color: black;
-    border: 1px solid #000000; /* Viền */
+    border: 1px solid #cacaca; /* Viền */
     border-radius: 5px; /* Bo tròn góc */
+}
+.order-summary .Momo:hover {
+    background-color: #ffdc8a;
+}
+.order-summary .continue:hover {
+    background-color: #ffc1ea;
+}
+.order-summary button:hover {
+    background-color: #ffc1ea;
 }
 .comment-section {
     margin-top: 20px;
@@ -177,13 +193,13 @@ body {
     border-top: 1px solid #ddd;
     background-color: #f9f9f9;
 }
-
 .comment-section h2 {
     margin-bottom: 15px;
     color: #333;
 }
 
 .comment-section form textarea {
+    font-family: Arial, sans-serif;
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -271,4 +287,231 @@ body {
 
 .carousel-prev:hover, .carousel-next:hover {
     background-color: #ff85c0;
+}
+/* PRODUCT LIST */
+/* Tổng quan carousel */
+.nav-carousel {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.nav-carousel-wrapper {
+    overflow: hidden;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.nav-carousel-wrapper ul {
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.nav-carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.nav-carousel-item {
+    flex: 0 0 20%;
+    /* Hiển thị 5 sản phẩm cùng lúc */
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    /* Đảm bảo padding không làm giãn nở item */
+    position: relative;
+}
+
+/* Hình ảnh sản phẩm */
+.nav-product-image {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.nav-product-image img {
+    width: 100%;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.nav-main-image {
+    display: block;
+}
+
+.nav-hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.nav-carousel-item:hover .nav-hover-image {
+    opacity: 1;
+}
+
+.nav-carousel-item:hover .nav-main-image {
+    opacity: 0;
+}
+
+/* Nút "Buy Now" */
+.nav-buy-now-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 10;
+    border: 0.2px solid black;
+}
+.nav-carousel-item:hover .nav-buy-now-btn {
+    opacity: 1;
+}
+.nav-buy-now-btn:hover {
+    background-color: #f45c5c;
+    color:#ffffff;
+    transition: 0.4s;
+    border: none;
+}
+
+/* Thông tin sản phẩm */
+.nav-product-info {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.nav-product-info p {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.nav-product-info span {
+    font-size: 14px;
+    color: rgb(123, 110, 110);
+}
+
+/* Nút điều hướng */
+.nav-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 20;
+    border-radius: 50%;
+}
+
+.nav-carousel-btn-left {
+    left: 6px;
+}
+
+.nav-carousel-btn-right {
+    right: 6px;
+}
+
+.nav-carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.footer {
+    background-color: #ffe4ec;
+    color: #000;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section a {
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #000;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.footer-section ul li {
+    margin-top: 5px;
+}
+
+.newsletter {
+    display: flex;
+    flex-direction: column;
+}
+
+.newsletter P {
+    margin-top: 0px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+.newsletter input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.newsletter button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsletter button:hover {
+    background-color: #e61010;
+}
+
+.social-icons a {
+    font-size: 25px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+}
+
+.social-icons a:hover {
+    color: red;
 }
