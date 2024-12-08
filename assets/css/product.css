@@ -497,3 +497,39 @@ p{
     transform: translateX(-50%);
   }
 }
+/* Container chính để căn giữa pagination */
+.page-item-container {
+  display: flex; /* Sử dụng Flexbox */
+  justify-content: center; /* Căn giữa các nút */
+  margin: 20px auto; /* Khoảng cách trên dưới pagination */
+}
+
+/* Kiểu dáng cho các nút pagination */
+.page-item {
+  display: inline-block;
+  margin: 0 5px; /* Khoảng cách giữa các nút */
+  padding: 10px 15px; /* Kích thước nút */
+  font-size: 14px; /* Cỡ chữ */
+  color: #ff4081; /* Màu chữ */
+  text-decoration: none; /* Bỏ gạch chân */
+  border: 1px solid #ff4081; /* Viền màu hồng */
+  border-radius: 5px; /* Bo góc nút */
+  background-color: #fff; /* Nền mặc định */
+  transition: all 0.3s ease; /* Hiệu ứng mượt mà khi hover */
+}
+
+/* Hover vào nút */
+.page-item:hover {
+  background-color: #ff4081; /* Nền hồng khi hover */
+  color: #fff; /* Chữ trắng khi hover */
+  text-decoration: none; /* Đảm bảo không có gạch chân */
+}
+
+/* Nút hiện tại */
+.current-page {
+  font-weight: bold;
+  background-color: #ff4081; /* Nền màu hồng */
+  color: #fff; /* Chữ trắng */
+  border-color: #ff4081; /* Viền cùng màu với nền */
+  cursor: default; /* Con trỏ không thay đổi */
+}

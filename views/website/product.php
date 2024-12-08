@@ -10,40 +10,49 @@
     <link rel="stylesheet" type="text/css" href="../../assets/css/product_queries.css">
 </head>
 <body>
-    <?php
-    $param = "";
-    $orderCondition = "";
-    // TÌM KIẾM
-    $search = isset($_GET['name']) ? $_GET['name'] : "";
-    if ($search) {
-        $where = "WHERE name LIKE '%". $search . "%`";
-        $param .= "name=".$search."&";
-    }
+<?php
+$param = "";
+$orderCondition = "";
+$sortParam = "";
+// TÌM KIẾM
+$search = isset($_GET['product_name']) ? $_GET['product_name'] : "";
+if ($search) {
+    $where = "WHERE `product_name` LIKE '%".$search."%'";
+    $param .= "product_name=" . $search;
+    $sortParam ="product_name=" . $search;
+}
 // SẮP XẾP
-    $orderField = isset($_GET['field']) ? $_GET['field'] : "";
-    $orderSort = isset($_GET['sort']) ? $_GET['sort'] : "";
-    if(!empty($orderField) && !empty($orderSort)){
-        $orderCondition = "ORDER BY `product_price`.`".$orderField."` ".$orderSort;
-        $param .= "field=".$orderField. "&sort=".$orderSort."&";
-    }
+$orderField = isset($_GET['field']) ? $_GET['field'] : "";
+$orderSort = isset($_GET['sort']) ? $_GET['sort'] : "";
 
-    include '../../config/connect.php';
-    $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 4;
-    $current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại 
-    $offset ($current_page - 1) * $item_per_page;
-    if ($search) {
-    $products = mysqli_query($con, "SELECT * FROM `product` WHERE `name` LIKE '%" . $search . "%' " .$orderCondition. "LIMIT" .$item_per_page . "OFFSET" . $offset);
-    $totalRecords = mysqli_query($con, "SELECT * FROM `product` WHERE `name` LIKE '%" . $search . "%'"); 
+// Kiểm tra nếu chọn mặc định (clear các tham số sắp xếp)
+if ($orderField == 'default') {
+    $orderCondition = "";  // Không có sắp xếp khi chọn mặc định
+    $param = ''; // Không thêm tham số vào URL khi chọn mặc định
+    $sortParam = '';  // Xóa tham số sắp xếp
 } else {
-    $products = mysqli_query($con, "SELECT * FROM `product ".$orderConditon." LIMIT". $item_per_page . "OFFSET " .$offset);
-    $totalRecords = mysqli_query($con, "SELECT * FROM `product`");
-    
+    if(!empty($orderField) && !empty($orderSort)){
+        $orderCondition = "ORDER BY `".$orderField."` ".$orderSort;
+        $param .= "field=".$orderField."&sort=".$orderSort."&";
     }
-    $totalRecords = $totalRecords->num_rows;
-    $totalPages = ceil($totalRecords / $item_per_page);
-    ?>
+}
 
+include "../../config/connect.php";
+$item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 6;
+$current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại 
+$offset = ($current_page - 1) * $item_per_page;
 
+if ($search) {
+    $products = mysqli_query($conn, "SELECT * FROM product WHERE `product_name` LIKE '%". $search . "%' ".$orderCondition." LIMIT " . $item_per_page . " OFFSET " . $offset);
+    $totalRecords = mysqli_query($conn, "SELECT * FROM product WHERE `product_name` LIKE '%". $search . "%'"); 
+} else {
+    $products = mysqli_query($conn, "SELECT * FROM product ".$orderCondition." LIMIT " . $item_per_page . " OFFSET " . $offset);
+    $totalRecords = mysqli_query($conn, "SELECT * FROM product");
+}
+
+$totalRecords = $totalRecords->num_rows;
+$totalPages = ceil($totalRecords / $item_per_page);
+?>
     <!-- Header -->
     <header class="header">
         <div class="logo">POLIDOLL</div>
@@ -94,16 +103,18 @@
                 </div>
                 <div class="shop_function">
                     <div class="shop_function--searchbar">
-                        <input type="text" placeholder="Tìm kiếm sản phẩm ...">
-                        <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <form id = "product-search" method = "GET">
+                            <input type="text" value = "<?=isset($_GET['product_name']) ? $_GET['product_name'] : ""?>" name = "product_name" placeholder = "Tìm kiếm sản phẩm">
+                            <button type="submit" style="background: none; border: none; cursor: pointer;"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </form>
                     </div>
                 </div>
                 <div class="shop_function--sort">
                     <label for="sort">Sắp xếp theo</label>
                     <select id="sort" onchange ="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                        <option value="default">Mặc định</option>
-                        <option value="?field=price&sort=asc">Giá tăng dần </option>
-                        <option value="?field=price&sort=desc">Giá giảm dần</option>
+                        <option value="?">Mặc định</option>
+                        <option <?php if(isset($_GET['sort']) && $_GET['sort'] == "asc") { ?> selected <?php } ?> value="?<?=$sortParam?>field=product_price&sort=asc">Giá tăng dần</option>
+                        <option <?php if(isset($_GET['sort']) && $_GET['sort'] == "desc") { ?> selected <?php } ?> value="?<?=$sortParam?>field=product_price&sort=desc">Giá giảm dần</option>
                     </select>
                 </div>
             </div>
@@ -123,10 +134,8 @@
                         <h3>Sản phẩm mới</h3>  <!-- Danh mục lựa chọn -->
                      <div class="product_items">
                         <!-- Sản phẩm mới 1 -->
-                            <?php include "../../config/connect.php";
-                            $sql = "SELECT p.product_name, p.product_price, p.product_img, p.product_hover FROM product AS p";
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_array($result)){                          
+                            <?php
+                            while($row = mysqli_fetch_array($products)){                          
                             ?>
                             <div class="product_item">
                                 <div class="product_item_image">
@@ -136,25 +145,26 @@
                                 </div>
                                 <div class="product_item_info">
                                     <h4 class="product_name"><?php echo $row["product_name"] ?></h4>
-                                    <p class="product_price"><?php echo $row["product_price"] ?></p>
+                                    <p class="product_price"><?php echo $row["product_price"] ?>đ</p>
                                 </div>
                             </div>
                             <?php } ?>
-                            </div>
+                            </div> 
                     </div>
                 <div class="shop_sidebar"></div>
-            </div>
-        </div>
+                <div class="page-item-container">
+                    <?php include "./pagnition.php"; ?>
+                </div>
     </main>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <!-- Nội dung footer -->
+            <!-- Customer Service Section -->
             <div class="footer-section">
                 <h4>CHĂM SÓC KHÁCH HÀNG</h4>
                 <p>lolidoll.cskh@gmail.com</p>
             </div>
+            <!-- Informations Section -->
             <div class="footer-section information">
                 <h4>THÔNG TIN</h4>
                 <ul>
@@ -164,6 +174,7 @@
                     <li><a href="#">Tin tức</a></li>
                 </ul>
             </div>
+            <!-- Policy Section -->
             <div class="footer-section Policy">
                 <h4>CHÍNH SÁCH</h4>
                 <ul>
@@ -173,6 +184,24 @@
                     <li><a href="#">Điều khoản dịch vụ</a></li>
                 </ul>
             </div>
+            <!-- Follow Us Section -->
+            <div class="footer-section">
+                <h4>THEO DÕI CHÚNG TÔI</h4>
+                <div class="social-icons">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+                <h4>ĐĂNG KÝ LIÊN LẠC</h4>
+                <div class="newsletter">
+                    <p>Nhận những thông tin mới nhất về sản phẩm và chương trình ưu đãi của chúng tôi</p>
+                    <input type="email" placeholder="Email của bạn">
+                    <button>GỬI</button>
+                </div>
+            </div>
+        </div>
+        <!-- Scroll to Top Button -->
+        <div class="scroll-top">
+            <a href="#">⬆</a>
         </div>
     </footer>
 </body>
