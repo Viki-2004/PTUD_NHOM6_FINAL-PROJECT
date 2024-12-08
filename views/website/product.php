@@ -10,6 +10,40 @@
     <link rel="stylesheet" type="text/css" href="../../assets/css/product_queries.css">
 </head>
 <body>
+    <?php
+    $param = "";
+    $orderCondition = "";
+    // TÌM KIẾM
+    $search = isset($_GET['name']) ? $_GET['name'] : "";
+    if ($search) {
+        $where = "WHERE name LIKE '%". $search . "%`";
+        $param .= "name=".$search."&";
+    }
+// SẮP XẾP
+    $orderField = isset($_GET['field']) ? $_GET['field'] : "";
+    $orderSort = isset($_GET['sort']) ? $_GET['sort'] : "";
+    if(!empty($orderField) && !empty($orderSort)){
+        $orderCondition = "ORDER BY `product_price`.`".$orderField."` ".$orderSort;
+        $param .= "field=".$orderField. "&sort=".$orderSort."&";
+    }
+
+    include '../../config/connect.php';
+    $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 4;
+    $current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại 
+    $offset ($current_page - 1) * $item_per_page;
+    if ($search) {
+    $products = mysqli_query($con, "SELECT * FROM `product` WHERE `name` LIKE '%" . $search . "%' " .$orderCondition. "LIMIT" .$item_per_page . "OFFSET" . $offset);
+    $totalRecords = mysqli_query($con, "SELECT * FROM `product` WHERE `name` LIKE '%" . $search . "%'"); 
+} else {
+    $products = mysqli_query($con, "SELECT * FROM `product ".$orderConditon." LIMIT". $item_per_page . "OFFSET " .$offset);
+    $totalRecords = mysqli_query($con, "SELECT * FROM `product`");
+    
+    }
+    $totalRecords = $totalRecords->num_rows;
+    $totalPages = ceil($totalRecords / $item_per_page);
+    ?>
+
+
     <!-- Header -->
     <header class="header">
         <div class="logo">POLIDOLL</div>
@@ -66,11 +100,10 @@
                 </div>
                 <div class="shop_function--sort">
                     <label for="sort">Sắp xếp theo</label>
-                    <select id="sort">
+                    <select id="sort" onchange ="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                         <option value="default">Mặc định</option>
-                        <option value="price-asc">Giá tăng dần</option>
-                        <option value="price-desc">Giá giảm dần</option>
-                        <option value="trending">Xu hướng</option>
+                        <option value="?field=price&sort=asc">Giá tăng dần </option>
+                        <option value="?field=price&sort=desc">Giá giảm dần</option>
                     </select>
                 </div>
             </div>
