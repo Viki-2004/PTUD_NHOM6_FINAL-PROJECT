@@ -25,11 +25,10 @@ if ($search) {
 $orderField = isset($_GET['field']) ? $_GET['field'] : "";
 $orderSort = isset($_GET['sort']) ? $_GET['sort'] : "";
 
-// Kiểm tra nếu chọn mặc định (clear các tham số sắp xếp)
 if ($orderField == 'default') {
-    $orderCondition = "";  // Không có sắp xếp khi chọn mặc định
-    $param = ''; // Không thêm tham số vào URL khi chọn mặc định
-    $sortParam = '';  // Xóa tham số sắp xếp
+    $orderCondition = "";  
+    $param = ''; 
+    $sortParam = ''; 
 } else {
     if(!empty($orderField) && !empty($orderSort)){
         $orderCondition = "ORDER BY `".$orderField."` ".$orderSort;
