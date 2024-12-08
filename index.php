@@ -4,5 +4,5 @@
     // echo "<br>";
     // include "./config/insertdata.php";
     // echo "<br>";
-    echo "hole fen"
+    // echo "hole fen"
 ?>
