@@ -2,64 +2,62 @@
 // Kết nối tới cơ sở dữ liệu
 include '../../config/connect.php';
 
-// Xử lý xóa đơn hàng
-if (isset($_GET['delete_order_id'])) {
-    $delete_order_id = $_GET['delete_order_id'];
+// Xử lý xóa tin tức
+if (isset($_GET['delete_news_id'])) {
+    $delete_news_id = $_GET['delete_news_id'];
 
-// Xóa đơn hàng khỏi cơ sở dữ liệu
-$sql = "DELETE FROM orders WHERE order_id = ?";
+// Xóa tin tức khỏi cơ sở dữ liệu
+$sql = "DELETE FROM news WHERE news_id = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $delete_order_id);
+$stmt->bind_param("i", $delete_news_id);
 
 if ($stmt->execute()) {
-    echo "<script>alert('Xóa đơn hàng thành công!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
+    echo "<script>alert('Xóa tin tức thành công!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
     exit();
 } else {
-    echo "<script>alert('Có lỗi xảy ra khi xóa đơn hàng!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
+    echo "<script>alert('Có lỗi xảy ra khi xóa tin tức!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
     exit();
 }
 $stmt->close();
 }
 
-// Xử lý thêm hoặc chỉnh sửa đơn hàng
+// Xử lý thêm hoặc chỉnh sửa tin tức
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
-    $customer_name = $_POST['customer_name'];
-    $customer_address = $_POST['customer_address'];
-    $customer_phone = $_POST['customer_phone'];
-    $customer_email = $_POST['customer_email'];
-    $created_at = $_POST['created_at'] ?? date('Y-m-d H:i:s');
-    $user_id = $_POST['user_id'];
+    $news_title = $_POST['news_title'];
+    $publish_date = $_POST['publish_date'];
+    $news_content = $_POST['news_content'];
+    $news_img = $_POST['news_img'];
+    $id_admin = $_POST['id_admin'];
     $action = $_POST['action'];
 
     if ($action == 'edit') {
-        $order_id = $_POST['order_id'];
-        $sql = "UPDATE orders SET customer_name  = ?, customer_address = ?, customer_phone = ?, customer_email = ?, created_at = ?, user_id = ? WHERE order_id = ?";
+        $news_id = $_POST['news_id'];
+        $sql = "UPDATE news SET news_title = ?, publish_date  = ?, news_content = ?, news_img = ?, id_admin = ? WHERE news_id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssii", $customer_name , $customer_address, $customer_phone ,$customer_email, $created_at, $user_id, $order_id);
-
+        $stmt->bind_param("ssssii", $news_title, $publish_date , $news_content, $news_img, $id_admin, $news_id);
         if ($stmt->execute()) {
-            echo "<script>alert('Cập nhật đơn hàng thành công!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
+            echo "<script>alert('Cập nhật tin tức thành công!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
             exit();
         } else {
-            echo "<script>alert('Có lỗi xảy ra khi cập nhật đơn hàng!'); window.location.href='.../../views/admin/quanlydonhang.php';</script>";
+            echo "<script>alert('Có lỗi xảy ra khi cập nhật tin tức!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
             exit();
         }
     } else {
-        $sql = "INSERT INTO orders (customer_name, customer_address, customer_phone, customer_email, created_at, user_id) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO news (news_title, publish_date, news_content, news_img, id_admin) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssi", $customer_name , $customer_address, $customer_phone ,$customer_email, $created_at, $user_id);
+        $stmt->bind_param("ssssi", $news_title, $publish_date, $news_content, $news_img, $id_admin);
 
         if ($stmt->execute()) {
-            echo "<script>alert('Thêm đơn hàng thành công!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
+            echo "<script>alert('Thêm tin tức thành công!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";//chưa sửa
             exit();
         } else {
-            echo "<script>alert('Có lỗi xảy ra khi thêm đơn hàng!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
+            echo "<script>alert('Có lỗi xảy ra khi thêm tin tức!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";//chưa sửa
             exit();
         }
     }
     $stmt->close();
 }
-$sql = "SELECT * FROM orders";
+$sql = "SELECT * FROM news";
 $result = $conn->query($sql);
 ?>
 
@@ -68,15 +66,15 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ĐƠN HÀNG</title>
+    <title>TIN TỨC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
          body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-}
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
         header {
             background-color: #f8c3d6;
             padding: 20px 0;
@@ -178,49 +176,46 @@ $result = $conn->query($sql);
         }
     </style>
     <script>
-        function editOrdee(orders) {
-            document.getElementById('order_id').value = orders.order_id;
-            document.getElementById('customer_name').value = orders.customer_name;
-            document.getElementById('customer_address').value = orders.customer_address;
-            document.getElementById('customer_phone').value = orders.customer_name;
-            document.getElementById('customer_email').value = orders.order_id;
-            document.getElementById('created_at').value = orders.created_at;
-            document.getElementById('user_id').value = orders.user_id;
+        function editNews(news) {
+            document.getElementById('news_id').value = news.news_id;
+            document.getElementById('news_title').value = news.news_title;
+            document.getElementById('publish_date').value = news.publish_date;
+            document.getElementById('news_content').value = news.news_content;
+            document.getElementById('news_img').value = news.news_img;
+            document.getElementById('id_admin').value = news.id_admin;
             document.getElementById('action').value = 'edit';
         }
     </script>
 </head>
 <body>
-    <header>ĐƠN HÀNG</header>
+    <header>TIN TỨC</header>
     <main>
         <div class="card">
-            <h3>Thông tin đơn hàng</h3>
+            <h3>Thông tin bài đăng</h3>
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Tên người nhận</th>
-                        <th>Địa chỉ nhận hàng</th>
-                        <th>Email</th>
-                        <th>SDT</th>
-                        <th>Thời gian đặt hàng</th>
+                        <th>Tiêu đề</th>
+                        <th>Ngày đăng</th>
+                        <th>Nội dung</th>
+                        <th>Hình ảnh</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($row = $result->fetch_assoc()) { ?>
                     <tr>
-                        <td><?= $row['order_id'] ?></td>
-                        <td><?= $row['customer_name'] ?></td>
-                        <td><?= $row['customer_address'] ?></td>
-                        <td><?= $row['customer_phone'] ?></td>
-                        <td><?= $row['customer_email'] ?></td>
-                        <td><?= $row['created_at'] ?></td>
+                        <td><?= $row['news_id'] ?></td>
+                        <td><?= $row['news_title'] ?></td>
+                        <td><?= $row['publish_date'] ?></td>
+                        <td><?= $row['news_content'] ?></td>
+                        <td><?= $row['news_img'] ?></td>
                         <td>
-                            <a href="javascript:void(0);" onclick='editOrder(<?= json_encode($row) ?>)' class="action-btn">
+                            <a href="javascript:void(0);" onclick='editNews(<?= json_encode($row) ?>)' class="action-btn">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a href="?delete_order_id=<?= $row['order_id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" class="action-btn">
+                            <a href="?delete_news_id=<?= $row['news_id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" class="action-btn">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>
@@ -230,22 +225,20 @@ $result = $conn->query($sql);
             </table>
         </div>
 
-        <!-- Phần chỉnh sửa hoặc thêm mới đơn hàng-->
+        <!-- Phần chỉnh sửa hoặc thêm mới tin tức-->
         <div class="form-section">
-            <h3>Thêm hoặc cập nhật đơn hàng</h3>
+            <h3>Thêm hoặc cập nhật tin tức</h3>
             <form method="POST" action="">
-                <input type="hidden" id="order_id" name="order_id">
+                <input type="hidden" id="news_id" name="news_id">
                 <input type="hidden" id="action" name="action" value="add">
-                <label for="customer_name">Tên người nhận</label>
-                <input type="text" id="customer_name" name="customer_name" required>
-                <label for="customer_address">Địa chỉ người nhận</label>
-                <input type = "text" id="customer_address" name="customer_address" required>
-                <label for="customer_phone">SDT</label>
-                <input type="tel" id="customer_phone" name="customer_phone" required>
-                <label for="customer_email">Email</label>
-                <input type="mail" id="customer_email" name="customer_email" required>
-                <label for="created_at">Thời gian đặt hàng</label>
-                <input type="date" id="created_at" name="created_at" required>
+                <label for="news_title">Tiêu đề</label>
+                <input type="text" id="news_title" name="news_title" required>
+                <label for="publish_date">Ngày đăng</label>
+                <input type = "date" id="news_content" name="news_content" required>
+                <label for="news_content">Nội dung</label>
+                <input type="text" id="news_content" name="news_content" required>
+                <label for="news_img">Hình ảnh</label>
+                <input type="file" id="news_img" name="news_img" accept="image/*" required>
                 <button type="submit">XÁC NHẬN</button>
             </form>
         </div>
