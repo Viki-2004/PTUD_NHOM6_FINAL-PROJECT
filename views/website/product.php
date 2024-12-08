@@ -124,14 +124,14 @@
                      <div class="product_items">
                         <!-- Sản phẩm mới 1 -->
                             <?php include "../../config/connect.php";
-                            $sql = "SELECT p.product_name,p.product_price,pi.img_url FROM product AS p INNER JOIN product_img AS pi ON p.sku = pi.sku";
+                            $sql = "SELECT p.product_name, p.product_price, p.product_img, p.product_hover FROM product AS p";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_array($result)){                          
                             ?>
                             <div class="product_item">
                                 <div class="product_item_image">
-                                    <img src="../../assets/img/products/<?php echo $row["img_url"] ?>" alt="New-arrivals" class="default_img">
-                                    <img src="../../assets/img/products/<?php echo $row["img_url"] ?>" alt="New-arrivals Hover" class="hover_img">
+                                    <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
+                                    <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
                                     <button class="nav-buy-now-btn">Mua ngay</button>
                                 </div>
                                 <div class="product_item_info">
