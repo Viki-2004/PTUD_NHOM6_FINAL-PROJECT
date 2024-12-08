@@ -1,10 +1,9 @@
-<<<<<<< HEAD
+
 /* Container bao gồm giỏ hàng và tóm tắt đơn hàng */
 .container {
     display: flex;
     flex-wrap: wrap; /* Cho phép các phần tử nhảy xuống dòng khi không đủ không gian */
     gap: 20px; /* Khoảng cách giữa giỏ hàng và tóm tắt đơn hàng */
-=======
 /* Responsive Design for max-width: 480px */
 @media screen and (max-width: 480px) {
   .dropdown-content {
@@ -57,7 +56,6 @@
       text-decoration: none;
       display: block;
   }   
->>>>>>> 785de8da8ff955f8144ba036f1c024e129749464
 }
 
 /* Giỏ hàng */
@@ -123,4 +121,5 @@
         width: 100%; /* Nút chiếm toàn bộ chiều rộng */
         margin-bottom: 10px;
     }
+}
 }
