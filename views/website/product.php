@@ -137,15 +137,16 @@ $totalPages = ceil($totalRecords / $item_per_page);
                             while($row = mysqli_fetch_array($products)){                          
                             ?>
                             <div class="product_item">
-                                <div class="product_item_image">
-                                    <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
-                                    <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
-                                    <button class="nav-buy-now-btn">Mua ngay</button>
-                                </div>
-                                <div class="product_item_info">
-                                    <h4 class="product_name"><?php echo $row["product_name"] ?></h4>
-                                    <p class="product_price"><?php echo $row["product_price"] ?>đ</p>
-                                </div>
+                                    <div class="product_item_image">
+                                        <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
+                                        <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
+                                        <button class="nav-buy-now-btn">Mua ngay</button>
+                                    </div>
+                                    <div class="product_item_info">
+                                        <h4 class="product_name"><?php echo $row["product_name"] ?></h4>
+                                        <p class="product_price"><?php echo number_format($row['product_price'], 0, ',', '.'); ?>đ</p>
+                                    </div>
+                                </a>
                             </div>
                             <?php } ?>
                             </div> 
