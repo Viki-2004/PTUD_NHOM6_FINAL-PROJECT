@@ -88,7 +88,7 @@ $result = $conn->query($sql);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         main {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 30px auto;
             padding: 20px;
         }
@@ -176,6 +176,9 @@ $result = $conn->query($sql);
             background-color: #f64c8a7c;
             color: white;
         }
+        tbody tr td:last-child{
+            text-align: center;
+        }
     </style>
     <script>
         function editOrdee(orders) {
@@ -213,8 +216,8 @@ $result = $conn->query($sql);
                         <td><?= $row['order_id'] ?></td>
                         <td><?= $row['customer_name'] ?></td>
                         <td><?= $row['customer_address'] ?></td>
-                        <td><?= $row['customer_phone'] ?></td>
                         <td><?= $row['customer_email'] ?></td>
+                        <td><?= $row['customer_phone'] ?></td>
                         <td><?= $row['created_at'] ?></td>
                         <td>
                             <a href="javascript:void(0);" onclick='editOrder(<?= json_encode($row) ?>)' class="action-btn">

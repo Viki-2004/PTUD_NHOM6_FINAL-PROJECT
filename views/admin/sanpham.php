@@ -91,7 +91,6 @@ $result = $conn->query($sql);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         main {
-            max-width: 1000px;
             margin: 30px auto;
             padding: 20px;
         }
@@ -137,6 +136,8 @@ $result = $conn->query($sql);
             color: #ff0000;
         }
         .form-section {
+            max-width: 70%;
+            margin: 0 auto;
             background-color: #fff; 
             border-radius: 10px;
             padding: 20px;
@@ -151,7 +152,7 @@ $result = $conn->query($sql);
         }
         form input, 
         form select {
-            width: 95%; 
+            width: 100%; 
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -181,6 +182,12 @@ $result = $conn->query($sql);
         form button:hover {
             background-color: #f64c8a7c;
             color: white;
+        }
+        tbody tr td:nth-child(n+6){
+            text-align: center;
+        }
+        tbody tr td:nth-child(6){
+            text-align: justify;
         }
     </style>
     <script>
