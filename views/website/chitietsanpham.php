@@ -69,7 +69,16 @@ $product["images"] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
                 <!-- Hành động -->
                 <div class="product-actions">
                     <div class="action-buttons">
-                        <a href="#" id="addToCart" class="add-to-cart">Thêm vào giỏ hàng</a>
+                      /*GIA HUY TEST LIÊN KẾT*/
+                      <form action="cart.php" method="POST">
+    <input type="hidden" name="id" value="<?= $product['id'] ?>">
+    <input type="hidden" name="name" value="<?= htmlspecialchars($product['product_name']) ?>">
+    <input type="hidden" name="price" value="<?= $product['product_price'] ?>">
+    <input type="hidden" name="image" value="<?= htmlspecialchars($product['product_image']) ?>">
+    <input type="number" name="quantity" id="quantity" value="1" min="1">
+    <button type="submit" name="add_to_cart" class="add-to-cart">Thêm vào giỏ hàng</button>
+</form>
+
                         <a href="#" class="buy-now">Mua Ngay</a>
                     </div>
                     <div class="wishlist">

@@ -16,111 +16,133 @@
     <?php include "./header.php"; ?>
     </header>
     <?php
-session_start();
+include "../../config/connect.php";
 
-// Khởi tạo giỏ hàng mẫu nếu chưa có
-if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
-    $_SESSION['cart'] = [
-        ['id' => 1, 'name' => 'Sản phẩm A', 'image' => 'image_a.jpg', 'price' => 100000, 'quantity' => 2],
-        ['id' => 2, 'name' => 'Sản phẩm B', 'image' => 'image_b.jpg', 'price' => 200000, 'quantity' => 1],
-    ];
+// Kiểm tra và khởi tạo giỏ hàng nếu chưa có
+if (!isset($_SESSION["cart"])) {
+    $_SESSION["cart"] = array();
 }
 
-// Xử lý các hành động POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Cập nhật số lượng sản phẩm
-    if (isset($_POST['update']) && isset($_POST['quantity'])) {
-        foreach ($_POST['quantity'] as $id => $quantity) {
-            foreach ($_SESSION['cart'] as &$item) {
-                if ($item['id'] == intval($id)) {
-                    $item['quantity'] = max(1, intval($quantity)); // Không cho phép số lượng < 1
+// Xử lý khi thêm sản phẩm vào giỏ hàng
+if (isset($_GET['action'])) {
+    switch ($_GET['action']) {
+        case "add":
+            if (isset($_POST['quantity'])) {
+                foreach ($_POST['quantity'] as $id => $quantity) {
+                    // Kiểm tra nếu sản phẩm đã có trong giỏ hàng, cập nhật số lượng
+                    if (isset($_SESSION["cart"][$id])) {
+                        $_SESSION["cart"][$id] += $quantity;
+                    } else {
+                        $_SESSION["cart"][$id] = $quantity;
+                    }
                 }
             }
-        }
-    }
-
-    // Xóa sản phẩm khỏi giỏ hàng
-    if (isset($_POST['delete'])) {
-        $idToDelete = intval($_POST['delete']);
-        $_SESSION['cart'] = array_filter($_SESSION['cart'], function ($item) use ($idToDelete) {
-            return $item['id'] !== $idToDelete;
-        });
-    }
-
-    // Áp dụng mã giảm giá
-    if (isset($_POST['apply_code'])) {
-        $discountCode = trim($_POST['discount_code']);
-        if ($discountCode === 'SALE10') {
-            $_SESSION['discount'] = 0.1; // Giảm 10%
-        } else {
-            $_SESSION['discount'] = 0; // Không hợp lệ
-        }
+            break;
+        case "remove":
+            if (isset($_GET['id'])) {
+                unset($_SESSION["cart"][$_GET['id']]);
+            }
+            break;
     }
 }
 
-// Hàm tính tổng hóa đơn
-function calculateTotal($cart) {
-    $total = 0;
-    foreach ($cart as $item) {
-        $total += $item['price'] * $item['quantity'];
-    }
-    return $total;
+// Lấy thông tin các sản phẩm trong giỏ hàng
+if (!empty($_SESSION["cart"])) {
+    // Truy vấn sản phẩm trong giỏ hàng
+    $productIds = implode(",", array_keys($_SESSION["cart"]));
+    $productsQuery = "SELECT * FROM `product` WHERE `id` IN ($productIds)";
+    $products = mysqli_query($con, $productsQuery);
 }
 
-// Lấy dữ liệu giỏ hàng
-$cart = $_SESSION['cart'];
-$totalBill = calculateTotal($cart);
+// Tính toán tổng tiền giỏ hàng
+$totalBill = 0;
+if (isset($products) && mysqli_num_rows($products) > 0) {
+    while ($row = mysqli_fetch_array($products)) {
+        $productId = $row['id'];
+        $quantity = $_SESSION["cart"][$productId];
+        
+        // Chuyển giá từ chuỗi sang số (bỏ "đ" và chuyển sang số)
+        $price = floatval(str_replace(" đ", "", $row['price']));
+        
+        $totalBill += $price * $quantity;
+    }
+}
+
+// Giảm giá (nếu có)
 $discount = $_SESSION['discount'] ?? 0;
 $finalBill = $totalBill - ($totalBill * $discount);
+
+// Thêm sản phẩm vào giỏ hàng (mảng session) khi test
+$productsToAdd = [
+    'id' => 'F01', // Mã sản phẩm
+    'quantity' => 1 // Số lượng sản phẩm
+];
+
+// Thêm sản phẩm vào giỏ hàng (mảng session)
+$_SESSION["cart"][$productsToAdd['id']] = $productsToAdd['quantity'];
+
 ?>
 <div class="container">
+    <a href="index.php"></a>
     <div class="cart">
-        <h2>GIỎ HÀNG CỦA TÔI</h2>
-        <form method="POST">
+        <h2>Giỏ hàng của tôi</h2>
+        <form id="cart-form" action="cart.php?action=submit" method="POST">
             <table>
                 <thead>
                     <tr>
-                        <th>Sản phẩm</th>
-                        <th>Giá thành</th>
-                        <th>Số lượng</th>
-                        <th>Tổng tiền</th>
-                        <th>Hành động</th>
+                        <th class="rank">STT</th>
+                        <th class="img">Ảnh sản phẩm</th>
+                        <th class="price">Đơn giá</th>
+                        <th class="quantity">Số lượng</th>
+                        <th class="total">Thành tiền</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($cart as $item): ?>
+                    <?php 
+                    $num = 1;
+                    if ($totalBill && mysqli_num_rows($totalBill) > 0) {
+                        while ($row = mysqli_fetch_array($totalBill)) { ?>
+                            <tr data-id="<?= $row['id'] ?>">
+                                <td class="rank"><?= $num++; ?></td>
+                                <td class="img"><img src="<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['name']) ?>" /></td>
+                                <td class="price"><?= number_format($row['price'], 0, ',', '.') ?>đ</td>
+                                <td class="quantity">
+                                    <button type="button" class="decrease-btn" data-id="<?= $row['id'] ?>">-</button>
+                                    <input type="number" value="<?= $_SESSION["cart"][$row['id']] ?>" name="quantity[<?= $row['id'] ?>]" min="1" />
+                                    <button type="button" class="increase-btn" data-id="<?= $row['id'] ?>">+</button>
+                                </td>
+                                <td class="total"><?= number_format($row['price'] * $_SESSION["cart"][$row['id']], 0, ',', '.') ?>đ</td>
+                            </tr>
+                        <?php } 
+                    } else { ?>
                         <tr>
-                            <td>
-                                <img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" style="width:50px; height:50px;">
-                                <?= htmlspecialchars($item['name']) ?>
-                            </td>
-                            <td class="price"><?= number_format($item['price'], 0, ',', '.') ?>đ</td>
-                            <td>
-                                <input type="number" name="quantity[<?= $item['id'] ?>]" value="<?= $item['quantity'] ?>" min="1" class="quantity">
-                            </td>
-                            <td class="total"><?= number_format($item['price'] * $item['quantity'], 0, ',', '.') ?>đ</td>
-                            <td>
-                                <button type="submit" name="delete" value="<?= $item['id'] ?>" class="delete-btn">Xóa</button>
-                            </td>
+                            <td colspan="6">Giỏ hàng trống</td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php } ?>
+                    <tr id="row-total">
+                        <td class="rank">&nbsp;</td>
+                        <td class="img">&nbsp;</td>
+                        <td class="price">&nbsp;</td>
+                        <td class="quantity">&nbsp;</td>
+                        <td class="total"><?= number_format($totalBill, 0, ',', '.') ?>đ</td>
+                    </tr>
                 </tbody>
             </table>
-        </form>
     </div>
-    <div class="order-summary">
-        <h2>ĐƠN HÀNG</h2>
-        <form method="POST">
-            <input type="text" name="discount_code" placeholder="Mã giảm giá">
-            <button type="submit" name="apply_code" class="apply-btn">ÁP DỤNG</button>
-        </form>
-        <p class="total-bill">Tổng hóa đơn: <?= number_format($totalBill, 0, ',', '.') ?>đ</p>
-        <p class="discount">Giảm giá: <?= $discount * 100 ?>%</p>
-        <p class="final-bill">Thành tiền: <?= number_format($finalBill, 0, ',', '.') ?>đ</p>
-        <button>TIẾP TỤC THANH TOÁN</button>
-        <button class="continue">TIẾP TỤC MUA HÀNG</button>
+            <div class="order-summary">
+                <h2>ĐƠN HÀNG</h2>
+                    <input type="text" name="discount_code" placeholder="Mã giảm giá">
+                    <button type="submit" name="apply_code" class="apply-btn">ÁP DỤNG</button>
+                <p class="total-bill">Tổng hóa đơn: <?= number_format($totalBill, 0, ',', '.') ?>đ</p>
+                <p class="discount">Giảm giá: <?= $discount * 100 ?>%</p>
+                <p class="final-bill">Thành tiền: <?= number_format($finalBill, 0, ',', '.') ?>đ</p>
+                <button type="submit">TIẾP TỤC THANH TOÁN</button>
+                <button class="continue">TIẾP TỤC MUA HÀNG</button>
+                </form>
+            </div>
     </div>
 </div>
+
     <div class="comment-section">
         <form>
             <textarea placeholder="Viết bình luận của bạn..." rows="4" cols="50"></textarea>
@@ -246,7 +268,7 @@ $finalBill = $totalBill - ($totalBill * $discount);
     <button class="nav-carousel-btn nav-carousel-btn-right">&gt;</button>
 </section>
 <footer>
-<?php include "./footer.php"; ?>
+    <?php include "./footer.php"; ?>
 </footer>
 </body>
 </html>
