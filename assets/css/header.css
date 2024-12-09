@@ -74,6 +74,9 @@
     color: rgb(255, 4, 4);
     transition: all.3s;
 }
+.mobile-nav-icon{
+    display: none;
+}
 @media screen and (max-width: 480px) {
 
     /* Adjust dropdown styles for mobile */
@@ -88,7 +91,6 @@
       padding: 10px 15px;
       display: block;
     }
-
     .navbar {
         display: none;
         flex-direction: column;
@@ -101,7 +103,7 @@
         z-index: 1000;
     }
 
-    .menu-toggle {
+    .mobile-nav-icon {
         display: block;
         font-size: 25px;
         color: #f25a8c;
@@ -109,7 +111,7 @@
         margin-left: 10%;
     }
 
-    .menu-toggle.active+.navbar {
+    .navbar {
         display: flex;
         /* Show navbar on menu toggle click */
     }
