@@ -1,3 +1,5 @@
+<?php include('../../config/connect.php'); ?>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -27,6 +29,7 @@
                             <th>Tiêu đề</th>
                             <th>Ngày đăng</th>
                             <th>Nội dung</th>
+                            <th>Hình ảnh</th>
                             <th>Cập nhật</th>
                             <th>Hiển thị</th>
                             <th>Xóa</th>
@@ -34,9 +37,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>N001</td>
-                            <td>Tiêu đề 1</td>
-                            <td>01/12/2024</td>
+                            <td></td>
+                            <td>Hướng Dẫn Cách Check Nước Hoa Chính Hãng Đơn Giản Nhất</td>
+                            <td>2024-12-03</td>
                             <td>Mô tả ngắn...</td>
                             <td><button class="icon-btn"><i class="fas fa-edit"></i></button></td>
                             <td><button class="visible"><i class="fas fa-eye"></i></button></td>
