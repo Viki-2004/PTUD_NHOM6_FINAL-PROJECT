@@ -54,38 +54,8 @@ $totalPages = ceil($totalRecords / $item_per_page);
 ?>
     <!-- Header -->
     <header class="header">
-        <div class="logo">POLIDOLL</div>
-        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-        <nav class="navbar">
-            <div class="dropdown">
-                <button class="dropbtn"><a href="trangchu.php">TRANG CHỦ</a></button>
-            </div>
-            <div class="dropdown">
-                <button class="dropbtn"><a href="product.html">SẢN PHẨM</a></button>
-                <div class="dropdown-content">
-                    <a href="#">Mắt</a>
-                    <a href="#">Môi</a>
-                    <a href="#">Mặt</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropbtn">KHÁM PHÁ</button>
-                <div class="dropdown-content">
-                    <a href="aboutus.php">Về Chúng Tôi</a>
-                    <a href="news.php">Blogs</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <a href="lienhe.php"><button class="dropbtn">LIÊN HỆ</a></button>
-            </div>
-        </nav>
-        <div class="icons">
-            <a href="#" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <a href="#" title="Wishlist"><i class="fa-solid fa-heart"></i></a>
-            <a href="#" title="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
-        </div>
+    <?php include "./header.php"; ?>
     </header>
-
     <!-- Main Content -->
     <main class="shop_container">
         <div class="container">
@@ -156,53 +126,8 @@ $totalPages = ceil($totalRecords / $item_per_page);
                     <?php include "./pagnition.php"; ?>
                 </div>
     </main>
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <!-- Customer Service Section -->
-            <div class="footer-section">
-                <h4>CHĂM SÓC KHÁCH HÀNG</h4>
-                <p>lolidoll.cskh@gmail.com</p>
-            </div>
-            <!-- Informations Section -->
-            <div class="footer-section information">
-                <h4>THÔNG TIN</h4>
-                <ul>
-                    <li><a href="#">Về chúng tôi</a></li>
-                    <li><a href="#">Liên lạc</a></li>
-                    <li><a href="#">Theo dõi đơn hàng</a></li>
-                    <li><a href="#">Tin tức</a></li>
-                </ul>
-            </div>
-            <!-- Policy Section -->
-            <div class="footer-section Policy">
-                <h4>CHÍNH SÁCH</h4>
-                <ul>
-                    <li><a href="#">Chính sách bảo mật</a></li>
-                    <li><a href="#">Chính sách hoàn trả</a></li>
-                    <li><a href="#">Chính sách vận chuyển</a></li>
-                    <li><a href="#">Điều khoản dịch vụ</a></li>
-                </ul>
-            </div>
-            <!-- Follow Us Section -->
-            <div class="footer-section">
-                <h4>THEO DÕI CHÚNG TÔI</h4>
-                <div class="social-icons">
-                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
-                <h4>ĐĂNG KÝ LIÊN LẠC</h4>
-                <div class="newsletter">
-                    <p>Nhận những thông tin mới nhất về sản phẩm và chương trình ưu đãi của chúng tôi</p>
-                    <input type="email" placeholder="Email của bạn">
-                    <button>GỬI</button>
-                </div>
-            </div>
-        </div>
-        <!-- Scroll to Top Button -->
-        <div class="scroll-top">
-            <a href="#">⬆</a>
-        </div>
-    </footer>
+    <footer>
+<?php include "./footer.php"; ?>
+</footer>
 </body>
 </html>
