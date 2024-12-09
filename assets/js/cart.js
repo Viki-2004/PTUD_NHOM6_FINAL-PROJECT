@@ -135,41 +135,73 @@ updateCarousel();
 // Lấy tất cả các dòng sản phẩm trong giỏ hàng
 const cartItems = document.querySelectorAll('.cart tbody tr');
 
-// Hàm tính tổng tiền và tổng hóa đơn
-document.addEventListener('DOMContentLoaded', () => {
-    const cartItems = document.querySelectorAll('.cart tbody tr'); // Lấy danh sách sản phẩm
+// Hàm cập nhật tổng tiền theo số lượng
+document.querySelectorAll('.quantity').forEach(input => {
+    input.addEventListener('input', function () {
+        // Lấy hàng hiện tại
+        const row = this.closest('tr');
+        const price = parseInt(row.querySelector('.price').innerText.replace(/[^\d]/g, '')); // Giá
+        const quantity = parseInt(this.value); // Số lượng
+        const totalCell = row.querySelector('.total'); // Cột tổng tiền
 
-    // Hàm tính tổng tiền và tổng hóa đơn
-    function calculateTotal() {
-        let totalBill = 0;
+        // Tính lại tổng tiền
+        const newTotal = price * quantity;
+        totalCell.innerText = newTotal.toLocaleString('vi-VN') + 'đ';
 
-        // Duyệt qua từng sản phẩm
-        cartItems.forEach(item => {
-            const priceElement = item.querySelector('.price');
-            const quantityElement = item.querySelector('.quantity');
-            const totalElement = item.querySelector('.total');
-
-            const price = parseFloat(priceElement.innerText.replace(/\./g, '').replace('đ', '').trim());
-            const quantity = parseInt(quantityElement.value) || 0;
-            const totalPrice = price * quantity;
-
-            // Hiển thị tổng tiền cho từng sản phẩm (định dạng có dấu chấm và "đ")
-            totalElement.innerText = `${totalPrice.toLocaleString('vi-VN')}đ`;
-
-            // Cộng dồn tổng hóa đơn
-            totalBill += totalPrice;
-        });
-
-        // Hiển thị tổng hóa đơn (định dạng có dấu chấm và "đ")
-        document.querySelector('.order-summary .total-bill').innerText = `Tổng hóa đơn: ${totalBill.toLocaleString('vi-VN')}đ`;
-    }
-
-    // Gọi hàm khi tải trang
-    calculateTotal();
-
-    // Gắn sự kiện thay đổi số lượng
-    cartItems.forEach(item => {
-        const quantityElement = item.querySelector('.quantity');
-        quantityElement.addEventListener('change', calculateTotal);
+        // Cập nhật tổng hóa đơn
+        updateTotalBill();
     });
 });
+
+// Hàm tính tổng hóa đơn
+function updateTotalBill() {
+    let totalBill = 0;
+
+    // Tính tổng hóa đơn bằng cách cộng giá trị của từng cột 'Tổng tiền'
+    document.querySelectorAll('.total').forEach(cell => {
+        const cellValue = cell.innerText.replace(/[^\d]/g, ''); // Loại bỏ ký tự không phải số
+        totalBill += parseInt(cellValue) || 0; // Thêm vào tổng, nếu giá trị không hợp lệ thì mặc định là 0
+    });
+
+    // Hiển thị tổng hóa đơn
+    document.querySelector('.total-bill').innerText = 'Tổng hóa đơn: ' + totalBill.toLocaleString('vi-VN') + 'đ';
+}
+
+// Hàm tính lại tất cả tổng khi tải trang
+function calculateTotal() {
+    cartItems.forEach(item => {
+        const price = parseInt(item.querySelector('.price').innerText.replace(/[^\d]/g, '')); // Giá
+        const quantity = parseInt(item.querySelector('.quantity').value); // Số lượng
+        const totalCell = item.querySelector('.total'); // Cột tổng tiền
+
+        // Tính và hiển thị tổng tiền
+        const total = price * quantity;
+        totalCell.innerText = total.toLocaleString('vi-VN') + 'đ';
+    });
+
+    // Cập nhật tổng hóa đơn sau khi tính lại từng sản phẩm
+    updateTotalBill();
+}
+
+// Gắn sự kiện thay đổi số lượng
+cartItems.forEach(item => {
+    const quantityElement = item.querySelector('.quantity');
+    quantityElement.addEventListener('change', calculateTotal);
+});
+
+// Gọi hàm tính tổng khi tải trang
+calculateTotal();
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 2bee38e7cb8d255474ce65121ab632a40f564b5a

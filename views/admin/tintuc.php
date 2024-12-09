@@ -86,7 +86,7 @@ $result = $conn->query($sql);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         main {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 30px auto;
             padding: 20px;
         }
@@ -173,6 +173,9 @@ $result = $conn->query($sql);
         form button:hover {
             background-color: #f64c8a7c;
             color: white;
+        }
+        tbody tr td:last-child{
+            text-align: center;
         }
     </style>
     <script>
