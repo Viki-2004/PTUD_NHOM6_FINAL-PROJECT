@@ -4,6 +4,14 @@ body {
     padding: 0;
     overflow-x: hidden;
   }
+  .header {
+    background-color: #fff;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f8c3d6;
+  }
 .container { 
     display: flex; 
     justify-content: space-between; 
