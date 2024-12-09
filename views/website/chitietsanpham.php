@@ -10,6 +10,26 @@
     <script src="../../assets/js/chitietsanpham.js"></script>
 </head>
 <body>
+<?php
+include "../../config/connect.php";
+
+if (!isset($_GET['sku']) || empty($_GET['sku'])) {
+    // Nếu SKU không tồn tại, chuyển hướng về trang sản phẩm hoặc hiển thị thông báo
+    echo "SKU không hợp lệ hoặc không được cung cấp.";
+    exit;
+}
+
+$sku = mysqli_real_escape_string($conn, $_GET['sku']); // Escape để tránh SQL Injection
+$result = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
+if (!$result || mysqli_num_rows($result) == 0) {
+    echo "Không tìm thấy sản phẩm với SKU đã cung cấp.";
+    exit;
+}
+
+$product = mysqli_fetch_assoc($result);
+$imgLibrary = mysqli_query($conn, "SELECT * FROM product_img WHERE sku = '$sku'");
+$product["images"] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
+?>
 <header class="header">
     <?php include "./header.php"; ?>
     </header>
@@ -17,27 +37,22 @@
         <div class="container">
             <!-- Thư viện ảnh -->
             <div class="image-gallery">
-                <img id="mainImage" src="../../assets/img/chitietsanpham/product list 1.png" alt="Hình ảnh chính"
+                <img id="mainImage" src="../../assets/img/products/<?=$product["product_img"]?>" alt="Hình ảnh chính"
                     class="main-image">
+                <?php if(!empty($product["images"])) { ?>
                 <div class="thumbnail-wrapper">
-                    <img src="../../assets/img/chitietsanpham/product list 1.png" alt="Ảnh nhỏ 1"
+                    <?php foreach($product["images"] as $img) { ?>
+                    <img src="../../assets/img/products/<?=$img["img_url"]?>" alt="Ảnh nhỏ 1"
                         class="thumbnail active" onclick="changeImage(this)">
-                    <img src="../../assets/img/chitietsanpham/product list detail 1.png" alt="Ảnh nhỏ 4"
-                        class="thumbnail" onclick="changeImage(this)">
-                    <img src="../../assets/img/chitietsanpham/product list detail 1 (2).png" alt="Ảnh nhỏ 1"
-                        class="thumbnail active" onclick="changeImage(this)">
-                    <img src="../../assets/img/chitietsanpham/product list detail 1 (3).png" alt="Ảnh nhỏ 2"
-                        class="thumbnail" onclick="changeImage(this)">
-                    <img src="../../assets/img/chitietsanpham/product list detail 1 (4).png" alt="Ảnh nhỏ 3"
-                        class="thumbnail" onclick="changeImage(this)">
+                    <?php } ?>
                 </div>
+                <?php } ?>
             </div>
     
             <!-- Chi tiết sản phẩm -->
             <div class="product-details">
-                <div class="product-title">PoliDoll Brand New - Iron Mascara</div>
-                <div class="product-price">620.000đ</div>
-      
+                <div class="product-title"><?=$product["product_name"]?></div>
+                <div class="product_price"><?php echo number_format($product['product_price'], 0, ',', '.'); ?>đ</div>
                 <!-- Chọn số lượng -->
                 <div class="quantity-selector">
                     <label for="quantity">Số lượng:</label>
@@ -82,20 +97,7 @@
     </section>    
     <section class = "product-intro">
         <h2>Description</h2>
-        <div class = "description-img">
-            <img src ="../../assets/img/chitietsanpham/description 1.png">
-            <img src ="../../assets/img/chitietsanpham/description 2.png">
-            <img src ="../../assets/img/chitietsanpham/description 3.png">
-            <img src ="../../assets/img/chitietsanpham/description 4.png">
-            <img src ="../../assets/img/chitietsanpham/description 5.png">
-            <img src ="../../assets/img/chitietsanpham/description 6.png">
-            <img src ="../../assets/img/chitietsanpham/description 7.png">
-            <img src ="../../assets/img/chitietsanpham/description 8.png">
-            <img src ="../../assets/img/chitietsanpham/description 9.png">
-            <img src ="../../assets/img/chitietsanpham/description 10.png">
-            <img src ="../../assets/img/chitietsanpham/description 11.png">
-            <img src ="../../assets/img/chitietsanpham/description 12.png">
-        </div>
+        <p><?=$product["product_description"]?></p>
     </section>
     <section class = "related">
         <!-- Sản phẩm liên quan -->
@@ -166,7 +168,6 @@
             <span class="count">0</span>
           </div>
         </div>
-        <button class="danhgia-write">Viết đánh giá</button>
         <div class="danhgia-reviews">
           <div class="review">
             <div class="review-header">
@@ -183,7 +184,7 @@
             </div>
             <div class="review-stars">★★★★★</div>
             <div class="review-text">
-              Tôi mới mua sản phẩm này để thay thế mascara cũ của Poli Doll mà tôi rất thích. Nhưng trời ơi, có thể do sản phẩm mới, tôi còn thích cái này hơn nữa...
+              Tôi mới mua sản phẩm này để thay thế sản phẩm cũ của Poli Doll mà tôi rất thích. Nhưng trời ơi, có thể do sản phẩm mới, tôi còn thích cái này hơn nữa...
             </div>
           </div>
         </div>

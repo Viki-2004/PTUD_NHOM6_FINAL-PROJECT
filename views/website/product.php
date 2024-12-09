@@ -52,7 +52,6 @@ if ($search) {
 $totalRecords = $totalRecords->num_rows;
 $totalPages = ceil($totalRecords / $item_per_page);
 ?>
-    <!-- Header -->
     <header class="header">
     <?php include "./header.php"; ?>
     </header>
@@ -108,15 +107,18 @@ $totalPages = ceil($totalRecords / $item_per_page);
                             ?>
                             <div class="product_item">
                                     <div class="product_item_image">
+                                    <a href = "chitietsanpham.php?sku=<?=$row["sku"]?>">
                                         <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
                                         <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
+                            </a>
                                         <button class="nav-buy-now-btn">Mua ngay</button>
                                     </div>
                                     <div class="product_item_info">
-                                        <h4 class="product_name"><?php echo $row["product_name"] ?></h4>
+                                       <h4 class="product_name">
+                                            <a href = "chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
+                                       </h4>
                                         <p class="product_price"><?php echo number_format($row['product_price'], 0, ',', '.'); ?>đ</p>
                                     </div>
-                                </a>
                             </div>
                             <?php } ?>
                             </div> 
@@ -127,7 +129,7 @@ $totalPages = ceil($totalRecords / $item_per_page);
                 </div>
     </main>
     <footer>
-<?php include "./footer.php"; ?>
-</footer>
+    <?php include "./footer.php"; ?>
+    </footer>
 </body>
 </html>
