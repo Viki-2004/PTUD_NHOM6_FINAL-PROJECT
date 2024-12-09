@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUẢN LÝ TIN TỨC</title>
+    <title>QUẢN LÝ ĐƠN HÀNG</title>
     <style>
-body {
+    body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -129,46 +129,50 @@ button:hover {
             </ul>
         </div>
         <div class="content">
-            <h1>QUẢN LÝ TIN TỨC</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Tiêu đề</th>
-                        <th>Ngày đăng</th>
-                        <th>Nội dung</th>
-                        <th>Hình ảnh</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-include('../../config/connect.php');
-$query = "SELECT news_id, news_title, publish_date, news_content, news_img FROM news";
-$result = $conn->query($query);
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) { ?>
-        <tr>
-            <td><?= $row['news_id'] ?></td>
-            <td><?= $row['news_title'] ?></td>
-            <td><?= $row['publish_date'] ?></td>
-            <td><?= $row['news_content'] ?></td>
-            <td><?= $row['news_img'] ?></td>
-            </tr>
-    <?php } 
-} else { ?>
-    <tr>
-        <td colspan="5">Không có dữ liệu</td>
+            <h1>QUẢN LÝ ĐƠN HÀNG</h1>
+            <section>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên người nhận</th>
+                            <th>Địa chỉ nhận hàng</th>
+                            <th>Email</th>
+                            <th>SDT</th>
+                            <th>Thời gian đặt hàng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        include('../../config/connect.php');
+                        $query = "SELECT order_id,customer_name, customer_address, customer_phone, customer_email, created_at FROM orders";
+                        $result = $conn->query($query);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) { ?>
+                                <tr>
+                                    <td><?= $row['order_id'] ?></td>
+                                    <td><?= $row['customer_name'] ?></td>
+                                    <td><?= $row['customer_address'] ?></td>
+                                    <td><?= $row['customer_email'] ?></td>
+                                    <td><?= $row['customer_phone'] ?></td>
+                                    <td><?= $row['created_at'] ?></td> 
+                                </tr>
+                                <?php } 
+                            } else { ?>
+                                <tr> 
+                                    <td colspan="6">Không có dữ liệu</td>
     </tr>
-<?php } ?>
-                </tbody>
-            </table>
-            <button type="button" onclick="goToEditAll()">Chỉnh sửa</button>
+<?php } ?> 
+                    </tbody>
+                </table>
+                <button type="button" onclick="goToEdit()">Chỉnh sửa</button>
+            </div>
         </div>
-    </div>
-    <script>
-        function goToEditAll() {
-            window.location.href = '../../views/admin/tintuc.php';
-        }
-    </script>
-</body>
-</html>
+        <script>
+            function goToEdit() {
+                window.location.href = '../../views/admin/donhang.php';
+            }
+        </script>
+    </body>
+    </html>
+    
