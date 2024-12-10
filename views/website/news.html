@@ -47,8 +47,10 @@
             <a href="#" title="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </header>
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
     <main>
         <div class="content">
+            <!-- Sidebar with mobile toggle -->
             <aside class="sidebar">
                 <p style="color: rgb(134, 134, 134);"><a href="trangchu.html">Home</a>/Tin tức</p>
                 <h2 style="color: #ff6f91; font-size: 27;">TIN TỨC</h2>
@@ -78,6 +80,7 @@
                     <p>Đăng vào 08.2024</p>
                 </div>
             </aside>
+
             <section class="blog-grid">
                 <div class="row">
                     <div class="row">
@@ -138,53 +141,60 @@
             </section>
         </div>
     </main>
-</body>
-<footer class="footer">
-    <div class="footer-container">
-        <!-- Customer Service Section -->
-        <div class="footer-section">
-            <h4>CHĂM SÓC KHÁCH HÀNG</h4>
-            <p>polidoll.cskh@gmail.com</p>
-        </div>
-        <!-- Informations Section -->
-        <div class="footer-section information">
-            <h4>THÔNG TIN</h4>
-            <ul>
-                <li><a href="#">Về chúng tôi</a></li>
-                <li><a href="#">Liên lạc</a></li>
-                <li><a href="#">Theo dõi đơn hàng</a></li>
-                <li><a href="#">Tin tức</a></li>
-            </ul>
-        </div>
-        <!-- Policy Section -->
-        <div class="footer-section Policy">
-            <h4>CHÍNH SÁCH</h4>
-            <ul>
-                <li><a href="#">Chính sách bảo mật</a></li>
-                <li><a href="#">Chính sách hoàn trả</a></li>
-                <li><a href="#">Chính sách vận chuyển</a></li>
-                <li><a href="#">Điều khoản dịch vụ</a></li>
-            </ul>
-        </div>
-        <!-- Follow Us Section -->
-        <div class="footer-section">
-            <h4>THEO DÕI CHÚNG TÔI</h4>
-            <div class="social-icons">
-                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-            <h4>ĐĂNG KÝ LIÊN LẠC</h4>
-            <div class="newsletter">
-                <p>Nhận những thông tin mới nhất về sản phẩm và chương trình ưu đãi của chúng tôi</p>
-                <input type="email" placeholder="Nhâp địa chỉ email của bạn">
-                <button>GỬI</button>
-            </div>
-        </div>
-    </div>
-    <!-- Scroll to Top Button -->
-    <div class="scroll-top">
-        <a href="#">⬆</a>
-    </div>
-</footer>
 
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Customer Service Section -->
+            <div class="footer-section">
+                <h4>CHĂM SÓC KHÁCH HÀNG</h4>
+                <p>polidoll.cskh@gmail.com</p>
+            </div>
+            <!-- Informations Section -->
+            <div class="footer-section information">
+                <h4>THÔNG TIN</h4>
+                <ul>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">Liên lạc</a></li>
+                    <li><a href="#">Theo dõi đơn hàng</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                </ul>
+            </div>
+            <!-- Policy Section -->
+            <div class="footer-section Policy">
+                <h4>CHÍNH SÁCH</h4>
+                <ul>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Chính sách hoàn trả</a></li>
+                    <li><a href="#">Chính sách vận chuyển</a></li>
+                    <li><a href="#">Điều khoản dịch vụ</a></li>
+                </ul>
+            </div>
+            <!-- Follow Us Section -->
+            <div class="footer-section">
+                <h4>THEO DÕI CHÚNG TÔI</h4>
+                <div class="social-icons">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+                <h4>ĐĂNG KÝ LIÊN LẠC</h4>
+                <div class="newsletter">
+                    <p>Nhận những thông tin mới nhất về sản phẩm và chương trình ưu đãi của chúng tôi</p>
+                    <input type="email" placeholder="Nhâp địa chỉ email của bạn">
+                    <button>GỬI</button>
+                </div>
+            </div>
+        </div>
+        <!-- Scroll to Top Button -->
+        <div class="scroll-top">
+            <a href="#">⬆</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
 </html>
