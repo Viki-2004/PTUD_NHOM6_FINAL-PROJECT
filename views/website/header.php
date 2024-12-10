@@ -10,6 +10,7 @@
 </head>
 <body>
         <div class="logo"><a href="trangchu.php" style = "color: #f25a8c; text-decoration: none">POLIDOLL</a></div>
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars mobile-nav-icon"></i></div>
         <nav class="navbar">
             <div class="dropdown">
                 <button class="dropbtn"><a href="trangchu.php">TRANG CHỦ</a></button>
@@ -32,7 +33,6 @@
             <div class="dropdown">
                 <a href="lienhe.php"><button class="dropbtn">LIÊN HỆ</a></button>
             </div>
-            <div onclick="toggleMenu()"><i class="fas fa-bars mobile-nav-icon"></i></div>
         </nav>
         <div class="icons">
             <a href="#" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>

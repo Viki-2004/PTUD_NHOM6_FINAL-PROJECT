@@ -13,6 +13,9 @@ body {
     align-items: center;
     border-bottom: 2px solid #f8c3d6;
 }
+.main-banner img{
+    width: 100%;
+}
 /* MENU TOGGLE */
 .menu-toggle {
     display: none;
