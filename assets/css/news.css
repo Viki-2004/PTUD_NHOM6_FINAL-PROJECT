@@ -48,7 +48,7 @@ body {
 
 .sidebar ul li a {
   text-decoration: none;
-  color: #ff6f91;
+  color: #da4d6e;
   font-weight: bold;
   padding-left: 0.45cm;
 }
@@ -135,8 +135,9 @@ a{
 }
 
 .post h2 {
-  font-size: 140%;
+  font-size: 120%;
   margin-left: 15px;
+  margin-right: 15px;
   margin-top: 15px;
   color: #da4d6e;
 }
@@ -252,7 +253,7 @@ a{
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  color: #f25a8c;
+  color: #df376f;
   padding: 5px;
 }
 
@@ -421,4 +422,32 @@ a{
 
 h4 {
   color: rgb(163, 28, 10);
+}
+
+/* Container chính để căn giữa pagination */
+.page-item-container {
+  display: flex; /* Sử dụng Flexbox */
+  justify-content: center; /* Căn giữa các nút */
+  margin: 20px auto; /* Khoảng cách trên dưới pagination */
+}
+
+/* Kiểu dáng cho các nút pagination */
+.page-item {
+  display: inline-block;
+  margin: 0 5px; /* Khoảng cách giữa các nút */
+  padding: 10px 15px; /* Kích thước nút */
+  font-size: 14px; /* Cỡ chữ */
+  color: #ff4081; /* Màu chữ */
+  text-decoration: none; /* Bỏ gạch chân */
+  border: 1px solid #ff4081; /* Viền màu hồng */
+  border-radius: 5px; /* Bo góc nút */
+  background-color: #fff; /* Nền mặc định */
+  transition: all 0.3s ease; /* Hiệu ứng mượt mà khi hover */
+}
+
+/* Hover vào nút */
+.page-item:hover {
+  background-color: #ff4081; /* Nền hồng khi hover */
+  color: #fff; /* Chữ trắng khi hover */
+  text-decoration: none; /* Đảm bảo không có gạch chân */
 }

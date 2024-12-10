@@ -1,89 +1,4 @@
 @media screen and (max-width: 480px) {
-
-    /* Adjust dropdown styles for mobile */
-    .dropdown-content {
-        position: relative;
-        box-shadow: none;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .dropdown-content a {
-        font-size: 14px;
-        padding: 10px 15px;
-    }
-
-    .navbar {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-    }
-
-    .menu-toggle {
-        display: block;
-        font-size: 25px;
-        color: #f25a8c;
-        cursor: pointer;
-        margin-left: 10%;
-    }
-
-    .menu-toggle.active+.navbar {
-        display: flex;
-        /* Show navbar on menu toggle click */
-    }
-
-    /* Icons Section Responsive */
-    .icons {
-        display: flex;
-        gap: 10px;
-    }
-
-    .navbar.active {
-        display: block;
-        /* Hiện menu khi có class active */
-    }
-
-    .navbar a {
-        padding: 10px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .category {
-        width: 65%;
-    }
-
-    .content-container {
-        max-width: 95%;
-        margin: 0 auto;
-    }
-
-    .newsletter-form {
-        flex-direction: column;
-        /* Xếp chồng các phần tử */
-        gap: 6px;
-        padding: 0 8px;
-        /* Giảm khoảng cách bên trong */
-    }
-
-    .newsletter-form input {
-        padding: 6px;
-        font-size: 0.8rem;
-        /* Thu nhỏ font và padding */
-        border-radius: 3px;
-    }
-
-    .newsletter-form button {
-        padding: 6px 10px;
-        font-size: 0.8rem;
-        /* Giảm kích thước nút thêm nữa */
-        border-radius: 3px;
-    }
     /* START */
     .product-actions {
         display: flex;
@@ -166,17 +81,6 @@
         font-size: 18px;
         margin-bottom: 10px;
     }
-
-    .product-color-options {
-        text-align: center;
-        margin-bottom: 15px;
-    }
-
-    .color-option {
-        width: 25px;
-        height: 25px;
-    }
-
     .add-to-cart,
     .buy-now {
         width: 80%;
@@ -243,8 +147,5 @@
     .quantity-selector label{
         margin-left: 10%
 
-    }
-    .product-intro h2{
-        left: 27%
     }
 }

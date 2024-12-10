@@ -27,7 +27,11 @@ body {
   flex-grow: 1;
   position: relative;
 }
+.dropbtn a{
+  text-decoration: none;
+  color: #df376f;
 
+}
 .dropdown {
   position: relative;
 }
@@ -38,7 +42,7 @@ body {
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  color: #f25a8c;
+  color: #df376f;
   padding: 5px;
 }
 

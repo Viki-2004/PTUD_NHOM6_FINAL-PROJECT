@@ -1,0 +1,126 @@
+<<<<<<< HEAD
+/* Container bao gồm giỏ hàng và tóm tắt đơn hàng */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các phần tử nhảy xuống dòng khi không đủ không gian */
+    gap: 20px; /* Khoảng cách giữa giỏ hàng và tóm tắt đơn hàng */
+=======
+/* Responsive Design for max-width: 480px */
+@media screen and (max-width: 480px) {
+  .dropdown-content {
+      position: relative;
+      box-shadow: none;
+      text-align: center;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .dropdown-content a {
+      font-size: 14px;
+      padding: 10px 15px;
+      display: block;
+  }
+  .navbar {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+  }
+
+  .menu-toggle {
+      display: block;
+      font-size: 25px;
+      color: #f25a8c;
+      cursor: pointer;
+      margin-left: 10%;
+      margin-right: auto;
+  }
+
+  .menu-toggle.active+.navbar {
+      display: flex;
+  }
+
+  /* Icons Section Responsive */
+  .icons {
+      display: flex;
+      gap: 10px;
+  }
+  .navbar.active {
+      display: block;
+      /* Hiện menu khi có class active */
+  }
+  .navbar a {
+      text-decoration: none;
+      display: block;
+  }   
+>>>>>>> 785de8da8ff955f8144ba036f1c024e129749464
+}
+
+/* Giỏ hàng */
+.cart {
+    flex: 3; /* Chiếm phần lớn không gian */
+    min-width: 300px; /* Đảm bảo kích thước tối thiểu không bị lỗi */
+}
+
+/* Tóm tắt đơn hàng */
+.order-summary {
+    flex: 1; /* Chiếm ít không gian hơn */
+    min-width: 300px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+/* Điều chỉnh khi màn hình nhỏ hơn 768px */
+@media (max-width: 768px) {
+    .cart-container {
+        flex-direction: column; /* Xếp dọc giỏ hàng và tóm tắt đơn hàng */
+    }
+
+    .order-summary {
+        margin-top: 20px; /* Thêm khoảng cách phía trên */
+    }
+}
+
+/* Điều chỉnh cho màn hình cực nhỏ (480px) */
+@media (max-width: 480px) {
+    .cart {
+        width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+    }
+
+    .order-summary {
+        width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+    }
+
+    .cart table thead {
+        display: none; /* Ẩn tiêu đề bảng */
+    }
+
+    .cart table tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+
+    .cart table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+    }
+
+    input[type="number"] {
+        width: 50px; /* Giảm kích thước input */
+    }
+
+    button {
+        width: 100%; /* Nút chiếm toàn bộ chiều rộng */
+        margin-bottom: 10px;
+    }
+}

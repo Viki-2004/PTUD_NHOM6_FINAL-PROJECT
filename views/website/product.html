@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRANG SẢN PHẨM</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../assets/css/product.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/product_queries.css">
+    <script src = "../../assets/js/product.js"></script>
 </head>
 <body>
     <header class="header">
@@ -15,28 +16,25 @@
         <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <nav class="navbar">
             <div class="dropdown">
-                <button class="dropbtn">TRANG CHỦ</button>
+                <button class="dropbtn"><a href="trangchu.html">TRANG CHỦ</a></button>
             </div>
             <div class="dropdown">
-                <button class="dropbtn">BÁN CHẠY NHẤT</button>
-            </div>
-            <div class="dropdown">
-                <button class="dropbtn">SẢN PHẨM</button>
+                <button class="dropbtn"><a href="product.html">SẢN PHẨM</a></button>
                 <div class="dropdown-content">
-                    <a href="#">Eyes</a>
-                    <a href="#">Lips</a>
-                    <a href="#">Faces</a>
+                    <a href="#">Mắt</a>
+                    <a href="#">Môi</a>
+                    <a href="#">Mặt</a>
                 </div>
             </div>
             <div class="dropdown">
                 <button class="dropbtn">KHÁM PHÁ</button>
                 <div class="dropdown-content">
-                    <a href="#">Về Chúng Tôi</a>
-                    <a href="#">Blogs</a>
+                    <a href="aboutus.html">Về Chúng Tôi</a>
+                    <a href="news.html">Blogs</a>
                 </div>
             </div>
             <div class="dropdown">
-                <button class="dropbtn">LIÊN HỆ</button>
+                <a href="lienhe.html"><button class="dropbtn">LIÊN HỆ</a></button>
             </div>
         </nav>
         <div class="icons">
@@ -45,7 +43,6 @@
             <a href="#" title="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </header>
-
     <main class="shop_container">
         <div class="container">
             <!-- Breadcrumb -->
@@ -94,7 +91,7 @@
                         <div class="product_item">
                             <div class="product_item_image">
                                 <img src="../../assets/img/products/new_arrival.png" alt="New-arrivals" class="default_img">
-                                <img src="../../assets/img/products/new_arrival_hover.webp" alt="New-arrivals Hover" class="hover_img">
+                                <img src="../../assets/img/products/new_arrival_hover.png" alt="New-arrivals Hover" class="hover_img">
                                 <button class="nav-buy-now-btn">Mua ngay</button>
                             </div>
                             <div class="product_item_info">
@@ -117,8 +114,8 @@
                         <!-- Sản phẩm mới 3 -->
                         <div class="product_item">
                             <div class="product_item_image">
-                                <img src="../../assets/img/products/new 3.png" alt="New-arrivals 3" class="default_img">
-                                <img src="../../assets/img/products/new 3 hover.png" alt="New-arrivals Hover 3" class="hover_img">
+                                <img src="../../assets/img/products/01f06.png" alt="New-arrivals 3" class="default_img">
+                                <img src="../../assets/img/products/02f06.png" alt="New-arrivals Hover 3" class="hover_img">
                                 <button class="nav-buy-now-btn">Mua ngay</button>
                             </div>
                             <div class="product_item_info">
@@ -129,8 +126,8 @@
                         <!-- Sản phẩm mới 4 -->
                         <div class="product_item">
                             <div class="product_item_image">
-                                <img src="../../assets/img/products/new 4.png" alt="New-arrivals 3" class="default_img">
-                                <img src="../../assets/img/products/new 4 hover.png" alt="New-arrivals Hover 3" class="hover_img">
+                                <img src="../../assets/img/products/01f05.png" alt="New-arrivals 4" class="default_img">
+                                <img src="../../assets/img/products/02f05.png" alt="New-arrivals Hover 4" class="hover_img">
                                 <button class="nav-buy-now-btn">Mua ngay</button>
                             </div>
                             <div class="product_item_info">
@@ -164,6 +161,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="shop_sidebar"></div>
             </div>
         </div>
     </main>
