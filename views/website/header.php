@@ -23,7 +23,7 @@ $category = mysqli_query($conn, "SELECT * FROM category");
             <div class="dropdown">
                 <button class="dropbtn"><a href="product.php">SẢN PHẨM</a></button>
                 <div class="dropdown-content">
-                    <?php while($cat1 = mysqli_fetch_array($category)) { ?>
+                <?php while($cat1 = mysqli_fetch_array($category)) { ?>
                         <div>
                             <a href="product.php?id_category=<?=$cat1['category_id']?>"><?= $cat1['category_name'] ?></a>
                     </div>
