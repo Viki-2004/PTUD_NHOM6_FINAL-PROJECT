@@ -1,6 +1,6 @@
 <?php
     $create = "
-    /* CREATE TABLE admin (
+    CREATE TABLE admin (
     id_admin INT(2) AUTO_INCREMENT PRIMARY KEY,
     admin_account VARCHAR(10) NOT NULL UNIQUE,
     password VARCHAR(10) NOT NULL
@@ -77,7 +77,6 @@
     contact_phone VARCHAR(10) NOT NULL,
     contact_content TEXT NOT NULL
 )";
-
 //Kiểm tra kết nối
     if ($conn->multi_query($create)){
     do {
@@ -89,5 +88,4 @@
     } else {
         echo "Tạo bảng thất bại!";
     } 
-
 ?>
