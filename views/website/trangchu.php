@@ -12,16 +12,12 @@
 
 <body>
 <header class="header">
-<<<<<<< HEAD
     <?php include "./header.php";
     include "../../config/connect.php";
 
     $trendproducts = mysqli_query($conn, "SELECT * FROM product WHERE trending = 1");
     $new_products = mysqli_query($conn, "SELECT * FROM product WHERE new_arrival = 1");
     ?>
-=======
-    <?php include "./header.php"; ?>
->>>>>>> origin/main
     </header>
     <section class="main-banner">
         <img src="../../assets/img/trang chu/ảnh bìa trang chủ.png" alt="Main Banner">
@@ -51,7 +47,6 @@
                 <button class="arrow-btn left-btn" >&#10094;</button>
                 <div class="products-carousel-wrapper">
                     <div class="products-carousel">
-<<<<<<< HEAD
                             <?php
                             while($row = mysqli_fetch_array($trendproducts)){                          
                             ?>
@@ -72,51 +67,6 @@
                     </div>
                 </div>
                 <button class="arrow-btn right-btn" >&#10095;</button>
-=======
-                        <!-- Product 1 -->
-                        <div class="product-item">
-                            <div class="product-image">
-                                <img src="../../assets/img/trang chu/trending now 1.png" alt="Product 1" class="default-img">
-                                <img src="../../assets/img/trang chu/trending now details 1.png" alt="Product 1 Hover" class="hover-img">
-                                <button class="nav-buy-now-btn">Mua ngay</button>
-                            </div>
-                            <p class="product-name">Ice Watery Lip Gloss - #01 Orange Flash</p>
-                            <p class="product-price">420.000đ</p>
-                        </div>
-                        <!-- Product 2 -->
-                        <div class="product-item">
-                            <div class="product-image">
-                                <img src="../../assets/img/trang chu/trending now 2.png" alt="Product 2" class="default-img">
-                                <img src="../../assets/img/trang chu/trending now details 2.png" alt="Product 2 Hover" class="hover-img">
-                                <button class="nav-buy-now-btn">Mua ngay</button>
-                            </div>
-                            <p class="product-name">Cushion Lip Powder Cream - N01 Cutie Peach</p>
-                            <p class="product-price">350.000đ</p>
-                        </div>
-                        <!-- Product 3 -->
-                        <div class="product-item">
-                            <div class="product-image">
-                                <img src="../../assets/img/trang chu/trending now 3.png" alt="Product 3" class="default-img">
-                                <img src="../../assets/img/trang chu/trending now details 3.png" alt="Product 3 Hover" class="hover-img">
-                                <button class="nav-buy-now-btn">Mua ngay</button>
-                            </div>
-                            <p class="product-name">Hearty Lip Tint</p>
-                            <p class="product-price">220.000đ</p>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-image">
-                                <img src="../../assets/img/trang chu/trending now 4.png" alt="Product 3" class="default-img">
-                                <img src="../../assets/img/trang chu/trending now details 4.png" alt="Product 3 Hover" class="hover-img">
-                                <button class="nav-buy-now-btn">Mua ngay</button>
-                            </div>
-                            <p class="product-name">Mist Lip Glaze
-                            </p>
-                            <p class="product-price">190.000đ</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="arrow-btn right-btn" onclick="navigateCarousel(1)">&#10095;</button>
->>>>>>> origin/main
             </div>
     
             <!-- Right: Banner -->

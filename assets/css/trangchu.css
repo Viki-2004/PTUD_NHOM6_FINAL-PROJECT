@@ -224,17 +224,13 @@ h2 {
 /* Positioning for the buttons */
 .left-btn {
     position: absolute;
-    top: 50%;
     left: 10px;
-    transform: translateY(-50%);
     z-index: 10;
 }
 
 .right-btn {
     position: absolute;
-    top: 50%;
     right: 10px;
-    transform: translateY(-50%);
     z-index: 10;
 }
 
