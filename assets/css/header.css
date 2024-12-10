@@ -44,7 +44,9 @@
     overflow: visible;
     /* Ngăn menu bị cắt */
 }
-
+.dropdown-content ul{
+    list-style: none;
+}
 .dropdown-content a {
     color: black;
     padding: 10px;

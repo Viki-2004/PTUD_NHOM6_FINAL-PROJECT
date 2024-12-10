@@ -90,8 +90,8 @@ $categories = mysqli_query($conn, "SELECT * FROM category");
             <div class="shop_function--sort">
                 <label for="sort">Sắp xếp theo</label>
                 <select id="sort" onchange="window.location = this.value;">
-                    <option value="?<?=$param?>">Mặc định</option>
-                    <option value="?<?=$param?>&field=product_price&sort=asc" <?= isset($_GET['sort']) && $_GET['sort'] == "asc" ? "selected" : "" ?>>Giá tăng dần</option>
+                <option value="?<?= $sortParam ?>" <?= empty($orderField) ? "selected" : "" ?>>Mặc định</option>
+                <option value="?<?=$param?>&field=product_price&sort=asc" <?= isset($_GET['sort']) && $_GET['sort'] == "asc" ? "selected" : "" ?>>Giá tăng dần</option>
                     <option value="?<?=$param?>&field=product_price&sort=desc" <?= isset($_GET['sort']) && $_GET['sort'] == "desc" ? "selected" : "" ?>>Giá giảm dần</option>
                 </select>
             </div>

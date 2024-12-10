@@ -1,7 +1,7 @@
 <?php
 // Nhập dữ liệu
     $insert = "
-      /*  INSERT INTO admin (admin_account, password)
+      INSERT INTO admin (admin_account, password)
         VALUES
         ('admin', 'admin123');
 
@@ -129,7 +129,7 @@
             ('L02', '004', '010', 2, '199000', '398000'),
             ('L03', '004', '010', 1, '201000', '201000'),
             ('L04', '004', '010', 4, '255000', '1020000'),
-            ('E01', '005', '011', 7, '230000', '1610000');*/
+            ('E01', '005', '011', 7, '230000', '1610000');
 
         INSERT INTO contact (contact_name, contact_email, contact_phone, contact_content)
                 VALUES
