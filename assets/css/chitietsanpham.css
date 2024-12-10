@@ -242,7 +242,9 @@ h2 {
     margin-top: 10px;
 }
 /* RELATED PRODUCTS & REVIEWS */
-
+.related{
+    margin-bottom: 40px;
+}
 .related-products{
     margin-top: 20px;
     text-align: center;
