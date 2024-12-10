@@ -1,6 +1,6 @@
 <?php
     $create = "
-    CREATE TABLE admin (
+    /* CREATE TABLE admin (
     id_admin INT(2) AUTO_INCREMENT PRIMARY KEY,
     admin_account VARCHAR(10) NOT NULL UNIQUE,
     password VARCHAR(10) NOT NULL
@@ -69,6 +69,13 @@
     img_url VARCHAR(255) NOT NULL,
     sku VARCHAR(20),
     FOREIGN KEY (sku) REFERENCES product(sku)
+); 
+    CREATE TABLE contact (
+    contact_id INT(3) AUTO_INCREMENT PRIMARY KEY,
+    contact_name VARCHAR(255) NOT NULL,
+    contact_email VARCHAR(100) NOT NULL,
+    contact_phone VARCHAR(10) NOT NULL,
+    contact_content TEXT NOT NULL*/
 )";
 
 //Kiểm tra kết nối

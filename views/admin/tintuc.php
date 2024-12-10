@@ -237,11 +237,11 @@ $result = $conn->query($sql);
                 <label for="news_title">Tiêu đề</label>
                 <input type="text" id="news_title" name="news_title" required>
                 <label for="publish_date">Ngày đăng</label>
-                <input type = "date" id="news_content" name="news_content" required>
+                <input type = "date" id="publish_date" name="publish_date" required>
                 <label for="news_content">Nội dung</label>
                 <input type="text" id="news_content" name="news_content" required>
                 <label for="news_img">Hình ảnh</label>
-                <input type="file" id="news_img" name="news_img" accept="image/*" required>
+                <input type="file" id="news_img" name="news_img" accept="image/*">
                 <button type="submit">XÁC NHẬN</button>
             </form>
         </div>

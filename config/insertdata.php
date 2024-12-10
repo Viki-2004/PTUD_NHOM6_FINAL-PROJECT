@@ -1,7 +1,7 @@
 <?php
 // Nhập dữ liệu
     $insert = "
-        INSERT INTO admin (admin_account, password)
+      /*  INSERT INTO admin (admin_account, password)
         VALUES
         ('admin', 'admin123');
 
@@ -129,7 +129,15 @@
             ('L02', '004', '010', 2, '199000', '398000'),
             ('L03', '004', '010', 1, '201000', '201000'),
             ('L04', '004', '010', 4, '255000', '1020000'),
-            ('E01', '005', '011', 7, '230000', '1610000');
+            ('E01', '005', '011', 7, '230000', '1610000');*/
+
+        INSERT INTO contact (contact_name, contact_email, contact_phone, contact_content)
+                VALUES
+                ('Vĩnh Kim', 'kim29042004@gmail.com', '0377123486', 'Tôi ghét code'),
+                ('Nhật Anh', 'sunny2024@gmail.com', '0934567890', 'Code là sở thích của tôi'),
+                ('Hương Ly', 'bluewave88@yahoo.com', '0912345678', 'Đem 100 câu code thiếu nhi đến đây'),
+                ('Gia Huy', 'happy1234@hotmail.com', '0987654321', 'Tôi muốn học code'),
+                ('Khánh Linh', 'starrynight9@outlook.com', '0903456789', 'Code là dễ');
         ";
 
         //Kiểm tra kết nối
