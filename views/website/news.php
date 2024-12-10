@@ -63,8 +63,8 @@ $totalPages = ceil($totalRecords / $item_per_page);
                             ?>          
                         <div class="col span-1-of-3">
                             <article class="post">
-                            <a href = "chitiettintuc.php?news_id=<?=$row["news_id"]?>"></a>
-                                <img src="../../assets/img/NEWS/<?php echo $row["news_img"] ?>" alt="<?php echo $row["news_img"] ?>" alt="new1">
+                            <a href = "chitiettintuc.php?news_id=<?=$row["news_id"]?>">
+                                <img src="../../assets/img/NEWS/<?php echo $row["news_img"] ?>" alt="<?php echo $row["news_img"] ?>" alt="new1"></a>
                                 <h2>
                                 <a href = "chitiettintuc.php?news_id=<?=$row["news_id"]?>"><?php echo $row["news_title"] ?></a>
                                 </h2>

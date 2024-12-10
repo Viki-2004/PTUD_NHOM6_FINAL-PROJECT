@@ -242,7 +242,9 @@ h2 {
     margin-top: 10px;
 }
 /* RELATED PRODUCTS & REVIEWS */
-
+.related{
+    margin-bottom: 40px;
+}
 .related-products{
     margin-top: 20px;
     text-align: center;
@@ -452,4 +454,18 @@ h2 {
     max-width: 1200px;
     margin: 0 auto;
 }
+
+/* BREADCRUMB */
+.shop_breadcrumb {
+    color:#ccc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10%;
+  }
+  
+  .shop_breadcrumb a {
+    text-decoration: none;
+    color: gray;
+  }
+  
 

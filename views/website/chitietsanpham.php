@@ -30,11 +30,22 @@ $product = mysqli_fetch_assoc($result);
 $imgLibrary = mysqli_query($conn, "SELECT * FROM product_img WHERE sku = '$sku'");
 $product["images"] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
 $related = mysqli_query($conn, "SELECT * FROM product");
-
+$crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
 ?>
 <header class="header">
     <?php include "./header.php"; ?>
     </header>
+    <div class="shop_breadcrumb">
+            <a href="./trangchu.php">Trang chủ</a>
+            &gt; 
+            <a href="./product.php">Trang sản phẩm</a>
+            &gt; 
+            <?php
+                      while($crumb = mysqli_fetch_array($crumber)){                          
+                      ?>
+            <a href = "chitietsanpham.php?sku=<?=$crumb["sku"]?>"><?php echo $crumb["product_name"] ?></a>     
+            <?php } ?>   
+</div>
     <section class="product">
         <div class="container">
             <!-- Thư viện ảnh -->
