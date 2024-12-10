@@ -42,9 +42,9 @@ $category = mysqli_query($conn, "SELECT * FROM category");
             </div>
         </nav>
         <div class="icons">
-            <a href="#" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <a href="#" title="Wishlist"><i class="fa-solid fa-heart"></i></a>
-            <a href="#" title="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="product.php" title="shopping"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="cart.php" title="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="login.php" title="user"><i class="fa-duotone fa-solid fa-user"></i></a>
         </div>
 </body>
 </html>
