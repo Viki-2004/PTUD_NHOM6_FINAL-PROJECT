@@ -451,3 +451,6 @@ h4 {
   color: #fff; /* Chữ trắng khi hover */
   text-decoration: none; /* Đảm bảo không có gạch chân */
 }
+.col:nth-child(4){
+  margin-left: 0;
+}
