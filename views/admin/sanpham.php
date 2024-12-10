@@ -261,9 +261,9 @@ $result = $conn->query($sql);
             <label for="product_name">Tên</label>
             <input type="text" id="product_name" name="product_name" required>
             <label for="product_img">Hình ảnh</label>
-            <input type="file" id="product_img" name="product_img" accept="image/*" required>
+            <input type="file" id="product_img" name="product_img" accept="image/*">
             <label for="product_hover">Hover hình ảnh</label>
-            <input type="file" id="product_hover" name="product_hover" accept="image/*" required>
+            <input type="file" id="product_hover" name="product_hover" accept="image/*">
             <label for="product_price">Giá</label>
             <input type="number" id="product_price" name="product_price" required>
             <label for="product_description">Mô tả</label>
