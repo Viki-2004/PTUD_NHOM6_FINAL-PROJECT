@@ -30,7 +30,7 @@
     new_arrival BOOLEAN DEFAULT FALSE,
     id_category INT(3),
     FOREIGN KEY (id_category) REFERENCES category(category_id)
-);    
+);
 
     CREATE TABLE users (
     user_id INT(3) AUTO_INCREMENT PRIMARY KEY,
@@ -69,7 +69,7 @@
     img_url VARCHAR(255) NOT NULL,
     sku VARCHAR(20),
     FOREIGN KEY (sku) REFERENCES product(sku)
-); 
+);  */
     CREATE TABLE contact (
     contact_id INT(3) AUTO_INCREMENT PRIMARY KEY,
     contact_name VARCHAR(255) NOT NULL,
