@@ -83,9 +83,6 @@
         /* Giảm kích thước nút thêm nữa */
         border-radius: 3px;
     }
-}
-/* Responsive Design */
-@media (max-width: 480px) {
     .content {
         flex-direction: column;
     }
@@ -108,5 +105,13 @@
   
     .menu-toggle {
         display: block; /* Show the menu toggle on small screens */
+    }
+    .post{
+        width: 80%;
+        margin-left: 9%;
+
+    }
+    .new1{
+        margin-top: 10px;
     }
   }
