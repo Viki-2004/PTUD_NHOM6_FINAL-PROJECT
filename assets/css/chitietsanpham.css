@@ -244,14 +244,15 @@ h2 {
 /* RELATED PRODUCTS & REVIEWS */
 
 .related-products{
-    max-width: 1100px;
-    margin: 0 auto;
     margin-top: 20px;
     text-align: center;
+    overflow: hidden;
+    width: 95%;
+    margin: 0 auto;
 }
 
 .products-wrapper {
-    width: 95%;
+    width: 92%;
     margin: 0 auto;
     display: flex;
     gap: 20px;
@@ -259,13 +260,15 @@ h2 {
 
 .product-card {
     margin-top: 15px;
-    width: 21%;
+    width: 22%;
     text-align: center;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
     background-color: #f9f9f9;
     flex-shrink: 0;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
 }
 
 .product-card img {
@@ -434,3 +437,19 @@ h2 {
     margin: 10px 0;
     font-size: 140%;
 }
+
+
+/* Nút điều hướng */
+.related-products {
+    position: relative; /* Để các nút điều hướng có thể căn chỉnh trong phạm vi của container */
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+}
+.related{
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+

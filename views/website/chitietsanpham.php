@@ -29,6 +29,8 @@ if (!$result || mysqli_num_rows($result) == 0) {
 $product = mysqli_fetch_assoc($result);
 $imgLibrary = mysqli_query($conn, "SELECT * FROM product_img WHERE sku = '$sku'");
 $product["images"] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
+$related = mysqli_query($conn, "SELECT * FROM product");
+
 ?>
 <header class="header">
     <?php include "./header.php"; ?>
@@ -96,38 +98,25 @@ $product["images"] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
         </div>
     </section>    
     <section class = "product-intro">
-        <h2>Description</h2>
+        <h2>Mô tả sản phẩm</h2>
         <p><?=$product["product_description"]?></p>
     </section>
     <section class = "related">
         <!-- Sản phẩm liên quan -->
         <div class="related-products">
-            <h2>Sản phẩm liên quan</h2>
+            <h2>Bạn có thể thích</h2>
             <div class="products-wrapper">
+            <?php
+                      while($rowrelated = mysqli_fetch_array($related)){                          
+                      ?>
                 <div class="product-card">
-                    <img src="../../assets/img/chitietsanpham/product list 2.png" alt="Sản phẩm 1">
-                    <div class="product-name">JudyDoll Brand New - Iron Mascara
-
-                    </div>
-                    <div class="product-price">620.000 VNĐ</div>
-                </div>
-                <div class="product-card">
-                    <img src="../../assets/img/chitietsanpham/product list 4.png" alt="Sản phẩm 2">
-                    <div class="product-name">3D Curling Eyelash Iron Mascara
-
-                    </div>
-                    <div class="product-price">420.000 VNĐ</div>
-                </div>
-                <div class="product-card">
-                    <img src="../../assets/img/chitietsanpham/trending now 1.png" alt="Sản phẩm 3">
-                    <div class="product-name">Ice Watery Lip Gloss - #01 Orange Flash</div>
-                    <div class="product-price">420.000 VNĐ</div>
-                </div>
-                <div class="product-card">
-                    <img src="../../assets/img/chitietsanpham/trending now 2.png" alt="Sản phẩm 1">
-                    <div class="product-name">Cushion Lip Powder Cream - N01 Cutie Peach</div>
-                    <div class="product-price">359.000 VNĐ</div>
-                </div>
+                  <div class = "productcard">
+                  <a style ="color: black ; text-decoration: none; font-weight: bold " href = "chitietsanpham.php?sku=<?=$rowrelated["sku"]?>"><img src="../../assets/img/products/<?php echo $rowrelated["product_img"] ?>" alt="<?php echo $rowrelated["product_img"] ?>" class="Sản phẩm 1"></a>
+                    <div class="product-name"><a style ="color: black ; text-decoration: none; font-weight: bold " href = "chitietsanpham.php?sku=<?=$rowrelated["sku"]?>"><?php echo $rowrelated["product_name"] ?></a></div>
+                    <div class="product-price"><?php echo number_format($rowrelated['product_price'], 0, ',', '.'); ?>đ</div>
+                  </div>
+               </div>
+               <?php } ?>
             </div>
         </div>
     </section>
