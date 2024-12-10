@@ -89,7 +89,7 @@ function updateCarousel() {
 
     itemWidth = productItems[0].offsetWidth + gap; // Cập nhật chiều rộng mỗi item
     adjustCurrentIndex(); // Đảm bảo currentIndex hợp lệ
-    updateCarouselPosition(); // Cập nhật vị trí
+    updatePosition(); // Cập nhật vị trí
 }
 
 // Điều chỉnh currentIndex nếu cần
@@ -106,7 +106,7 @@ prevButton.addEventListener('click', function () {
     } else {
         currentIndex = totalItems - visibleItems; // Quay lại ảnh cuối cùng nếu đang ở đầu
     }
-    updateCarouselPosition();
+    updatePosition();
 });
 
 // Chức năng di chuyển carousel sang phải
@@ -116,11 +116,11 @@ nextButton.addEventListener('click', function () {
     } else {
         currentIndex = 0; // Quay lại ảnh đầu tiên nếu đang ở cuối
     }
-    updateCarouselPosition();
+    updatePosition();
 });
 
 // Cập nhật vị trí của carousel
-function updateCarouselPosition() {
+function updatePosition() {
     const newPosition = -(currentIndex * itemWidth);
     carouselTrack.style.transform = `translateX(${newPosition}px)`;
 }
