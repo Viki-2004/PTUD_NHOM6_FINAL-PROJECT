@@ -90,8 +90,6 @@ $totalPages = ceil($totalRecords / $item_per_page);
                     <div class="shop_sidebar">
                         <h3>Danh mục</h3>
                             <ul class="sidebar_items">
-                                <li class="sidebar_menu_item"><a href="#">Sản phẩm mới</a></li>
-                                <li class="sidebar_menu_item"><a href="#">Sản phẩm bán chạy</a></li>
                                 <li class="sidebar_menu_item"><a href="#">Sản phẩm xu hướng</a></li>
                                 <li class="sidebar_menu_item"><a href="#">Trang điểm mắt</a></li>
                                 <li class="sidebar_menu_item"><a href="#">Trang điểm môi</a></li>
