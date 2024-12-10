@@ -1,81 +1,3 @@
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-/* Mobile Menu Toggle */
-.menu-toggle {
-  display: none; /* Hidden by default */
-  font-size: 25px;
-  cursor: pointer;
-  color: #f25a8c;
-}
-
-/* Sidebar */
-.sidebar {
-  width: 25%;
-  flex: 1.5;
-  margin-right: 20px;
-  margin-left: 20px;
-  border-radius: 8px;
-  transition: transform 0.3s ease-in-out;
-  background: none;
-}
-
-.sidebar.active {
-  transform: translateX(0);
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  gap: 20px;
-}
-
-.sidebar ul li {
-  margin: 10px 0;
-}
-
-.sidebar ul li a {
-  text-decoration: none;
-  color: #da4d6e;
-  font-weight: bold;
-}
-
-.sidebar .promo {
-  background-color: #ffe5e5;
-  margin-top: 20px;
-  padding: 10px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 8px;
-}
-
-.under-promo {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
-.under-promo h2 {
-  color: #ff6f91;
-  font-size: 25px;
-  margin-bottom: 0px;
-  border-bottom: 2px solid #ff6f91;
-  padding-bottom: 5px;
-}
-
-.blog-grid {
-  width: 75%;
-  padding: 20px;
-  background: #fff;
-}
-
-
 
 /* Header & Navbar */
 .header {
@@ -274,9 +196,9 @@ a{
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.post img {
+.post a img {
   width: 100%;
-  height: 310px;;
+  height: 300px;
 }
 
 .post h2 {
@@ -336,4 +258,84 @@ a{
 
 .pagination a.active {
   background-color: #ff3d68;
+}
+
+
+
+
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .articles img {
+    width: 80%;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.header {
+  background-color: #fff;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f8c3d6;
+}
+
+/* MENU TOGGLE */
+.menu-toggle {
+  display: none;
+  font-size: 25px;
+  cursor: pointer;
+  color: #f25a8c;
+}
+
+h4 {
+  color: rgb(163, 28, 10);
+}
+
+/* Container chính để căn giữa pagination */
+.page-item-container {
+  display: flex; /* Sử dụng Flexbox */
+  justify-content: center; /* Căn giữa các nút */
+  margin: 20px auto; /* Khoảng cách trên dưới pagination */
+}
+
+/* Kiểu dáng cho các nút pagination */
+.page-item {
+  display: inline-block;
+  margin: 0 5px; /* Khoảng cách giữa các nút */
+  padding: 10px 15px; /* Kích thước nút */
+  font-size: 14px; /* Cỡ chữ */
+  color: #ff4081; /* Màu chữ */
+  text-decoration: none; /* Bỏ gạch chân */
+  border: 1px solid #ff4081; /* Viền màu hồng */
+  border-radius: 5px; /* Bo góc nút */
+  background-color: #fff; /* Nền mặc định */
+  transition: all 0.3s ease; /* Hiệu ứng mượt mà khi hover */
+}
+
+/* Hover vào nút */
+.page-item:hover {
+  background-color: #ff4081; /* Nền hồng khi hover */
+  color: #fff; /* Chữ trắng khi hover */
+  text-decoration: none; /* Đảm bảo không có gạch chân */
+}
+.col:nth-child(4){
+  margin-left: 0;
 }
