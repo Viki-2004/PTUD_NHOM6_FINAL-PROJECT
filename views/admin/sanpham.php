@@ -269,7 +269,7 @@ $result = $conn->query($sql);
             <label for="product_description">Mô tả</label>
             <input type="text" id="product_description" name="product_description" required>
             <label for="product_quantity">Số lượng</label>
-            <input type="number" id="product_quantity" name="product_quantity" required>
+            <input type="number" id="product_quantity" name="product_quantity">
             <label for="trending">Xu hướng</label>
             <select id="trending" name="trending" required>
                 <option value="0">Không</option>
