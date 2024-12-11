@@ -1,10 +1,16 @@
+<<<<<<< HEAD
 <?php 
     // require "./config/connect.php";
+=======
+<?php
+    //require "./config/connect.php";
+>>>>>>> origin/nhatanh
     // include "./config/createdatabase.php";
     // echo "<br>";
     // include "./config/insertdata.php";
     // echo "<br>";
     // echo "hole fen"
+<<<<<<< HEAD
 ?>
     <!DOCTYPE html>
 <html>
@@ -259,3 +265,6 @@
 </html>
 
 
+=======
+?>
+>>>>>>> origin/nhatanh

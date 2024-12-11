@@ -12,11 +12,18 @@
 
 <body>
 <header class="header">
+<<<<<<< HEAD
     <?php include "views/website/header.php";
     include "config/connect.php";
 
     $trendproducts = mysqli_query($conn, "SELECT * FROM product WHERE trending = 1");
     $new_products = mysqli_query($conn, "SELECT * FROM product WHERE new_arrival = 1");
+=======
+    <?php include "./header.php";
+    include "../../config/connect.php";
+
+    $products = mysqli_query($conn, "SELECT * FROM product WHERE trending = 1");
+>>>>>>> origin/nhatanh
     ?>
     </header>
     <section class="main-banner">
@@ -48,6 +55,7 @@
                 <div class="products-carousel-wrapper">
                     <div class="products-carousel">
                             <?php
+<<<<<<< HEAD
                             while($row = mysqli_fetch_array($trendproducts)){                          
                             ?>
                             <!-- Product 1 -->
@@ -67,6 +75,27 @@
                     </div>
                 </div>
                 <button class="arrow-btn right-btn" >&#10095;</button>
+=======
+                            while($row = mysqli_fetch_array($products)){                          
+                            ?>
+                        <!-- Product 1 -->
+                        <div class="product-item">
+                            <div class="product-image">
+                            <a href = "chitietsanpham.php?sku=<?=$row["sku"]?>">
+                                <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
+                                <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
+                                </a>
+                                <button class="nav-buy-now-btn">Mua ngay</button>
+                            </div>
+                            <p class="product-name"><a href = "chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
+                            </p>
+                            <p class="product-price"><?php echo number_format($row['product_price'], 0, ',', '.'); ?>đ</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="arrow-btn right-btn" onclick="navigateCarousel(1)">&#10095;</button>
+                <?php } ?>                
+>>>>>>> origin/nhatanh
             </div>
     
             <!-- Right: Banner -->
@@ -160,8 +189,14 @@
             </form>
         </div>
     </section>
+    <footer>
+    <?php include "./footer.php"; ?>
+    </footer>
 </body>
+<<<<<<< HEAD
 <footer>
 <?php include "views/website/footer.php"; ?>
 </footer>
+=======
+>>>>>>> origin/nhatanh
 </html>
