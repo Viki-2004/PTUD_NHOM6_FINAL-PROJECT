@@ -10,36 +10,26 @@
     <script src="../../assets/js/chitietsanpham.js"></script>
 </head>
 <body>
-<header class="header">
-    <?php include "./header.php"; ?>
-    </header>
 <?php
 include "../../config/connect.php";
-
-// Lấy SKU từ URL (cần kiểm tra để tránh lỗi nếu không có SKU)
-$sku = isset($_GET['sku']) ? mysqli_real_escape_string($conn, $_GET['sku']) : '';
-
-// Kiểm tra nếu SKU tồn tại
-if (empty($sku)) {
-    echo "SKU không hợp lệ.";
+if (!isset($_GET['sku']) || empty($_GET['sku'])) {
+    // Nếu SKU không tồn tại, chuyển hướng về trang sản phẩm hoặc hiển thị thông báo
+    echo "SKU không hợp lệ hoặc không được cung cấp.";
     exit;
 }
-
-// Truy vấn để lấy thông tin sản phẩm từ cơ sở dữ liệu
+$sku = mysqli_real_escape_string($conn, $_GET['sku']); // Escape để tránh SQL Injection
 $result = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
-
 if (!$result || mysqli_num_rows($result) == 0) {
     echo "Không tìm thấy sản phẩm với SKU đã cung cấp.";
     exit;
 }
-
-// Lấy thông tin sản phẩm
 $product = mysqli_fetch_assoc($result);
 $imgLibrary = mysqli_query($conn, "SELECT * FROM product_img WHERE sku = '$sku'");
 $product["images"] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
 $related = mysqli_query($conn, "SELECT * FROM product");
 $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
 ?>
+<<<<<<< HEAD
   <div class="shop_breadcrumb">
     <a href="../../index.php">Trang chủ</a>
     &gt; 
@@ -74,34 +64,62 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
                             <?php } ?>
                         </ul>
                     </div>
+=======
+<header class="header">
+    <?php include "./header.php"; ?>
+    </header>
+    <div class="shop_breadcrumb">
+            <a href="./trangchu.php">Trang chủ</a>
+            &gt; 
+            <a href="./product.php">Trang sản phẩm</a>
+            &gt; 
+            <?php
+                      while($crumb = mysqli_fetch_array($crumber)){                          
+                      ?>
+            <a href = "chitietsanpham.php?sku=<?=$crumb["sku"]?>"><?php echo $crumb["product_name"] ?></a>     
+            <?php } ?>   
+</div>
+    <section class="product">
+        <div class="container">
+            <!-- Thư viện ảnh -->
+            <div class="image-gallery">
+            <img id="mainImage" src="../../assets/img/products/<?=$product["product_img"]?>" alt="Hình ảnh chính" class="main-image">
+            <?php if(!empty($product["images"])) { ?>
+                <div class="thumbnail-wrapper">
+                    <?php foreach($product["images"] as $img) { ?>
+                    <img src="../../assets/img/products/<?=$img["img_url"]?>" alt="Ảnh nhỏ 1" class="thumbnail active" onclick="changeImage(this)">
+                    <?php } ?>
+                </div>
+>>>>>>> origin/huongly
                 <?php } ?>
-            </div>
-            <div class="clear-both"></div>
-            <div id="product-description">
-                <?=$product['content']?>
-            </div>
-        </div>
-    </div>
+              </div>
+    
+            <!-- Chi tiết sản phẩm -->
+            <div class="product-details">
+            <div class="product-title"><?=$product["product_name"]?></div>
+            <div class="product_price"><?php echo number_format($product['product_price'], 0, ',', '.'); ?>đ</div>
+                <!-- Chọn số lượng -->
+                <div class="quantity-selector">
+                    <label for="quantity">Số lượng:</label>
+                    <div class="quantity-control">
+                        <!-- Nút giảm -->
+                        <button type="button" data-action="decrease" class="quantity-btn">-</button>
+                        <!-- Ô hiển thị và cho phép nhập số lượng -->
+                        <input id="quantity" type="number" value="1" min="1" />
+                        <!-- Nút tăng -->
+                        <button type="button" data-action="increase" class="quantity-btn">+</button>
+                    </div>
+                </div>
                 <!-- Hành động -->
-             <div class="product-actions">
+                <div class="product-actions">
                     <div class="action-buttons">
-                      /*GIA HUY TEST LIÊN KẾT*/
-                      <form action="cart.php" method="POST">
-    <input type="hidden" name="id" value="<?= $product['id'] ?>">
-    <input type="hidden" name="name" value="<?= htmlspecialchars($product['product_name']) ?>">
-    <input type="hidden" name="price" value="<?= $product['product_price'] ?>">
-    <input type="hidden" name="image" value="<?= htmlspecialchars($product['product_image']) ?>">
-    <input type="number" name="quantity" id="quantity" value="1" min="1">
-    <button type="submit" name="add_to_cart" class="add-to-cart">Thêm vào giỏ hàng</button>
-</form>
-
+                        <a href="#" id="addToCart" class="add-to-cart">Thêm vào giỏ hàng</a>
                         <a href="#" class="buy-now">Mua Ngay</a>
                     </div>
                     <div class="wishlist">
                         <i class="heart">❤️</i> Thêm vào yêu thích
                     </div>
                 </div>
-    
                 <!-- Chính sách -->
                 <div class="policy">
                     <div class="policy-item">
@@ -121,8 +139,9 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
         </div>
     </section>    
     <section class = "product-intro">
-        <h2>Mô tả sản phẩm</h2>
+        <h2>Description</h2>
         <p><?=$product["product_description"]?></p>
+        </div>
     </section>
     <section class = "related">
         <!-- Sản phẩm liên quan -->
