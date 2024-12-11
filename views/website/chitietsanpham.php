@@ -10,64 +10,78 @@
     <script src="../../assets/js/chitietsanpham.js"></script>
 </head>
 <body>
+<header class="header">
+    <?php include "./header.php"; ?>
+    </header>
 <?php
 include "../../config/connect.php";
 
-if (!isset($_GET['sku']) || empty($_GET['sku'])) {
-    // Nếu SKU không tồn tại, chuyển hướng về trang sản phẩm hoặc hiển thị thông báo
-    echo "SKU không hợp lệ hoặc không được cung cấp.";
+// Lấy SKU từ URL (cần kiểm tra để tránh lỗi nếu không có SKU)
+$sku = isset($_GET['sku']) ? mysqli_real_escape_string($conn, $_GET['sku']) : '';
+
+// Kiểm tra nếu SKU tồn tại
+if (empty($sku)) {
+    echo "SKU không hợp lệ.";
     exit;
 }
 
-$sku = mysqli_real_escape_string($conn, $_GET['sku']); // Escape để tránh SQL Injection
+// Truy vấn để lấy thông tin sản phẩm từ cơ sở dữ liệu
 $result = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
+
 if (!$result || mysqli_num_rows($result) == 0) {
     echo "Không tìm thấy sản phẩm với SKU đã cung cấp.";
     exit;
 }
 
+// Lấy thông tin sản phẩm
 $product = mysqli_fetch_assoc($result);
-$imgLibrary = mysqli_query($conn, "SELECT * FROM product_img WHERE sku = '$sku'");
-$product["images"] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
+
+// Truy vấn để lấy các hình ảnh liên quan đến sản phẩm
+$imgLibrary = mysqli_query($conn, "SELECT * FROM image_library WHERE product_id = ".$product['id']);
+$product['images'] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
 ?>
-<header class="header">
-    <?php include "./header.php"; ?>
-    </header>
     <section class="product">
-        <div class="container">
-            <!-- Thư viện ảnh -->
-            <div class="image-gallery">
-                <img id="mainImage" src="../../assets/img/products/<?=$product["product_img"]?>" alt="Hình ảnh chính"
-                    class="main-image">
-                <?php if(!empty($product["images"])) { ?>
-                <div class="thumbnail-wrapper">
-                    <?php foreach($product["images"] as $img) { ?>
-                    <img src="../../assets/img/products/<?=$img["img_url"]?>" alt="Ảnh nhỏ 1"
-                        class="thumbnail active" onclick="changeImage(this)">
-                    <?php } ?>
+    <div class="container">
+        <h2>Chi tiết sản phẩm</h2>
+        <div id="product-detail">
+            <div id="product-img">
+                <img src="<?=$product['image']?>" alt="<?=$product['name']?>" />
+            </div>
+            <div id="product-info">
+                <h1><?=$product['name']?></h1>
+                <label>Giá: </label><span class="product-price"><?= number_format($product['price'], 0, ",", ".") ?> VND</span><br/>
+                <form id="add-to-cart-form" action="cart.php?action=add" method="POST">
+                    <input type="number" value="1" name="quantity[<?=$product['id']?>]" min="1" /><br/>
+                    <input type="submit" value="Thêm vào giỏ hàng" />
+                </form>
+                
+                <div id="color-options">
+                    <label for="color">Màu sắc: </label>
+                    <select id="color" name="color">
+                        <option value="1">Màu 1</option>
+                        <option value="2">Màu 2</option>
+                        <option value="3">Màu 3</option>
+                    </select>
                 </div>
+
+                <?php if(!empty($product['images'])){ ?>
+                    <div id="gallery">
+                        <ul>
+                            <?php foreach($product['images'] as $img) { ?>
+                                <li><img src="<?=$img['path']?>" alt="Product Image" /></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
                 <?php } ?>
             </div>
-    
-            <!-- Chi tiết sản phẩm -->
-            <div class="product-details">
-                <div class="product-title"><?=$product["product_name"]?></div>
-                <div class="product_price"><?php echo number_format($product['product_price'], 0, ',', '.'); ?>đ</div>
-                <!-- Chọn số lượng -->
-                <div class="quantity-selector">
-                    <label for="quantity">Số lượng:</label>
-                    <div class="quantity-control">
-                        <!-- Nút giảm -->
-                        <button type="button" data-action="decrease" class="quantity-btn">-</button>
-                        <!-- Ô hiển thị và cho phép nhập số lượng -->
-                        <input id="quantity" type="number" value="1" min="1" />
-                        <!-- Nút tăng -->
-                        <button type="button" data-action="increase" class="quantity-btn">+</button>
-                    </div>
-                </div>
-    
+            <div class="clear-both"></div>
+            <div id="product-description">
+                <?=$product['content']?>
+            </div>
+        </div>
+    </div>
                 <!-- Hành động -->
-                <div class="product-actions">
+             <div class="product-actions">
                     <div class="action-buttons">
                       /*GIA HUY TEST LIÊN KẾT*/
                       <form action="cart.php" method="POST">
