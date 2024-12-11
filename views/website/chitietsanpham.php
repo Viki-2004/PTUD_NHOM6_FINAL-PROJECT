@@ -29,50 +29,11 @@ $product["images"] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
 $related = mysqli_query($conn, "SELECT * FROM product");
 $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
 ?>
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <div class="shop_breadcrumb">
-    <a href="../../index.php">Trang chủ</a>
-    &gt; 
-    <a href="./product.php">Trang sản phẩm</a>
-    &gt; 
-    <?php
-      while($crumb = mysqli_fetch_array($crumber)){                          
-      ?>
-      <a href = "chitietsanpham.php?sku=<?=$crumb["sku"]?>"><?php echo $crumb["product_name"] ?></a>     
-      <?php } ?>   
-  </div>
-    <section class="product">
-    <div class="container">
-      <h2>Chi tiết sản phẩm</h2>
-      <div id="product-detail">
-          <div id="product-img">
-              <img src="../../assets/img/products/<?=$product['product_img']?>" alt="<?=$product['product_name']?>" />
-          </div>
-            <div id="product-info">
-                <h1><?=$product['product_name']?></h1>
-                <label>Giá: </label><span class="product-price"><?= number_format($product['product_price'], 0, ",", ".") ?> đ</span><br/>
-                <form id="add-to-cart-form" action="cart.php?action=add" method="POST">
-                    <input type="number" value="1" name="quantity[<?=$product['id']?>]" min="1" /><br/>
-                    <input type="submit" value="Thêm vào giỏ hàng" />
-                </form>
-
-                <?php if(!empty($product['images'])){ ?>
-                    <div id="gallery">
-                        <ul>
-                            <?php foreach($product['images'] as $img) { ?>
-                                <li><img src="<?=$img['path']?>" alt="Product Image" /></li>
-                            <?php } ?>
-                        </ul>
-                    </div>
-=======
-=======
->>>>>>> origin/main
 <header class="header">
     <?php include "./header.php"; ?>
     </header>
     <div class="shop_breadcrumb">
-            <a href="./trangchu.php">Trang chủ</a>
+            <a href="../../index.php">Trang chủ</a>
             &gt; 
             <a href="./product.php">Trang sản phẩm</a>
             &gt; 
@@ -93,10 +54,6 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
                     <img src="../../assets/img/products/<?=$img["img_url"]?>" alt="Ảnh nhỏ 1" class="thumbnail active" onclick="changeImage(this)">
                     <?php } ?>
                 </div>
-<<<<<<< HEAD
->>>>>>> origin/huongly
-=======
->>>>>>> origin/main
                 <?php } ?>
               </div>
     
@@ -145,7 +102,7 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
         </div>
     </section>    
     <section class = "product-intro">
-        <h2>Description</h2>
+        <h2>Mô tả sản phẩm</h2>
         <p><?=$product["product_description"]?></p>
         </div>
     </section>
