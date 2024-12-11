@@ -70,7 +70,7 @@ $categories = mysqli_query($conn, "SELECT * FROM category");
     <div class="container">
         <!-- Breadcrumb -->
         <div class="shop_breadcrumb">
-            <a href="./trangchu.php">Trang chủ</a>
+            <a href="../../index.php">Trang chủ</a>
             &gt; 
             <a href="./product.php">Trang sản phẩm</a>
         </div>

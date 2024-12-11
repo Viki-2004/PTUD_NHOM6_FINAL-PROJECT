@@ -40,43 +40,31 @@ $product["images"] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
 $related = mysqli_query($conn, "SELECT * FROM product");
 $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
 ?>
-<header class="header">
-    <?php include "./header.php"; ?>
-    </header>
-    <div class="shop_breadcrumb">
-            <a href="./trangchu.php">Trang chủ</a>
-            &gt; 
-            <a href="./product.php">Trang sản phẩm</a>
-            &gt; 
-            <?php
-                      while($crumb = mysqli_fetch_array($crumber)){                          
-                      ?>
-            <a href = "chitietsanpham.php?sku=<?=$crumb["sku"]?>"><?php echo $crumb["product_name"] ?></a>     
-            <?php } ?>   
-</div>
+  <div class="shop_breadcrumb">
+    <a href="../../index.php">Trang chủ</a>
+    &gt; 
+    <a href="./product.php">Trang sản phẩm</a>
+    &gt; 
+    <?php
+      while($crumb = mysqli_fetch_array($crumber)){                          
+      ?>
+      <a href = "chitietsanpham.php?sku=<?=$crumb["sku"]?>"><?php echo $crumb["product_name"] ?></a>     
+      <?php } ?>   
+  </div>
     <section class="product">
     <div class="container">
-        <h2>Chi tiết sản phẩm</h2>
-        <div id="product-detail">
-            <div id="product-img">
-                <img src="<?=$product['image']?>" alt="<?=$product['name']?>" />
-            </div>
+      <h2>Chi tiết sản phẩm</h2>
+      <div id="product-detail">
+          <div id="product-img">
+              <img src="../../assets/img/products/<?=$product['product_img']?>" alt="<?=$product['product_name']?>" />
+          </div>
             <div id="product-info">
-                <h1><?=$product['name']?></h1>
-                <label>Giá: </label><span class="product-price"><?= number_format($product['price'], 0, ",", ".") ?> VND</span><br/>
+                <h1><?=$product['product_name']?></h1>
+                <label>Giá: </label><span class="product-price"><?= number_format($product['product_price'], 0, ",", ".") ?> đ</span><br/>
                 <form id="add-to-cart-form" action="cart.php?action=add" method="POST">
                     <input type="number" value="1" name="quantity[<?=$product['id']?>]" min="1" /><br/>
                     <input type="submit" value="Thêm vào giỏ hàng" />
                 </form>
-                
-                <div id="color-options">
-                    <label for="color">Màu sắc: </label>
-                    <select id="color" name="color">
-                        <option value="1">Màu 1</option>
-                        <option value="2">Màu 2</option>
-                        <option value="3">Màu 3</option>
-                    </select>
-                </div>
 
                 <?php if(!empty($product['images'])){ ?>
                     <div id="gallery">

@@ -101,7 +101,7 @@
                             <!-- Product 1 -->
                             <div class="product-item">
                                 <div class="product-image">
-                                    <a href = "chitietsanpham.php?sku=<?=$row["sku"]?>">
+                                    <a href = "views/website/chitietsanpham.php?sku=<?=$row["sku"]?>">
                                     <img src="assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
                                     <img src="assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
                                     </a>
@@ -144,7 +144,7 @@
                             <!-- Product -->
                             <div class="nav-item">
                                 <div class="nav-image">
-                                    <a href = "chitietsanpham.php?sku=<?=$row["sku"]?>">
+                                    <a href = "views/website/chitietsanpham.php?sku=<?=$row["sku"]?>">
                                     <img src="assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="nav-main-image">
                                     <img src="assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="nav-hover-image">
                                     </a>
