@@ -15,17 +15,28 @@
 </head>
 
 <body>
+<?php
+include "../../config/connect.php";
+$item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 6;
+$current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại 
+$offset = ($current_page - 1) * $item_per_page;
+$products = mysqli_query($conn, "SELECT * FROM news ORDER BY news_id ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
+$news = mysqli_query($conn, "SELECT * FROM news");
+$totalRecords = mysqli_query($conn, "SELECT * FROM news");
+$totalRecords = $totalRecords->num_rows;
+$totalPages = ceil($totalRecords / $item_per_page);
+?>
 <header class="header">
     <?php include "./header.php"; ?>
     </header>
     <main>
         <div class="content">
+        <div class="menu-toggle new1" onclick="toggleMenu1()"><i class="fa-solid fa-layer-group"></i></div>
+            <!-- Sidebar with mobile toggle -->
             <aside class="sidebar">
-                <p style="color: rgb(134, 134, 134);"><a href="trangchu.html">Home</a>/Tin tức</p>
-                <h2 style="color: #ff6f91; font-size: 27;">TIN TỨC</h2>
+                <p style="color: rgb(134, 134, 134);"><a href="trangchu.php">Home</a>/Tin tức</p>
+                <h2 style="color: #ff6f91; font-size: 130%;">TIN TỨC</h2>
                 <ul>
-                    <li><a href="B10.html">TIN TỨC</a></li>
-                    <li><a href="#">TOP BÁN CHẠY</a></li>
                     <li><a href="#">MAKE UP - MẮT</a></li>
                     <li><a href="#">MAKE UP - MÔI</a></li>
                     <li><a href="#">MAKE UP - MẶT</a></li>
@@ -33,78 +44,39 @@
                 <div class="promo">
                     <span>ƯU ĐÃI GIẢM 15% CHO ĐƠN HÀNG ĐẦU TIÊN</span>
                 </div>
+
                 <div class="under-promo">
-                    <h2 style="color: #ff6f91; font-size: 27;">Bài viết liên quan</h2>
-                    <a style="text-decoration: none" title="Liên kết" href="ssssss">
-                        <h3> Watery Glow Lipstick - Không chỉ là thỏi son</h3>
-                    </a>
-                    <p>Đăng vào 03.2024</p>
-                    <a style="text-decoration: none" title="Liên kết" href="ssssss">
-                        <h3> Icy American Series - Sold out sau 2 ngày!</h3>
-                    </a>
-                    <p>Đăng vào 05.2024</p>
-                    <a style="text-decoration: none" title="Liên kết" href="ssssss">
-                        <h3>Bí quyết giữ môi căng mọng cùng sweet lip jelly</h3>
-                    </a>
-                    <p>Đăng vào 08.2024</p>
+                    <h2 style="color: #da4d6e; font-size: 27;">Bài viết liên quan</h2>
+                    <?php
+                            while($rownews = mysqli_fetch_array($news)){                          
+                            ?>          
+                        <h3> 
+                        <a style="text-decoration: none" title="Liên kết" href = "chitiettintuc.php?news_id=<?=$rownews["news_id"]?>"><?php echo $rownews["news_title"] ?></a>
+                        </h3>
+                        <p><?php echo $rownews["publish_date"] ?></p>
+                        <?php } ?>
                 </div>
             </aside>
             <section class="blog-grid">
                 <div class="row">
-                    <div class="row">
+                    <?php
+                            while($row = mysqli_fetch_array($products)){                          
+                            ?>          
                         <div class="col span-1-of-3">
                             <article class="post">
-                                <a href="chitiettintuc.html"><img src="../../assets/img/NEWS/new1.jpg" alt="new1"></a>
-                                <a href="chitiettintuc.html">
-                                    <h2>Watery Glow Lipstick - Không chỉ là thỏi son</h2>
-                                </a>
-                                <a href="chitiettintuc.html" class="btn">Đọc thêm</a>
+                            <a href = "chitiettintuc.php?news_id=<?=$row["news_id"]?>">
+                                <img src="../../assets/img/NEWS/<?php echo $row["news_img"] ?>" alt="<?php echo $row["news_img"] ?>" alt="new1"></a>
+                                <h2>
+                                <a href = "chitiettintuc.php?news_id=<?=$row["news_id"]?>"><?php echo $row["news_title"] ?></a>
+                                </h2>
+                                <a href = "chitiettintuc.php?news_id=<?=$row["news_id"]?>" class="btn">Đọc thêm</a>
                             </article>
+                            </div> 
+                            <?php } ?>
                         </div>
-                        <div class="col span-1-of-3">
-                            <article class="post">
-                                <img src="../../assets/img/NEWS/new2.jpg" alt="new 2">
-                                <h2>Icy American Series - Sold out sau 2 ngày!</h2>
-                                <a href="#" class="btn">Đọc thêm</a>
-                            </article>
-                        </div>
-                        <div class="col span-1-of-3">
-                            <article class="post">
-                                <img src="../../assets/img/NEWS/new3.jpg" alt="new 3">
-                                <h2>Bí quyết giữ môi căng mọng cùng sweet lip jelly</h2>
-                                <a href="#" class="btn">Đọc thêm</a>
-                            </article>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col span-1-of-3">
-                            <article class="post">
-                                <img src="../../assets/img/NEWS/new4.png" alt="new 4">
-                                <h2>Son bóng Mirror Tea Jelly Light Lip Glaze - Vẻ đẹp tự tin</h2>
-                                <a href="#" class="btn">Đọc thêm</a>
-                            </article>
-                        </div>
-                        <div class="col span-1-of-3">
-                            <article class="post">
-                                <img src="../../assets/img/NEWS/new5.png" alt="new5">
-                                <h2>2 IN 1 Highlighter Contour Palette - Rạng rỡ với PoliDoll</h2>
-                                <a href="#" class="btn">Đọc thêm</a>
-                            </article>
-                        </div>
-                        <div class="col span-1-of-3">
-                            <article class="post">
-                                <img src="../../assets/img/NEWS/new6.png" alt="new 6">
-                                <h2>Pretty Blush Powder - Sắc hồng tự nhiên</h2>
-                                <a href="#" class="btn">Đọc thêm</a>
-                            </article>
-                        </div>
-                    </div>
                 </div>
-                <div class="pagination">
-                    <a href="prev-page.html">TRƯỚC</a>
-                    <a class="active">1</a>
-                    <a href="page2.html">2</a>
-                    <a href="next-page.html">SAU</a>
+                <div class="page-item-container">
+                    <?php include "./pagnition.php"; ?>
                 </div>
             </section>
         </div>

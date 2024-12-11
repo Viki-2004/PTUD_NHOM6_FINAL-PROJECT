@@ -1,3 +1,70 @@
+
+/* Header & Navbar */
+.header {
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f8c3d6;
+}
+
+.navbar {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+/* Footer */
+.footer {
+  background-color: #ffe4ec;
+  color: #000;
+  padding: 40px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h4 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-section a {
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-decoration: none;
+  color: #000;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.scroll-top a {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+}
+
+
+
 /* Tổng quát */
 body {
   font-family: Arial, sans-serif;
@@ -48,7 +115,7 @@ body {
 
 .sidebar ul li a {
   text-decoration: none;
-  color: #ff6f91;
+  color: #da4d6e;
   font-weight: bold;
   padding-left: 0.45cm;
 }
@@ -129,14 +196,15 @@ a{
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.post img {
+.post a img {
   width: 100%;
-  height: 310px;;
+  height: 300px;
 }
 
 .post h2 {
-  font-size: 140%;
+  font-size: 120%;
   margin-left: 15px;
+  margin-right: 15px;
   margin-top: 15px;
   color: #da4d6e;
 }
@@ -192,6 +260,13 @@ a{
   background-color: #ff3d68;
 }
 
+
+
+
+
+
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .content {
@@ -213,8 +288,6 @@ a{
   }
 }
 
-/* HEADER & FOOTER */
-
 .header {
   background-color: #fff;
   padding: 20px 20px;
@@ -222,193 +295,6 @@ a{
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #f8c3d6;
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #f25a8c;
-}
-
-.navbar {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-grow: 1;
-  position: relative;
-}
-
-.dropdown {
-  position: relative;
-}
-.dropbtn a{
-  text-decoration: none;
-  color: #df376f;
-
-}
-.dropbtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  color: #df376f;
-  padding: 5px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1100;
-  /* Đặt cao nhất */
-  min-width: 150px;
-  border-radius: 5px;
-  overflow: visible;
-  /* Ngăn menu bị cắt */
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 10px;
-  text-decoration: none;
-  display: block;
-  font-size: 15px;
-}
-
-.dropdown-content a:hover {
-  background-color: #f8c3d6;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.icons {
-  display: flex;
-  gap: 15px;
-}
-
-.icons a {
-  text-decoration: none;
-  font-size: 25px;
-  color: #fa8db2;
-}
-
-.icons a:hover {
-  color: rgb(255, 4, 4);
-  transition: all.3s;
-}
-
-/* Main Banner*/
-.main-banner img {
-  width: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-/* FOOTER */
-.footer {
-  background-color: #ffe4ec;
-  color: #000;
-  padding: 40px 20px;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-section {
-  flex: 1;
-  min-width: 200px;
-}
-
-.footer-section h4 {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.footer-section p,
-.footer-section a {
-  font-size: 14px;
-  margin-bottom: 5px;
-  text-decoration: none;
-  color: #000;
-}
-
-.footer-section a:hover {
-  text-decoration: underline;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding-inline-start: 0px;
-}
-
-.footer-section ul li {
-  margin-top: 5px;
-}
-
-.newsletter {
-  display: flex;
-  flex-direction: column;
-}
-
-.newsletter P {
-  margin-top: 0px;
-  line-height: 20px;
-  margin-bottom: 10px;
-}
-
-.newsletter input[type="email"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-
-.newsletter button {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.newsletter button:hover {
-  background-color: #e61010;
-}
-
-.social-icons a {
-  font-size: 25px;
-  margin-right: 10px;
-  text-decoration: none;
-  color: #000;
-}
-
-.social-icons a:hover {
-  color: red;
-}
-
-.scroll-top {
-  text-align: right;
-  margin-top: 20px;
-}
-
-.scroll-top a {
-  text-decoration: none;
-  color: #000;
-  font-size: 18px;
-  font-weight: bold;
 }
 
 /* MENU TOGGLE */
@@ -421,4 +307,35 @@ a{
 
 h4 {
   color: rgb(163, 28, 10);
+}
+
+/* Container chính để căn giữa pagination */
+.page-item-container {
+  display: flex; /* Sử dụng Flexbox */
+  justify-content: center; /* Căn giữa các nút */
+  margin: 20px auto; /* Khoảng cách trên dưới pagination */
+}
+
+/* Kiểu dáng cho các nút pagination */
+.page-item {
+  display: inline-block;
+  margin: 0 5px; /* Khoảng cách giữa các nút */
+  padding: 10px 15px; /* Kích thước nút */
+  font-size: 14px; /* Cỡ chữ */
+  color: #ff4081; /* Màu chữ */
+  text-decoration: none; /* Bỏ gạch chân */
+  border: 1px solid #ff4081; /* Viền màu hồng */
+  border-radius: 5px; /* Bo góc nút */
+  background-color: #fff; /* Nền mặc định */
+  transition: all 0.3s ease; /* Hiệu ứng mượt mà khi hover */
+}
+
+/* Hover vào nút */
+.page-item:hover {
+  background-color: #ff4081; /* Nền hồng khi hover */
+  color: #fff; /* Chữ trắng khi hover */
+  text-decoration: none; /* Đảm bảo không có gạch chân */
+}
+.col:nth-child(4){
+  margin-left: 0;
 }

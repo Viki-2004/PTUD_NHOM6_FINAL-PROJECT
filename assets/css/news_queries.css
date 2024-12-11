@@ -83,4 +83,35 @@
         /* Giảm kích thước nút thêm nữa */
         border-radius: 3px;
     }
-}
+    .content {
+        flex-direction: column;
+    }
+  
+    .sidebar {
+        width: 100%;
+        margin: 0;
+        display: none; /* Hide the sidebar by default on mobile */
+    }
+  
+    .sidebar.active {
+        display: block;
+        transform: translateX(0);
+    }
+  
+    .blog-grid {
+        width: 100%;
+        padding: 10px;
+    }
+  
+    .menu-toggle {
+        display: block; /* Show the menu toggle on small screens */
+    }
+    .post{
+        width: 80%;
+        margin-left: 9%;
+
+    }
+    .new1{
+        margin-top: 10px;
+    }
+  }

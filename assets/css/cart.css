@@ -3,15 +3,21 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+<<<<<<< HEAD
 }
 
 .header {
+=======
+  }
+  .header {
+>>>>>>> a23d99a4563ab32b93d2f19029e52a169fc74cb7
     background-color: #fff;
     padding: 20px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #f8c3d6;
+<<<<<<< HEAD
 }
 
 .logo {
@@ -92,6 +98,12 @@ body {
 .container {
     display: flex;
     justify-content: space-between;
+=======
+  }
+.container { 
+    display: flex; 
+    justify-content: space-between; 
+>>>>>>> a23d99a4563ab32b93d2f19029e52a169fc74cb7
     padding: 20px;
 }
 .cart {

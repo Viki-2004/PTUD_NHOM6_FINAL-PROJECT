@@ -13,193 +13,9 @@ body {
     align-items: center;
     border-bottom: 2px solid #f8c3d6;
 }
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #f25a8c;
-}
-
-.navbar {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    flex-grow: 1;
-    position: relative;
-}
-
-.dropdown {
-    position: relative;
-}
-.dropbtn a{
-    text-decoration: none;
-    color: #df376f;
-
-}
-.dropbtn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    color: #df376f;
-    padding: 5px;
-}
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1100;
-    /* Đặt cao nhất */
-    min-width: 150px;
-    border-radius: 5px;
-    overflow: visible;
-    /* Ngăn menu bị cắt */
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 10px;
-    text-decoration: none;
-    display: block;
-    font-size: 15px;
-}
-
-.dropdown-content a:hover {
-    background-color: #f8c3d6;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.icons {
-    display: flex;
-    gap: 15px;
-}
-
-.icons a {
-    text-decoration: none;
-    font-size: 25px;
-    color: #fa8db2;
-}
-
-.icons a:hover {
-    color: rgb(255, 4, 4);
-    transition: all.3s;
-}
-
-/* Main Banner*/
-.main-banner img {
+.main-banner img{
     width: 100%;
-    position: relative;
-    z-index: 1;
 }
-
-/* FOOTER */
-.footer {
-    background-color: #ffe4ec;
-    color: #000;
-    padding: 40px 20px;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 200px;
-}
-
-.footer-section h4 {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.footer-section p,
-.footer-section a {
-    font-size: 14px;
-    margin-bottom: 5px;
-    text-decoration: none;
-    color: #000;
-}
-
-.footer-section a:hover {
-    text-decoration: underline;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding-inline-start: 0px;
-}
-
-.footer-section ul li {
-    margin-top: 5px;
-}
-
-.newsletter {
-    display: flex;
-    flex-direction: column;
-}
-
-.newsletter P {
-    margin-top: 0px;
-    line-height: 20px;
-    margin-bottom: 10px;
-}
-
-.newsletter input[type="email"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    font-size: 14px;
-}
-
-.newsletter button {
-    background-color: #000;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.newsletter button:hover {
-    background-color: #e61010;
-}
-
-.social-icons a {
-    font-size: 25px;
-    margin-right: 10px;
-    text-decoration: none;
-    color: #000;
-}
-
-.social-icons a:hover {
-    color: red;
-}
-
-.scroll-top {
-    text-align: right;
-    margin-top: 20px;
-}
-
-.scroll-top a {
-    text-decoration: none;
-    color: #000;
-    font-size: 18px;
-    font-weight: bold;
-}
-
 /* MENU TOGGLE */
 .menu-toggle {
     display: none;
@@ -302,8 +118,8 @@ h2 {
     opacity: 1;
     transition: 0.5s ease-in-out;
 }
-.default-img,
-.hover-img {
+.default_img,
+.hover_img img {
     position: absolute;
     top: 0;
     left: 0;
@@ -313,21 +129,53 @@ h2 {
     transition: opacity 0.5s ease-in-out;
 }
 
-.default-img {
+.default_img {
     opacity: 1;
 }
 
-.hover-img {
+.hover_img {
     opacity: 0;
 }
 
-.product-image:hover .default-img {
+.product-image:hover .default_img {
     opacity: 0;
 }
 
-.product-image:hover .hover-img {
+.product-image:hover .hover_img {
     opacity: 1;
 }
+.product-image {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .product-image img {
+    width: 100%;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .default_img {
+    display: block;
+  }
+  
+  .hover_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .product_item:hover .hover_img {
+    opacity: 1;
+  }
+  
+  .product_item:hover .default_img {
+    opacity: 0;
+  }
+  
 
 .product-name,
 .product-price {
@@ -342,26 +190,50 @@ h2 {
 }
 
 /* Arrows */
+/* CSS for Arrow Buttons */
 .arrow-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 47%;
+    background-color: #fff; /* Background color */
+    border: 2px solid #f25a8c; /* Border with theme color */
+    color: #f25a8c; /* Arrow color */
+    font-size: 18px; /* Font size for the arrow */
+    width: 40px; /* Button width */
+    height: 40px; /* Button height */
+    border-radius: 50%; /* Make it circular */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease; /* Smooth transition effect */
 }
 
+/* Hover effect for buttons */
+.arrow-btn:hover {
+    background-color: #f25a8c; /* Background changes to theme color */
+    color: #fff; /* Arrow turns white */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    transform: scale(1.1); /* Scale up slightly on hover */
+}
+
+/* Active state effect */
+.arrow-btn:active {
+    transform: scale(1); /* Reset scale when clicked */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Reduce shadow on click */
+}
+
+/* Positioning for the buttons */
 .left-btn {
-    left: 20px;
+    position: absolute;
+    left: 10px;
+    z-index: 10;
 }
 
 .right-btn {
-    right: 30px;
+    position: absolute;
+    right: 10px;
+    z-index: 10;
 }
+
 
 /* Right: Banner */
 .banner-container {
@@ -376,6 +248,7 @@ h2 {
 /* Top Selling Collection */
 .top-selling-img {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .top-selling-img img {
@@ -408,7 +281,7 @@ h2 {
 }
 
 .nav-carousel-item {
-    flex: 0 0 20%;
+    flex: 0 0 30%;
     /* Hiển thị 5 sản phẩm cùng lúc */
     text-align: center;
     padding: 10px;
@@ -495,29 +368,46 @@ h2 {
 }
 
 /* Nút điều hướng */
+/* CSS for Carousel Buttons */
 .nav-carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 20;
-    border-radius: 50%;
-}
-
-.nav-carousel-btn-left {
-    left: 6px;
-}
-
-.nav-carousel-btn-right {
-    right: 6px;
+    background-color: #fff; /* Background color */
+    border: 2px solid #f25a8c; /* Border with main theme color */
+    color: #f25a8c; /* Arrow color */
+    font-size: 20px; /* Size of the arrow */
+    width: 40px; /* Button width */
+    height: 40px; /* Button height */
+    border-radius: 50%; /* Make it circular */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease; /* Smooth transition for hover and active states */
+    position: absolute; /* Position for carousel */
+    top: 50%; /* Vertically center */
+    transform: translateY(-50%); /* Center alignment */
+    z-index: 10; /* Ensure it's above the carousel */
 }
 
 .nav-carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #f25a8c; /* Background changes to theme color */
+    color: #fff; /* Arrow turns white */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    transform: translateY(-50%) scale(1.1); /* Scale slightly on hover */
+}
+
+.nav-carousel-btn:active {
+    transform: translateY(-50%) scale(1); /* Reset scale when clicked */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Reduce shadow on click */
+}
+
+/* Specific styles for left and right buttons */
+.nav-carousel-btn-left {
+    left: 10px; /* Position on the left */
+}
+
+.nav-carousel-btn-right {
+    right: 10px; /* Position on the right */
 }
 
 /* ARRIVAL*/

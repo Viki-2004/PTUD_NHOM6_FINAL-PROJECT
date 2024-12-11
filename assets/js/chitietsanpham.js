@@ -70,17 +70,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-

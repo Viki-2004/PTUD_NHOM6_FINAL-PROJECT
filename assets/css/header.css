@@ -1,4 +1,5 @@
 
+
 .logo {
     font-size: 24px;
     font-weight: bold;
@@ -20,6 +21,7 @@
 .dropdown {
     position: relative;
 }
+
 .dropbtn {
     background: none;
     border: none;
@@ -42,7 +44,9 @@
     overflow: visible;
     /* Ngăn menu bị cắt */
 }
-
+.dropdown-content ul{
+    list-style: none;
+}
 .dropdown-content a {
     color: black;
     padding: 10px;
@@ -74,9 +78,11 @@
     color: rgb(255, 4, 4);
     transition: all.3s;
 }
+.mobile-nav-icon{
+    display: none;
+    color: white;
+}
 @media screen and (max-width: 480px) {
-
-    /* Adjust dropdown styles for mobile */
     .dropdown-content {
         position: relative;
         box-shadow: none;
@@ -85,8 +91,8 @@
 
     .dropdown-content a {
         font-size: 14px;
-      padding: 10px 15px;
-      display: block;
+        padding: 10px 15px;
+        display: block;
     }
 
     .navbar {
@@ -137,5 +143,8 @@
     .content-container {
         max-width: 95%;
         margin: 0 auto;
+    }
+    .mobile-nav-icon{
+        color: #f25a8c;
     }
 }

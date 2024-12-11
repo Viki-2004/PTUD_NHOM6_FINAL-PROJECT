@@ -19,10 +19,10 @@
         <div class="footer-section information">
             <h4>THÔNG TIN</h4>
             <ul>
-                <li><a href="#">Về chúng tôi</a></li>
-                <li><a href="#">Liên lạc</a></li>
+                <li><a href="aboutus.php">Về chúng tôi</a></li>
+                <li><a href="lienhe.php">Liên lạc</a></li>
                 <li><a href="#">Theo dõi đơn hàng</a></li>
-                <li><a href="#">Tin tức</a></li>
+                <li><a href="news.php">Tin tức</a></li>
             </ul>
         </div>
         <!-- Policy Section -->

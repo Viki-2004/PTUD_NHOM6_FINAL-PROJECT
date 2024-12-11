@@ -69,7 +69,7 @@ $result = $conn->query($sql);
     <title>TIN TỨC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-         body {
+        body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -177,6 +177,129 @@ $result = $conn->query($sql);
         tbody tr td:last-child{
             text-align: center;
         }
+
+        @media (max-width: 768px) {
+    main {
+        margin: 20px;
+        padding: 10px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    .card table th, .card table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .action-btn {
+        font-size: 1rem;
+    }
+
+    form button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .card table {
+        width: 100%;
+        display: block; 
+        overflow-x: auto; 
+        -webkit-overflow-scrolling: touch; 
+    }
+
+    .card table th, 
+    .card table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .card table th {
+        font-size: 14px;
+    }
+
+    .card table td, .card table th {
+        text-align: center;
+        min-width: 80px;  
+        word-wrap: break-word; 
+    }
+
+    .action-btn {
+        font-size: 1rem;
+    }
+
+    form button {
+        font-size: 1rem;
+        padding: 8px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    header {
+        font-size: 1.7rem;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    .card table th, .card table td {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    form button {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    main {
+        margin: 30px auto;
+        padding: 20px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .card table th, .card table td {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+
+    form button {
+        font-size: 1.2rem;
+        padding: 12px;
+    }
+}
     </style>
     <script>
         function editNews(news) {
@@ -237,11 +360,11 @@ $result = $conn->query($sql);
                 <label for="news_title">Tiêu đề</label>
                 <input type="text" id="news_title" name="news_title" required>
                 <label for="publish_date">Ngày đăng</label>
-                <input type = "date" id="news_content" name="news_content" required>
+                <input type = "date" id="publish_date" name="publish_date" required>
                 <label for="news_content">Nội dung</label>
                 <input type="text" id="news_content" name="news_content" required>
                 <label for="news_img">Hình ảnh</label>
-                <input type="file" id="news_img" name="news_img" accept="image/*" required>
+                <input type="file" id="news_img" name="news_img" accept="image/*">
                 <button type="submit">XÁC NHẬN</button>
             </form>
         </div>
