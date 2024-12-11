@@ -85,7 +85,7 @@ $_SESSION["cart"][$productsToAdd['id']] = $productsToAdd['quantity'];
 <div class="container">
     <a href="index.php"></a>
     <div class="cart">
-        <h2>Giỏ hàng của tôi</h2>
+        <h2>GIỎ HÀNG CỦA TÔI</h2>
         <form id="cart-form" action="cart.php?action=submit" method="POST">
             <table>
                 <thead>
@@ -159,7 +159,6 @@ $_SESSION["cart"][$productsToAdd['id']] = $productsToAdd['quantity'];
         <div class="content-container">
             <!-- Left: Product Carousel -->
             <div class="products-container">
-                <button class="arrow-btn left-btn" >&#10094;</button>
                 <div class="products-carousel-wrapper">
                     <div class="products-carousel">
                             <?php
@@ -181,124 +180,9 @@ $_SESSION["cart"][$productsToAdd['id']] = $productsToAdd['quantity'];
                             <?php } ?>
                     </div>
                 </div>
-                <button class="arrow-btn right-btn" >&#10095;</button>
             </div>
         </div>
     </section>
-
-<section class="nav-carousel">
-    <button class="nav-carousel-btn nav-carousel-btn-left">&lt;</button>
-    <div class="nav-carousel-wrapper">
-        <ul class="nav-carousel-track">
-            <!-- Sản phẩm 1 -->
-            <li class="nav-carousel-item">
-                <div class="nav-product-image">
-                    <img src="../../assets/img/trang chu/product list 1.png" alt="JudyDoll Iron Mascara" class="nav-main-image" />
-                    <a href = "chitietsanpham.html"><img src="../../assets/img/trang chu/product list detail 1.png" alt="JudyDoll Iron Mascara Hover"
-                        class="nav-hover-image" /></a>
-                        <a href = "chitietsanpham.html"><button class="nav-buy-now-btn">Mua ngay</button></a>
-                </div>
-                <div class="nav-product-info">
-                    <p>JudyDoll Brand New - Iron Mascara</p>
-                    <span>620.000đ</span>
-                </div>
-            </li>
-            <!-- Sản phẩm 2 -->
-            <li class="nav-carousel-item">
-                <div class="nav-product-image">
-                    <img src="../../assets/img/trang chu/product list 2.png" alt="3D Curling Mascara" class="nav-main-image" />
-                    <img src="../../assets/img/trang chu/product list detail 2.png" alt="3D Curling Mascara Hover"
-                        class="nav-hover-image" />
-                    <button class="nav-buy-now-btn">Mua ngay</button>
-                </div>
-                <div class="nav-product-info">
-                    <p>3D Curling Eyelash Iron Mascara</p>
-                    <span>420.000đ</span>
-                </div>
-            </li>
-            <!-- Thêm các sản phẩm khác -->
-            <li class="nav-carousel-item">
-                <div class="nav-product-image">
-                    <img src="../../assets/img/trang chu/product list 3.png" alt="3D Curling Mascara" class="nav-main-image" />
-                    <img src="../../assets/img/trang chu/product list detail 3.png" alt="3D Curling Mascara Hover"
-                        class="nav-hover-image" />
-                    <button class="nav-buy-now-btn">Mua ngay</button>
-                </div>
-                <div class="nav-product-info">
-                    <p>Cushion Comb Brow Mascara
-                    </p>
-                    <span>599.000đ</span>
-                </div>
-            </li>
-            <li class="nav-carousel-item">
-                <div class="nav-product-image">
-                    <img src="../../assets/img/trang chu/product list 4.png" alt="3D Curling Mascara" class="nav-main-image" />
-                    <img src="../../assets/img/trang chu/product list detail 4.png" alt="3D Curling Mascara Hover"
-                        class="nav-hover-image" />
-                    <button class="nav-buy-now-btn">Mua ngay</button>
-                </div>
-                <div class="nav-product-info">
-                    <p>Volume & Curling Mascara Duo
-                    </p>
-                    <span>210.000đ</span>
-                </div>
-            </li>
-            <li class="nav-carousel-item">
-                <div class="nav-product-image">
-                    <img src="../../assets/img/trang chu/product list 5.png" alt="3D Curling Mascara" class="nav-main-image" />
-                    <img src="../../assets/img/trang chu/product list detail 5.png" alt="3D Curling Mascara Hover"
-                        class="nav-hover-image" />
-                    <button class="nav-buy-now-btn">Mua ngay</button>
-                </div>
-                <div class="nav-product-info">
-                    <p>2 in 1 Eyebrow Mascara</p>
-                    <span>260.000đ</span>
-                </div>
-            </li>
-            <li class="nav-carousel-item">
-                <div class="nav-product-image">
-                    <img src="../../assets/img/trang chu/product list 6.png" alt="3D Curling Mascara" class="nav-main-image" />
-                    <img src="../../assets/img/trang chu/product list detail 6.png" alt="3D Curling Mascara Hover"
-                        class="nav-hover-image" />
-                    <button class="nav-buy-now-btn">Mua ngay</button>
-                </div>
-                <div class="nav-product-info">
-                    <p>Iron Mascara - Sport Chic
-                    </p>
-                    <span>320.000đ</span>
-                </div>
-            </li>
-            <li class="nav-carousel-item">
-                <div class="nav-product-image">
-                    <img src="../../assets/img/trang chu/product list 7.png" alt="3D Curling Mascara" class="nav-main-image" />
-                    <img src="../../assets/img/trang chu/product list detail 7.png" alt="3D Curling Mascara Hover"
-                        class="nav-hover-image" />
-                    <button class="nav-buy-now-btn">Mua ngay</button>
-                </div>
-                <div class="nav-product-info">
-                    <p>Forming Refined Eyelash Base Primer
-
-                    </p>
-                    <span>350.000đ</span>
-                </div>
-            </li>
-            <li class="nav-carousel-item">
-                <div class="nav-product-image">
-                    <img src="../../assets/img/trang chu/product list 8.png" alt="3D Curling Mascara" class="nav-main-image" />
-                    <img src="../../assets/img/trang chu/product list detail 8.png" alt="3D Curling Mascara Hover"
-                        class="nav-hover-image" />
-                    <button class="nav-buy-now-btn">Mua ngay</button>
-                </div>
-                <div class="nav-product-info">
-                    <p>Mascara Remover
-                    </p>
-                    <span>250.000đ</span>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <button class="nav-carousel-btn nav-carousel-btn-right">&gt;</button>
-</section>
 <footer>
     <?php include "./footer.php"; ?>
 </footer>

@@ -24,7 +24,6 @@
 </head>
 
 <body>
-<header class="header">
     <?php
     include "config/connect.php";
 
@@ -32,12 +31,12 @@
     $new_products = mysqli_query($conn, "SELECT * FROM product WHERE new_arrival = 1");
     $category = mysqli_query($conn, "SELECT * FROM category");
     ?>
-        <!-- Header -->
-        <div class="logo"><a href="index.php" style = "color: #f25a8c; text-decoration: none">POLIDOLL</a></div>
+    <header class="header">
+        <div class="logo"><a href="views/website/trangchu.php" style = "color: #f25a8c; text-decoration: none">POLIDOLL</a></div>
         <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars mobile-nav-icon"></i></div>
         <nav class="navbar">
             <div class="dropdown">
-                <button class="dropbtn"><a href="index.php">TRANG CHỦ</a></button>
+                <button class="dropbtn"><a href="views/website/trangchu.php">TRANG CHỦ</a></button>
             </div>
             <div class="dropdown">
                 <button class="dropbtn"><a href="views/website/product.php">SẢN PHẨM</a></button>
@@ -65,7 +64,6 @@
             <a href="views/website/cart.php" title="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
             <a href="views/website/login.php" title="user"><i class="fa-duotone fa-solid fa-user"></i></a>
         </div>
-
     </header>
     <section class="main-banner">
         <img src="assets/img/trang chu/ảnh bìa trang chủ.png" alt="Main Banner">

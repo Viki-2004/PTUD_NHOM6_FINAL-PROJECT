@@ -79,9 +79,6 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
                         <a href="#" id="addToCart" class="add-to-cart">Thêm vào giỏ hàng</a>
                         <a href="#" class="buy-now">Mua Ngay</a>
                     </div>
-                    <div class="wishlist">
-                        <i class="heart">❤️</i> Thêm vào yêu thích
-                    </div>
                 </div>
                 <!-- Chính sách -->
                 <div class="policy">
