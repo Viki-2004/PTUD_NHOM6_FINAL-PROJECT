@@ -135,7 +135,7 @@
     <section class="nav-section">
         <div class="content-container">
     <div class="nav-container">
-                <button class="nav-btn nav-left-btn" >&#10094;</button>
+                <!-- <button class="nav-btn nav-left-btn" >&#10094;</button> -->
                 <div class="nav-carousel-wrapper">
                     <div class="nav-carousel">
                             <?php
@@ -157,7 +157,7 @@
                             <?php } ?>
                     </div>
                 </div>
-                <button class="nav-btn nav-right-btn" >&#10095;</button>
+                <!-- <button class="nav-btn nav-right-btn" >&#10095;</button> -->
             </div>
             </div>
         </section>
