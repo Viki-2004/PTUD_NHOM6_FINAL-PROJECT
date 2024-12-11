@@ -128,21 +128,6 @@ $categories = mysqli_query($conn, "SELECT * FROM category");
                         </div>
                     <?php } ?>
                 </div>
-<<<<<<< HEAD
-
-                //GIA HUY KẾT NỐI DETAIL
-                <div class="product_item_image">
-    <a href="product_details.php?id=<?php echo $row['sku']; ?>">
-        <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_name"] ?>" class="default_img">
-        <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_name"] ?> hover" class="hover_img">
-    </a>
-    <button class="nav-buy-now-btn">Mua ngay</button>
-</div>
-
-</div>
-    </main>
-    <footer>
-=======
                 <div class="page-item-container">
             <?php include "./pagnition.php"; ?>
         </div>
@@ -151,7 +136,6 @@ $categories = mysqli_query($conn, "SELECT * FROM category");
     </div>
 </main>
 <footer>
->>>>>>> a23d99a4563ab32b93d2f19029e52a169fc74cb7
     <?php include "./footer.php"; ?>
 </footer>
 </body>

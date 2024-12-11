@@ -255,170 +255,6 @@ h2 {
     width: 100%;
 }
 
-/* PRODUCT LIST */
-/* Tổng quan carousel */
-.nav-carousel {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.nav-carousel-wrapper {
-    overflow: hidden;
-    width: 95%;
-    margin: 0 auto;
-}
-
-.nav-carousel-wrapper ul {
-    list-style: none;
-    padding-inline-start: 0px;
-}
-
-.nav-carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.nav-carousel-item {
-    flex: 0 0 30%;
-    /* Hiển thị 5 sản phẩm cùng lúc */
-    text-align: center;
-    padding: 10px;
-    box-sizing: border-box;
-    /* Đảm bảo padding không làm giãn nở item */
-    position: relative;
-}
-
-/* Hình ảnh sản phẩm */
-.nav-product-image {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.nav-product-image img {
-    width: 100%;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.nav-main-image {
-    display: block;
-}
-
-.nav-hover-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.nav-carousel-item:hover .nav-hover-image {
-    opacity: 1;
-}
-
-.nav-carousel-item:hover .nav-main-image {
-    opacity: 0;
-}
-
-/* Nút "Buy Now" */
-.nav-buy-now-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 14px;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    opacity: 0;
-    cursor: pointer;
-    transition: opacity 0.3s ease-in-out;
-    z-index: 10;
-    border: 0.2px solid black;
-}
-.nav-carousel-item:hover .nav-buy-now-btn {
-    opacity: 1;
-}
-.nav-buy-now-btn:hover {
-    background-color: #f45c5c;
-    color:#ffffff;
-    transition: 0.4s;
-    border: none;
-}
-
-/* Thông tin sản phẩm */
-.nav-product-info {
-    margin-top: 10px;
-    text-align: center;
-}
-
-.nav-product-info p {
-    font-size: 14px;
-    font-weight: bold;
-    margin: 5px 0;
-}
-
-.nav-product-info span {
-    font-size: 14px;
-    color: rgb(123, 110, 110);
-}
-
-/* Nút điều hướng */
-/* CSS for Carousel Buttons */
-.nav-carousel-btn {
-    background-color: #fff; /* Background color */
-    border: 2px solid #f25a8c; /* Border with main theme color */
-    color: #f25a8c; /* Arrow color */
-    font-size: 20px; /* Size of the arrow */
-    width: 40px; /* Button width */
-    height: 40px; /* Button height */
-    border-radius: 50%; /* Make it circular */
-    display: flex; /* Flexbox for centering */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    cursor: pointer; /* Pointer cursor on hover */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: all 0.3s ease; /* Smooth transition for hover and active states */
-    position: absolute; /* Position for carousel */
-    top: 50%; /* Vertically center */
-    transform: translateY(-50%); /* Center alignment */
-    z-index: 10; /* Ensure it's above the carousel */
-}
-
-.nav-carousel-btn:hover {
-    background-color: #f25a8c; /* Background changes to theme color */
-    color: #fff; /* Arrow turns white */
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
-    transform: translateY(-50%) scale(1.1); /* Scale slightly on hover */
-}
-
-.nav-carousel-btn:active {
-    transform: translateY(-50%) scale(1); /* Reset scale when clicked */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Reduce shadow on click */
-}
-
-/* Specific styles for left and right buttons */
-.nav-carousel-btn-left {
-    left: 10px; /* Position on the left */
-}
-
-.nav-carousel-btn-right {
-    right: 10px; /* Position on the right */
-}
-
-/* ARRIVAL*/
-.arrivals {
-    margin-top: 20px;
-}
-
-.arrivals img {
-    width: 100%;
-}
-
 /* why us */
 .why-us-section {
     text-align: center;
@@ -594,4 +430,161 @@ h2 {
 
 .newsletter-form button:hover {
     background: rgb(247, 4, 4);
+}
+
+/* Sửa nav sản phẩm mới */
+
+/* NAV Carousel */
+.nav-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-carousel-wrapper {
+    width: 800px; /* Hiển thị đúng 2 ảnh */
+    overflow: hidden;
+}
+
+.nav-carousel {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.nav-item {
+    flex-shrink: 0;
+    width: 200px;
+}
+.nav-image {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+.nav-image:hover .nav-buy-now-btn{
+    opacity: 1;
+    transition: 0.5s ease-in-out;
+}
+.nav-main-image,
+.nav-hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.nav-main-image {
+    opacity: 1;
+}
+
+.nav-hover-image {
+    opacity: 0;
+}
+
+.nav-image:hover .nav-main-image {
+    opacity: 0;
+}
+
+.nav-image:hover .nav-hover-image {
+    opacity: 1;
+}
+.nav-image {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+.nav-image img {
+    width: 100%;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+.nav-main-image {
+    display: block;
+  }
+  
+.nav-hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .nav-item:hover .nav-hover-image {
+    opacity: 1;
+  }
+  
+  .nav-item:hover .nav-main-image {
+    opacity: 0;
+  }
+  
+
+.nav-name,
+.nav-price {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.nav-price {
+    font-weight: bold;
+    color: #000;
+}
+
+/* Arrows */
+/* CSS for Arrow Buttons */
+.nav-btn {
+    background-color: #fff; /* Background color */
+    border: 2px solid #f25a8c; /* Border with theme color */
+    color: #f25a8c; /* Arrow color */
+    font-size: 18px; /* Font size for the arrow */
+    width: 40px; /* Button width */
+    height: 40px; /* Button height */
+    border-radius: 50%; /* Make it circular */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease; /* Smooth transition effect */
+}
+
+/* Hover effect for buttons */
+.nav-btn:hover {
+    background-color: #f25a8c; /* Background changes to theme color */
+    color: #fff; /* Arrow turns white */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    transform: scale(1.1); /* Scale up slightly on hover */
+}
+
+/* Active state effect */
+.nav-btn:active {
+    transform: scale(1); /* Reset scale when clicked */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Reduce shadow on click */
+}
+
+/* Positioning for the buttons */
+.nav-left-btn {
+    position: absolute;
+    left: 10px;
+    z-index: 10;
+}
+
+.nav-right-btn {
+    position: absolute;
+    right: 10px;
+    z-index: 10;
+}
+.nav-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
 }
