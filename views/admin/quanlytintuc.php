@@ -233,6 +233,7 @@ button:hover {
             <li><a href="../../views/admin/quanlysanpham.php">Quản lý sản phẩm</a></li>
             <li><a href="../../views/admin/quanlydonhang.php">Quản lý đơn hàng</a></li>
             <li><a href="../../views/admin/quanlytinnhan.php">Quản lý tin nhắn</a></li>
+            <li><a href="../../views/website/trangchu.php">Website</a></li>
             <li><a href="../../views/website/login.html">Đăng xuất</a></li>
             </ul>
         </div>
