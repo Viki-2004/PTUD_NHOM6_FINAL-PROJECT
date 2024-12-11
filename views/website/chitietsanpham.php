@@ -35,13 +35,6 @@ if (!$result || mysqli_num_rows($result) == 0) {
 
 // Lấy thông tin sản phẩm
 $product = mysqli_fetch_assoc($result);
-<<<<<<< HEAD
-
-// Truy vấn để lấy các hình ảnh liên quan đến sản phẩm
-$imgLibrary = mysqli_query($conn, "SELECT * FROM image_library WHERE product_id = ".$product['id']);
-$product['images'] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
-?>
-=======
 $imgLibrary = mysqli_query($conn, "SELECT * FROM product_img WHERE sku = '$sku'");
 $product["images"] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
 $related = mysqli_query($conn, "SELECT * FROM product");
@@ -61,7 +54,6 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
             <a href = "chitietsanpham.php?sku=<?=$crumb["sku"]?>"><?php echo $crumb["product_name"] ?></a>     
             <?php } ?>   
 </div>
->>>>>>> a23d99a4563ab32b93d2f19029e52a169fc74cb7
     <section class="product">
     <div class="container">
         <h2>Chi tiết sản phẩm</h2>

@@ -136,7 +136,7 @@ $categories = mysqli_query($conn, "SELECT * FROM category");
     </div>
 </main>
 <footer>
-    <?php include "../../footer.php"; ?>
+    <?php include "./footer.php"; ?>
 </footer>
 </body>
 </html>
