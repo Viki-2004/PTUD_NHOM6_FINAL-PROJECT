@@ -180,6 +180,7 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
             <span class="count">0</span>
           </div>
         </div>
+        <button class="danhgia-write">Viết đánh giá</button>
         <div class="danhgia-reviews">
           <div class="review">
             <div class="review-header">
@@ -196,7 +197,7 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
             </div>
             <div class="review-stars">★★★★★</div>
             <div class="review-text">
-              Tôi mới mua sản phẩm này để thay thế sản phẩm cũ của Poli Doll mà tôi rất thích. Nhưng trời ơi, có thể do sản phẩm mới, tôi còn thích cái này hơn nữa...
+              Tôi mới mua sản phẩm này để thay thế mascara cũ của Poli Doll mà tôi rất thích. Nhưng trời ơi, có thể do sản phẩm mới, tôi còn thích cái này hơn nữa...
             </div>
           </div>
         </div>
