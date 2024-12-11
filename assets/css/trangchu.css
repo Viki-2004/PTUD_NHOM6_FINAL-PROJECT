@@ -444,8 +444,6 @@ h2 {
 }
 
 .nav-carousel-wrapper {
-    width: 800px; /* Hiển thị đúng 2 ảnh */
-    overflow: hidden;
 }
 
 .nav-carousel {
