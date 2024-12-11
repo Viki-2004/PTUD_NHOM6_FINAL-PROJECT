@@ -5,12 +5,12 @@
     <title>HEADER</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../../assets/css/header.css">
-    <script src="../../assets/js/header.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/header.css">
+    <script src="assets/js/header.js"></script>
 </head>
 <body>
 <?php
-include "../../config/connect.php";
+include "config/connect.php";
 // LỌC THEO DANH MỤC
 $category = mysqli_query($conn, "SELECT * FROM category");
 ?>

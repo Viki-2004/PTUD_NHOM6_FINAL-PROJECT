@@ -1,17 +1,9 @@
 <?php
-<<<<<<< HEAD
-    require "./config/connect.php";
-=======
-    //require "./config/connect.php";
->>>>>>> origin/main
-    //include "./config/createdatabase.php";
-    //echo "<br>";
-    //include "./config/insertdata.php";
-<<<<<<< HEAD
-    echo "<br>";
-    echo "hole fen"
-=======
-    //echo "<br>";
-    //echo "hole fen"
->>>>>>> origin/main
+    // require "./config/connect.php";
+    // //include "./config/createdatabase.php";
+    // //echo "<br>";
+    // //include "./config/insertdata.php";
+    // //echo "<br>";
+    // //echo "hole fen"
+    include "views/website/trangchu.php";
 ?>
