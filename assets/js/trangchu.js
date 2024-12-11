@@ -44,31 +44,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //NAV
 // Get the navigation buttons and carousel container
-const leftBtn = document.querySelector('.nav-left-btn');
-const rightBtn = document.querySelector('.nav-right-btn');
-const carousel = document.querySelector('.nav-carousel');
+// const leftBtn = document.querySelector('.nav-left-btn');
+// const rightBtn = document.querySelector('.nav-right-btn');
+// const carousel = document.querySelector('.nav-carousel');
 
-// Get the width of each carousel item
-const itemWidth = document.querySelector('.nav-item').offsetWidth + 20; // item width + gap
-const totalItems = document.querySelectorAll('.nav-item').length;
+// // Get the width of each carousel item
+// const itemWidth = document.querySelector('.nav-item').offsetWidth + 20; // item width + gap
+// const totalItems = document.querySelectorAll('.nav-item').length;
 
-// Initialize the position variable for the carousel
-let currentPosition = 0;
+// // Initialize the position variable for the carousel
+// let currentPosition = 0;
 
-// Add event listener to the left button
-leftBtn.addEventListener('click', () => {
-  if (currentPosition < 0) {
-    currentPosition += itemWidth; // Move left by one item
-    carousel.style.transform = `translateX(${currentPosition}px)`; // Apply the transform
-  }
-});
+// // Add event listener to the left button
+// leftBtn.addEventListener('click', () => {
+//   if (currentPosition < 0) {
+//     currentPosition += itemWidth; // Move left by one item
+//     carousel.style.transform = `translateX(${currentPosition}px)`; // Apply the transform
+//   }
+// });
 
-// Add event listener to the right button
-rightBtn.addEventListener('click', () => {
-  const maxPosition = -(itemWidth * (totalItems - 1)); // Maximum scroll position
-  if (currentPosition > maxPosition) {
-    currentPosition -= itemWidth; // Move right by one item
-    carousel.style.transform = `translateX(${currentPosition}px)`; // Apply the transform
-  }
-});
+// // Add event listener to the right button
+// rightBtn.addEventListener('click', () => {
+//   const maxPosition = -(itemWidth * (totalItems - 1)); // Maximum scroll position
+//   if (currentPosition > maxPosition) {
+//     currentPosition -= itemWidth; // Move right by one item
+//     carousel.style.transform = `translateX(${currentPosition}px)`; // Apply the transform
+//   }
+// });
 

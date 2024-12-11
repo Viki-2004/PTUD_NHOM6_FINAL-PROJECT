@@ -23,7 +23,7 @@
             VALUES
             ('Trang điểm mắt'),
             ('Trang điểm môi'),
-            ('Trang điểm mmặt');
+            ('Trang điểm mặt');
 
         INSERT INTO news (news_title, publish_date, news_content,news_img, id_admin)
             VALUES

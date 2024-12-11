@@ -4,38 +4,38 @@
 <head>
     <title>POLIDOLL</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/trangchu.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/trangchu_queries.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/trangchu.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/trangchu_queries.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="assets/js/trangchu.js"></script>
+    <script src="../../assets/js/trangchu.js"></script>
 </head>
 
 <body>
 <header class="header">
-    <?php include "views/website/header.php";
-    include "config/connect.php";
+    <?php include "./header.php";
+    include "../../config/connect.php";
 
     $trendproducts = mysqli_query($conn, "SELECT * FROM product WHERE trending = 1");
     $new_products = mysqli_query($conn, "SELECT * FROM product WHERE new_arrival = 1");
     ?>
     </header>
     <section class="main-banner">
-        <img src="assets/img/trang chu/ảnh bìa trang chủ.png" alt="Main Banner">
+        <img src="../../assets/img/trang chu/ảnh bìa trang chủ.png" alt="Main Banner">
     </section>
     <section class="shop-category">
         <h2>Danh mục sản phẩm</h2>
         <div class="card-container">
             <div class="category">
-                <img src="assets/img/trang chu/trang chủ - lips.png" alt="Lips" class="Category-image">
+                <img src="../../assets/img/trang chu/trang chủ - lips.png" alt="Lips" class="Category-image">
             </div>
             <div class="category">
-                <img src="assets/img/trang chu/trang chủ - eyes.png" alt="Eyes" class="Category-image">
+                <img src="../../assets/img/trang chu/trang chủ - eyes.png" alt="Eyes" class="Category-image">
             </div>
             <div class="category">
-                <img src="assets/img/trang chu/trang chủ - faces.png" alt="Faces" class="Category-image">
+                <img src="../../assets/img/trang chu/trang chủ - faces.png" alt="Faces" class="Category-image">
             </div>
             <div class="category">
-                <img src="assets/img/trang chu/trang chủ - tools.png" alt="Tools" class="Category-image">
+                <img src="../../assets/img/trang chu/trang chủ - tools.png" alt="Tools" class="Category-image">
             </div>
         </div>
     </section>
@@ -54,8 +54,8 @@
                             <div class="product-item">
                                 <div class="product-image">
                                     <a href = "chitietsanpham.php?sku=<?=$row["sku"]?>">
-                                    <img src="assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
-                                    <img src="assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
+                                    <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
+                                    <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
                                     </a>
                                     <button class="nav-buy-now-btn">Mua ngay</button>
                                 </div>
@@ -71,7 +71,7 @@
     
             <!-- Right: Banner -->
             <div class="banner-container">
-                <img src="assets/img/trang chu/trending banner.png" alt="Trending Banner">
+                <img src="../../assets/img/trang chu/trending banner.png" alt="Trending Banner">
             </div>
         </div>
     </section>
@@ -79,7 +79,7 @@
     
     <section class="top-selling-collection">
         <div class="top-selling-img">
-            <img src="assets/img/trang chu/top selling collection.png" alt="Top Selling Collection">
+            <img src="../../assets/img/trang chu/top selling collection.png" alt="Top Selling Collection">
         </div>
         <h2>Sản phẩm mới</h2>
     </section>
@@ -87,7 +87,7 @@
     <section class="nav-section">
         <div class="content-container">
     <div class="nav-container">
-                <button class="nav-btn nav-left-btn" >&#10094;</button>
+                <!-- <button class="nav-btn nav-left-btn" >&#10094;</button> -->
                 <div class="nav-carousel-wrapper">
                     <div class="nav-carousel">
                             <?php
@@ -97,8 +97,8 @@
                             <div class="nav-item">
                                 <div class="nav-image">
                                     <a href = "chitietsanpham.php?sku=<?=$row["sku"]?>">
-                                    <img src="assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="nav-main-image">
-                                    <img src="assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="nav-hover-image">
+                                    <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="nav-main-image">
+                                    <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="nav-hover-image">
                                     </a>
                                     <button class="nav-buy-now-btn">Mua ngay</button>
                                 </div>
@@ -109,7 +109,7 @@
                             <?php } ?>
                     </div>
                 </div>
-                <button class="nav-btn nav-right-btn" >&#10095;</button>
+                <!-- <button class="nav-btn nav-right-btn" >&#10095;</button> -->
             </div>
             </div>
         </section>
@@ -141,11 +141,11 @@
         <div class="carousel-container">
             <div class="carousel-track">
                 <!-- Các ảnh -->
-                <div class="carousel-item"><img src="assets/img/trang chu/1.png" alt="Image 1"></div>
-                <div class="carousel-item"><img src="assets/img/trang chu/2.png" alt="Image 2"></div>
-                <div class="carousel-item"><img src="assets/img/trang chu/5.png" alt="Image 3"></div>
-                <div class="carousel-item"><img src="assets/img/trang chu/7.png" alt="Image 4"></div>
-                <div class="carousel-item"><img src="assets/img/trang chu/6.png" alt="Image 8"></div>
+                <div class="carousel-item"><img src="../../assets/img/trang chu/1.png" alt="Image 1"></div>
+                <div class="carousel-item"><img src="../../assets/img/trang chu/2.png" alt="Image 2"></div>
+                <div class="carousel-item"><img src="../../assets/img/trang chu/5.png" alt="Image 3"></div>
+                <div class="carousel-item"><img src="../../assets/img/trang chu/7.png" alt="Image 4"></div>
+                <div class="carousel-item"><img src="../../assets/img/trang chu/6.png" alt="Image 8"></div>
             </div>
         </div>
         <a href="#" class="view-gallery">Xem Thư Viện</a>
@@ -160,8 +160,8 @@
             </form>
         </div>
     </section>
+    <footer>
+    <?php include "./footer.php"; ?>
+    </footer>
 </body>
-<footer>
-<?php include "views/website/footer.php"; ?>
-</footer>
 </html>

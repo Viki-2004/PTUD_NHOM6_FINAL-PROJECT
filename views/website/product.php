@@ -70,7 +70,7 @@ $categories = mysqli_query($conn, "SELECT * FROM category");
     <div class="container">
         <!-- Breadcrumb -->
         <div class="shop_breadcrumb">
-            <a href="./trangchu.php">Trang chủ</a>
+            <a href="../../index.php">Trang chủ</a>
             &gt; 
             <a href="./product.php">Trang sản phẩm</a>
         </div>
@@ -92,7 +92,7 @@ $categories = mysqli_query($conn, "SELECT * FROM category");
                 <select id="sort" onchange="window.location = this.value;">
                 <option value="?<?= $sortParam ?>" <?= empty($orderField) ? "selected" : "" ?>>Mặc định</option>
                 <option value="?<?=$param?>&field=product_price&sort=asc" <?= isset($_GET['sort']) && $_GET['sort'] == "asc" ? "selected" : "" ?>>Giá tăng dần</option>
-                    <option value="?<?=$param?>&field=product_price&sort=desc" <?= isset($_GET['sort']) && $_GET['sort'] == "desc" ? "selected" : "" ?>>Giá giảm dần</option>
+                <option value="?<?=$param?>&field=product_price&sort=desc" <?= isset($_GET['sort']) && $_GET['sort'] == "desc" ? "selected" : "" ?>>Giá giảm dần</option>
                 </select>
             </div>
         </div>
