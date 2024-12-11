@@ -1,64 +1,60 @@
-<<<<<<< HEAD
+
 /* Container bao gồm giỏ hàng và tóm tắt đơn hàng */
 .container {
     display: flex;
     flex-wrap: wrap; /* Cho phép các phần tử nhảy xuống dòng khi không đủ không gian */
     gap: 20px; /* Khoảng cách giữa giỏ hàng và tóm tắt đơn hàng */
-=======
 /* Responsive Design for max-width: 480px */
-@media screen and (max-width: 480px) {
-  .dropdown-content {
-      position: relative;
-      box-shadow: none;
-      text-align: center;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-
-  .dropdown-content a {
-      font-size: 14px;
-      padding: 10px 15px;
-      display: block;
-  }
-  .navbar {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      background-color: white;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-  }
-
-  .menu-toggle {
-      display: block;
-      font-size: 25px;
-      color: #f25a8c;
-      cursor: pointer;
-      margin-left: 10%;
-      margin-right: auto;
-  }
-
-  .menu-toggle.active+.navbar {
-      display: flex;
-  }
-
-  /* Icons Section Responsive */
-  .icons {
-      display: flex;
-      gap: 10px;
-  }
-  .navbar.active {
-      display: block;
-      /* Hiện menu khi có class active */
-  }
-  .navbar a {
-      text-decoration: none;
-      display: block;
-  }   
->>>>>>> 785de8da8ff955f8144ba036f1c024e129749464
+ /* Adjust dropdown styles for mobile */
+ .dropdown-content {
+    position: relative;
+    box-shadow: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+.dropdown-content a {
+    font-size: 14px;
+  padding: 10px 15px;
+  display: block;
+}
+.navbar {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.menu-toggle {
+    display: flex;
+    font-size: 25px;
+    color: #f25a8c;
+    cursor: pointer;
+    margin-left: 10%;
+}
+
+.menu-toggle.active+.navbar {
+    display: flex;
+    /* Show navbar on menu toggle click */
+}
+
+/* Icons Section Responsive */
+.icons {
+    display: flex;
+    gap: 10px;
+}
+.navbar.active {
+    display: flex;
+    /* Hiện menu khi có class active */
+}
+.navbar a {
+    text-decoration: none;
+    display: block;
+} 
 
 /* Giỏ hàng */
 .cart {
@@ -123,4 +119,5 @@
         width: 100%; /* Nút chiếm toàn bộ chiều rộng */
         margin-bottom: 10px;
     }
+}
 }
