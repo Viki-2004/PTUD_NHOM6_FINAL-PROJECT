@@ -17,7 +17,7 @@
     </header>
     <?php
 include "../../config/connect.php";
-
+$relatedproducts = mysqli_query($conn, "SELECT * FROM product");
 // Kiểm tra và khởi tạo giỏ hàng nếu chưa có
 if (!isset($_SESSION["cart"])) {
     $_SESSION["cart"] = array();
@@ -150,9 +150,41 @@ $_SESSION["cart"][$productsToAdd['id']] = $productsToAdd['quantity'];
         </form>
         </div>
     </div>
-    <div class="best-seller-section">
+    <!-- <div class="best-seller-section">
         <h2>Bán chạy nhất</h2>
-    </div>
+    </div> -->
+
+    <section class="product_section">
+        <h2>Sản phẩm liên quan</h2>
+        <div class="content-container">
+            <!-- Left: Product Carousel -->
+            <div class="products-container">
+                <button class="arrow-btn left-btn" >&#10094;</button>
+                <div class="products-carousel-wrapper">
+                    <div class="products-carousel">
+                            <?php
+                            while($row = mysqli_fetch_array($relatedproducts)){                          
+                            ?>
+                            <!-- Product 1 -->
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <a href = "chitietsanpham.php?sku=<?=$row["sku"]?>">
+                                    <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
+                                    <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
+                                    </a>
+                                    <button class="nav-buy-now-btn">Mua ngay</button>
+                                </div>
+                                    <p class="product-name"><a style="text-decoration: none; color: #f25a8c;" href = "chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
+                                    </p>
+                                    <p class="product-price"><?php echo number_format($row['product_price'], 0, ',', '.'); ?>đ</p>
+                            </div>
+                            <?php } ?>
+                    </div>
+                </div>
+                <button class="arrow-btn right-btn" >&#10095;</button>
+            </div>
+        </div>
+    </section>
 
 <section class="nav-carousel">
     <button class="nav-carousel-btn nav-carousel-btn-left">&lt;</button>
