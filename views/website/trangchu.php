@@ -11,7 +11,11 @@
 
 <body>
 <header class="header">
-    <?php include "./header.php"; ?>
+    <?php include "./header.php";
+    include "../../config/connect.php";
+
+    $products = mysqli_query($conn, "SELECT * FROM product WHERE trending = 1");
+    ?>
     </header>
     <section class="main-banner">
         <img src="../../assets/img/trang chu/ảnh bìa trang chủ.png" alt="Main Banner">
@@ -41,49 +45,26 @@
                 <button class="arrow-btn left-btn" onclick="navigateCarousel(-1)">&#10094;</button>
                 <div class="products-carousel-wrapper">
                     <div class="products-carousel">
+                            <?php
+                            while($row = mysqli_fetch_array($products)){                          
+                            ?>
                         <!-- Product 1 -->
                         <div class="product-item">
                             <div class="product-image">
-                                <img src="../../assets/img/trang chu/trending now 1.png" alt="Product 1" class="default-img">
-                                <img src="../../assets/img/trang chu/trending now details 1.png" alt="Product 1 Hover" class="hover-img">
+                            <a href = "chitietsanpham.php?sku=<?=$row["sku"]?>">
+                                <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
+                                <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
+                                </a>
                                 <button class="nav-buy-now-btn">Mua ngay</button>
                             </div>
-                            <p class="product-name">Ice Watery Lip Gloss - #01 Orange Flash</p>
-                            <p class="product-price">420.000đ</p>
-                        </div>
-                        <!-- Product 2 -->
-                        <div class="product-item">
-                            <div class="product-image">
-                                <img src="../../assets/img/trang chu/trending now 2.png" alt="Product 2" class="default-img">
-                                <img src="../../assets/img/trang chu/trending now details 2.png" alt="Product 2 Hover" class="hover-img">
-                                <button class="nav-buy-now-btn">Mua ngay</button>
-                            </div>
-                            <p class="product-name">Cushion Lip Powder Cream - N01 Cutie Peach</p>
-                            <p class="product-price">350.000đ</p>
-                        </div>
-                        <!-- Product 3 -->
-                        <div class="product-item">
-                            <div class="product-image">
-                                <img src="../../assets/img/trang chu/trending now 3.png" alt="Product 3" class="default-img">
-                                <img src="../../assets/img/trang chu/trending now details 3.png" alt="Product 3 Hover" class="hover-img">
-                                <button class="nav-buy-now-btn">Mua ngay</button>
-                            </div>
-                            <p class="product-name">Hearty Lip Tint</p>
-                            <p class="product-price">220.000đ</p>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-image">
-                                <img src="../../assets/img/trang chu/trending now 4.png" alt="Product 3" class="default-img">
-                                <img src="../../assets/img/trang chu/trending now details 4.png" alt="Product 3 Hover" class="hover-img">
-                                <button class="nav-buy-now-btn">Mua ngay</button>
-                            </div>
-                            <p class="product-name">Mist Lip Glaze
+                            <p class="product-name"><a href = "chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
                             </p>
-                            <p class="product-price">190.000đ</p>
+                            <p class="product-price"><?php echo number_format($row['product_price'], 0, ',', '.'); ?>đ</p>
                         </div>
                     </div>
                 </div>
                 <button class="arrow-btn right-btn" onclick="navigateCarousel(1)">&#10095;</button>
+                <?php } ?>                
             </div>
     
             <!-- Right: Banner -->
@@ -266,8 +247,8 @@
             </form>
         </div>
     </section>
+    <footer>
+    <?php include "./footer.php"; ?>
+    </footer>
 </body>
-<footer>
-<?php include "./footer.php"; ?>
-</footer>
 </html>
