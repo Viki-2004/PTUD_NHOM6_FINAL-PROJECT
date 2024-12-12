@@ -6,37 +6,55 @@ include '../../config/connect.php';
 if (isset($_GET['delete_sku'])) {
     $delete_sku = $_GET['delete_sku'];
 
-// Xóa sản phẩm khỏi cơ sở dữ liệu
-$sql = "DELETE FROM product WHERE sku = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $delete_sku);
+    // Xóa sản phẩm khỏi cơ sở dữ liệu
+    $sql = "DELETE FROM product WHERE sku = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $delete_sku);
 
-if ($stmt->execute()) {
-    echo "<script>alert('Xóa sản phẩm thành công!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";//cái này chưa sửa location
-    exit();
-} else {
-    echo "<script>alert('Có lỗi xảy ra khi xóa sản phẩm!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";//cái này chưa sửa location
-    exit();
-}
-$stmt->close();
+    if ($stmt->execute()) {
+        echo "<script>alert('Xóa sản phẩm thành công!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";
+        exit();
+    } else {
+        echo "<script>alert('Có lỗi xảy ra khi xóa sản phẩm!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";
+        exit();
+    }
+    $stmt->close();
 }
 
 // Xử lý thêm hoặc chỉnh sửa sản phẩm
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+    $sku = $_POST['sku'];
     $product_name = $_POST['product_name'];
-    $product_img = $_POST['product_img'];
-    $product_hover = $_POST['product_hover'];
     $product_price = $_POST['product_price'];
     $product_description = $_POST['product_description'];
     $product_quantity = $_POST['product_quantity'];
     $trending = $_POST['trending'];
     $new_arrival = $_POST['new_arrival'];
-    $id_category = $_POST['id_category '];
     $action = $_POST['action'];
 
+    // Xử lý hình ảnh tải lên
+    $upload_dir = '../../assets/img/products/';
+    $product_img = null;
+    $product_hover = null;
+
+    if (!empty($_FILES['product_img']['name'])) {
+        $product_img = basename($_FILES['product_img']['name']);
+        $target_file = $upload_dir . $product_img;
+        if (!move_uploaded_file($_FILES['product_img']['tmp_name'], $target_file)) {
+            echo "<script>alert('Có lỗi xảy ra khi tải lên hình ảnh sản phẩm!');</script>";
+        }
+    }
+
+    if (!empty($_FILES['product_hover']['name'])) {
+        $product_hover = basename($_FILES['product_hover']['name']);
+        $target_file_hover = $upload_dir . $product_hover;
+        if (!move_uploaded_file($_FILES['product_hover']['tmp_name'], $target_file_hover)) {
+            echo "<script>alert('Có lỗi xảy ra khi tải lên hình ảnh hover!');</script>";
+        }
+    }
+
     if ($action == 'edit') {
-        $sku = $_POST['sku'];
-        $sql = "UPDATE product SET product_name  = ?, product_img = ?, product_hover = ?, product_price = ?, product_description = ?, product_quantity = ?, trending = ?, new_arrival = ?, id_category = ? WHERE sku = ?";
+        $sql = "UPDATE product SET product_name  = ?, product_img = ?, product_hover = ?, product_price = ?, product_description = ?, product_quantity = ?, trending = ?, new_arrival = ? WHERE sku = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sssdsiiiis", $product_name, $product_img, $product_hover, $product_price, $product_description, $product_quantity, $trending, $new_arrival, $id_category, $sku);
 
@@ -44,24 +62,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             echo "<script>alert('Cập nhật sản phẩm thành công!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";
             exit();
         } else {
-            echo "<script>alert('Có lỗi xảy ra khi cập nhật sản phẩm!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";
+            echo "<script>alert('Có lỗi xảy ra khi cập nhật sản phẩm!'); window.location.href='../../views/admin/sanpham.php';</script>";
             exit();
         }
     } else {
-        $sql = "INSERT INTO product (product_name, product_img, product_hover, product_price, product_description, product_quantity, trending, new_arrival, id_category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssdsiiii", $product_name, $product_img, $product_hover, $product_price, $product_description, $product_quantity, $trending, $new_arrival, $id_category);
+        $check_sku_sql = "SELECT sku FROM product WHERE sku = ?";
+        $check_stmt = $conn->prepare($check_sku_sql);
+        $check_stmt->bind_param("s", $sku);
+        $check_stmt->execute();
+        $check_stmt->store_result();
 
-        if ($stmt->execute()) {
-            echo "<script>alert('Thêm sản phẩm thành công!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";
-            exit();
-        } else {
-            echo "<script>alert('Có lỗi xảy ra khi thêm sản phẩm!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";
+        if ($check_stmt->num_rows > 0) {
+            echo "<script>alert('Mã SKU đã tồn tại! Vui lòng nhập mã SKU khác.'); window.location.href='../../views/admin/sanpham.php';</script>";
+            $check_stmt->close();
             exit();
         }
+
+        $check_stmt->close();
+
+        $sql = "INSERT INTO product (sku, product_name, product_img, product_hover, product_price, product_description, product_quantity, trending, new_arrival, id_category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ssssdsiiii", $sku, $product_name, $product_img, $product_hover, $product_price, $product_description, $product_quantity, $trending, $new_arrival, $id_category);
+
+// Lấy `id_category` từ request hoặc đặt giá trị mặc định
+$id_category = isset($_POST['id_category']) ? $_POST['id_category'] : null;
+
+if ($stmt->execute()) {
+    echo "<script>alert('Thêm sản phẩm thành công!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";
+    exit();
+} else {
+    echo "<script>alert('Có lỗi xảy ra khi thêm sản phẩm!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";
+    exit();
+}
     }
     $stmt->close();
 }
+
 $sql = "SELECT * FROM product";
 $result = $conn->query($sql);
 ?>
@@ -116,7 +152,8 @@ $result = $conn->query($sql);
         .card table td {
             padding: 12px 16px;
             border-bottom: 1px solid #ddd;
-            text-align: left;
+            text-align: justify;
+
         }
         .card table th {
             background-color: #f8c3d6;
@@ -378,33 +415,34 @@ $result = $conn->query($sql);
         <!-- Phần chỉnh sửa hoặc thêm mới sản phẩm-->
         <div class="form-section">
             <h3>Thêm hoặc cập nhật sản phẩm</h3>
-            <form method="POST" action="">
-            <input type="hidden" id="sku" name="sku">
+            <form method="POST" enctype="multipart/form-data">
             <input type="hidden" id="action" name="action" value="add">
-            <label for="product_name">Tên</label>
+            <label for="product_name">Mã SKU Sản Phẩm</label>
+            <input type="text" id="sku" name="sku">
+            <label for="product_name">Tên Sản Phẩm</label>
             <input type="text" id="product_name" name="product_name" required>
-            <label for="product_img">Hình ảnh</label>
-            <input type="file" id="product_img" name="product_img" accept="image/*">
-            <label for="product_hover">Hover hình ảnh</label>
-            <input type="file" id="product_hover" name="product_hover" accept="image/*">
+            <label for="product_img">Hình Ảnh</label>
+            <input type="file" id="product_img" name="product_img">
+            <label for="product_hover">Hover Hình Ảnh</label>
+            <input type="file" id="product_hover" name="product_hover">
             <label for="product_price">Giá</label>
             <input type="number" id="product_price" name="product_price" required>
-            <label for="product_description">Mô tả</label>
+            <label for="product_description">Mô Tả</label>
             <input type="text" id="product_description" name="product_description" required>
-            <label for="product_quantity">Số lượng</label>
+            <label for="product_quantity">Số Lượng</label>
             <input type="number" id="product_quantity" name="product_quantity">
-            <label for="trending">Xu hướng</label>
-            <select id="trending" name="trending" required>
+            <label for="trending">Xu Hướng</label>
+            <select id="trending" name="trending">
                 <option value="0">Không</option>
                 <option value="1">Có</option>
             </select>
             <label for="new_arrival">Mới</label>
-             <select id="new_arrival" name="new_arrival" required>
+            <select id="new_arrival" name="new_arrival">
                 <option value="0">Không</option>
                 <option value="1">Có</option>
             </select>
-            <button type="submit">XÁC NHẬN</button>
-            </form>
+            <button type="submit">Lưu</button>
+        </form>
         </div>
     </main>
 </body>
