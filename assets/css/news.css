@@ -24,7 +24,6 @@ body {
   transition: transform 0.3s ease-in-out;
   background: none;
 }
-
 .sidebar.active {
   transform: translateX(0);
 }
