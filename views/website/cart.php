@@ -22,7 +22,8 @@ $relatedproducts = mysqli_query($conn, "SELECT * FROM product");
 if(!isset($_SESSION['cart'])){
     $_SESSION['cart'] = array();
 }
-
+$error = false;
+$success = false;
 if(isset($_GET['action'])){
     function update_cart($add = false){
         foreach($_POST['quantity'] as $sku => $quantity){
@@ -56,9 +57,34 @@ if(isset($_GET['action'])){
             if(isset($_POST['update_click'])){
                 update_cart();
                 header("location: ./cart.php");
-            }
+            } 
             // ĐẶT HÀNG SẢN PHẨM
             elseif ($_POST['order_click']) {
+                if(empty($_POST['quantity'])){
+                    $error = "Giỏ hàng rỗng";
+                }
+                // LƯU GIỎ HÀNG VÀO DATABASE
+                elseif($error == false && !empty($_POST['quantity']))
+                { 
+                    $products = mysqli_query($conn, "SELECT * FROM product WHERE sku IN ('".implode(",", array_keys($_POST['quantity']))."')");
+                    $total = 0;
+                    $orderProducts = array();
+                    while ($row = mysqli_fetch_all($products)){
+                        $orderProducts[] = $row;
+                        $total += $row['product_price'] * $_POST['quantity'][$row['sku']];                   
+                    }
+                    $orderID = $conn->insert_id;
+                    $insertString = "";
+                    foreach ($orderProducts as $key => $product){
+                        $insertString .= "('".$product['sku']."', '".$orderID."', '".$product['user_id']."', '".$_POST['quantity'][$product['sku']]."', '".$product['product_price']."', '".$product['product_price'] * $_SESSION["cart"][$product['sku']]."')"; // CHỖ CÁI USER ID CHẮC CHECK LẠI HỘ NHA KIM ƠI, CÓ KHI PHẢI GỌI RIÊNG 1 BIẾN ĐỂ SELECT ĐƯỢC CÁI TK USER ID ĐÓ RÒI MỚI BỎ VÔ Á
+                        if($key != count($orderProducts) - 1){
+                            $insertString .= ",";
+                        }
+                    }
+                    $insertOrder = mysqli_query($conn, "INSERT INTO `order_details` (`sku`, `order_id`, `user_id`, `order_quantity`, `price`, `total`) VALUES ".$insertString.";");
+                    $success = "Đặt hàng thành công";
+                    unset($_SESSION['cart']);
+                }
             }
             break;
     }
@@ -68,7 +94,15 @@ if(!empty($_SESSION['cart'])){
 }
 ?>
 <div class="container">
-    <a href="index.php"></a>
+    <?php if(!empty($error)) {  ?>
+       <div id = "notify-msg">
+        <?= $error ?>. <a href = "javascript:history.back()">Quay lại</a>
+    </div>
+    <?php } elseif(!empty($success)){ ?>
+        <div id = "notify-msg">
+        <?= $success ?>. <a href = "index.php">Tiếp tục mua hàng</a>
+    </div>    
+   <?php } else { ?>
     <div class="cart">
         <h2>GIỎ HÀNG CỦA TÔI</h2>
         <form id="cart-form" action="cart.php?action=submit" method="POST">
@@ -83,18 +117,21 @@ if(!empty($_SESSION['cart'])){
                         <th class="total">Xóa</th>
                     </tr>
                     <?php
-                    $num = 1;
+                    if(!empty($products)){
+                        $total = 0;
+                        $num = 1;
                         while ($row = mysqli_fetch_array($products)){ ?>
                         <tr>
                             <td class="rank"><?=$num++;?></td>
                                 <td class = "name"><?=$row['product_name']?></td>
                                 <td class="img"><img src="../../assets/img/products/<?=$row['product_img']?>"/></td>
-                                <td class="price"><?=$row['product_price']?></td>
+                                <td class="price"><?= number_format($row['product_price'], 0, ',', '.') ?>đ</td>
                                 <td class="quantity"><input type="text" value ="<?=$_SESSION["cart"][$row['sku']]?>" name = "quantity[<?=$row['sku']?>]"/></td>
-                                <td class="total"><?=$row['product_price']?></td>
+                                <td class="total"><?=number_format($row['product_price'] * $_SESSION["cart"][$row['sku']], 0, ',', '.') ?>đ</td>
                                 <td style = "color: #f25a8"><a href ="cart.php?action=delete&sku=<?=$row['sku']?>"><i class="fa-solid fa-trash"></i></a></td>
                             </tr>
                         <?php 
+                        $total += $row['product_price'] * $_SESSION["cart"][$row['sku']];
                         $num++;
                     } ?>
                     <tr id="row-total">
@@ -103,21 +140,23 @@ if(!empty($_SESSION['cart'])){
                         <td class="img">Tổng tiền</td>
                         <td class="price">&nbsp;</td>
                         <td class="quantity">&nbsp;</td>
-                        <td class="total"><?= number_format($row, 0, ',', '.') ?>đ</td>
+                        <td class="total"><?=number_format($total, 0, ',', '.') ?>đ</td>
                         <td>&nbsp;</td>
                     </tr>
+                    <?php } ?>
+                
             </table>
             <input type="submit" name = "update_click" value = "Cập nhật"/>
-
-</form>
+        </form>
     </div>
+    <?php } ?>
             <div class="order-summary">
                 <h2>ĐƠN HÀNG</h2>
                 <input type="text" name="discount_code" placeholder="Mã giảm giá">
                 <button type="submit" name="apply_code" class="apply-btn">ÁP DỤNG</button>
-                <p class="total-bill">Tổng hóa đơn: <?= number_format($row, 0, ',', '.') ?>đ</p>
+                <p class="total-bill"><span>Tổng hóa đơn:</span><?=number_format($row['product_price'] * $_SESSION["cart"][$row['sku']], 0, ',', '.')?>đ</p>
                 <p class="discount">Giảm giá: <?= $row * 100 ?>%</p>
-                <p class="final-bill">Thành tiền: <?= number_format($row, 0, ',', '.') ?>đ</p>
+                <p class="final-bill"><span>Thành tiền:<span><?=number_format($row['product_price'] * $_SESSION["cart"][$row['sku']], 0, ',', '.')?>đ</p>
                 <input type="submit" name = "order_click" value = "Đặt Hàng"/>
             </div>
     </div>
