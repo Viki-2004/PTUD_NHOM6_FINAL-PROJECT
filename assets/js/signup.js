@@ -66,4 +66,3 @@ $(document).ready(function(){
         ];
         $('#password-strength').text(messages[strength]).css('color', colors[strength]);
     });
-});
