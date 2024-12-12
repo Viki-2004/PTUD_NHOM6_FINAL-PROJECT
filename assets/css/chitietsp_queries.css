@@ -14,14 +14,18 @@
     .policy {
         width: 100%; /* Chiếm toàn bộ chiều rộng */
     }
-
+    .action-buttons{
+        margin: 0 auto;
+    }
     /* Nút hành động */
     .add-to-cart,
     .buy-now {
         width: 20%; /* Giảm chiều rộng nút */
         text-align: center; /* Đảm bảo nội dung nút căn giữa */
     }
-
+    .quantity-control{
+        justify-content: center;
+    }
     /* Chính sách sản phẩm */
     .policy-item {
         display: flex;
@@ -141,12 +145,5 @@
 
     .review {
         font-size: 14px;
-    }
-    .quantity-selector{
-        margin-left: 27%
-    }
-    .quantity-selector label{
-        margin-left: 10%
-
     }
 }
