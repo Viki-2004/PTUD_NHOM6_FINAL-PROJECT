@@ -1,3 +1,83 @@
+<<<<<<< HEAD
+=======
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none; /* Hidden by default */
+  font-size: 25px;
+  cursor: pointer;
+  color: #f25a8c;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 25%;
+  flex: 1.5;
+  margin-right: 20px;
+  margin-left: 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+  background: none;
+}
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  gap: 20px;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #da4d6e;
+  font-weight: bold;
+}
+
+.sidebar .promo {
+  background-color: #ffe5e5;
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.under-promo {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.under-promo h2 {
+  color: #ff6f91;
+  font-size: 25px;
+  margin-bottom: 0px;
+  border-bottom: 2px solid #ff6f91;
+  padding-bottom: 5px;
+}
+
+.blog-grid {
+  width: 75%;
+  padding: 20px;
+  background: #fff;
+}
+
+
+>>>>>>> origin/ABOUTUS
 
 /* Header & Navbar */
 .header {
