@@ -1,14 +1,15 @@
-// Ẩn hiện mật khẩu
-$(document).ready(function() {
-    $('#eye').click(function() {
+//Ẩn hiện mật khẩu
+$(document).ready(function(){
+    $('#eye').click(function(){
         $(this).toggleClass('open');
         $(this).children('i').toggleClass('fa-eye-slash fa-eye');
-        if ($(this).hasClass('open')) {
+        if($(this).hasClass('open')){
             $(this).prev().attr('type', 'text');
-        } else {
+        }else{
             $(this).prev().attr('type', 'password');
         }
     });
+});
 
     // Xử lý kiểm tra form khi nhấn nút đăng ký
     $('#form-signup').on('submit', function(e) {
@@ -27,13 +28,6 @@ $(document).ready(function() {
             }
         });
 
-        // Kiểm tra độ dài tên đăng nhập
-        var username = $('.form-input[placeholder="Tên đăng nhập"]').val().trim();
-        if (username.length < 4 || username.length > 8) {
-            isValid = false;
-            message += "Tên đăng nhập phải có độ dài từ 4 đến 8 ký tự!\n";
-        }
-
         // Hiển thị thông báo nếu có lỗi
         if (!isValid) {
             alert(message);
@@ -42,7 +36,7 @@ $(document).ready(function() {
 
         // Nếu hợp lệ
         alert("Đăng ký thành công!");
-        // Thêm logic gửi dữ liệu lên server tại đây (nếu cần)
+        window.location.href = '../../views/website/login.php'; 
     });
 
     // Xử lý kiểm tra mật khẩu và cập nhật thanh progress bar
@@ -54,12 +48,11 @@ $(document).ready(function() {
         if (password.length >= 8) strength++; // Độ dài tối thiểu
         if (/[0-9]/.test(password)) strength++; // Có số
         if (/[a-z]/.test(password)) strength++; // Có chữ thường
-        if (/[A-Z]/.test(password)) strength++; // Có chữ hoa
 
         // Cập nhật thanh progress bar
         var powerPoint = $('#power-point');
-        var colors = ["#D73F40", "#DC6551", "#F2B84F", "#BDE952", "#3ba62f"];
-        var widths = ["1%", "25%", "50%", "75%", "100%"];
+        var colors = ["#D73F40", "#DC6551", "#F2B84F", "#3ba62f"];
+        var widths = ["1%", "25%", "50%", "100%"];
 
         powerPoint.css('width', widths[strength]);
         powerPoint.css('background-color', colors[strength]);
@@ -69,7 +62,6 @@ $(document).ready(function() {
             "Mật khẩu quá yếu",
             "Mật khẩu yếu",
             "Mật khẩu trung bình",
-            "Mật khẩu khá mạnh",
             "Mật khẩu mạnh"
         ];
         $('#password-strength').text(messages[strength]).css('color', colors[strength]);
