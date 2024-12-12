@@ -34,7 +34,7 @@ $totalPages = ceil($totalRecords / $item_per_page);
         <div class="menu-toggle new1" onclick="toggleMenu1()"><i class="fa-solid fa-layer-group"></i></div>
             <!-- Sidebar with mobile toggle -->
             <aside class="sidebar">
-                <p style="color: rgb(134, 134, 134);"><a href="trangchu.php">Home</a>/Tin tức</p>
+                <p style="color: rgb(134, 134, 134);"><a href="trangchu.php">Home</a><a href="news.php"> /Tin tức</a></p>
                 <h2 style="color: #ff6f91; font-size: 130%;">TIN TỨC</h2>
                 <ul>
                     <li><a href="#">MAKE UP - MẮT</a></li>

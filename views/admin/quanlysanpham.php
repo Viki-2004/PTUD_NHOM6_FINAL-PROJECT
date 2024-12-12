@@ -92,7 +92,7 @@
             font-size: 14px;
             border: 1px solid #ddd;
             padding: 12px;
-            text-align: left;
+            text-align: justify;
             vertical-align: middle;
         }
         
