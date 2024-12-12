@@ -27,9 +27,11 @@
             $user_password = $_POST['user_password'];
             if($conn -> query("INSERT INTO users(user_name, user_email, user_phone, user_password) VALUES (N'$user_name',N'$user_email',N'$user_phone',N'$user_password')")){
                 echo("<script>alert('Bạn đã đăng ký thành công');</script>");
+                echo "<script>window.location.href='../../views/website/login.php';</script>";
             }
             else{
                 echo("<script>alert('Bạn đã đăng ký thất bại');</script>");
+                echo "<script>window.location.href='../../views/website/trangdangky.php';</script>";
             }
         }
         $conn->close();

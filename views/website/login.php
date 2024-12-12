@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <input type="submit" value="Đăng nhập" class="form-submit">
                 <div class="signup-prompt">
-                    <p>Bạn chưa có tài khoản? <a href="../../views/website/signup.php">Đăng ký ngay</a></p>
+                    <p>Bạn chưa có tài khoản? <a href="../../views/website/trangdangky.php">Đăng ký ngay</a></p>
                 </div>
             </form>
 
