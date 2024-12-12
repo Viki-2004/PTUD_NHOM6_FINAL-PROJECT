@@ -17,7 +17,7 @@
 <body>
 <?php
 include "../../config/connect.php";
-$item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 6;
+$item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 12;
 $current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại 
 $offset = ($current_page - 1) * $item_per_page;
 $products = mysqli_query($conn, "SELECT * FROM news ORDER BY news_id ASC LIMIT " . $item_per_page . " OFFSET " . $offset);

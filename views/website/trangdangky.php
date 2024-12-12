@@ -43,8 +43,8 @@
                 <input type="email" class="form-input" name ="user_email" placeholder="Email" required>
             </div>
             <div class="form-group">
-                <i class="far fa-phone"></i>
-                <input type="tel" class="form-input" name ="user_phone" placeholder="Số điện thoại" required pattern="[0-9]{10,11}" title="Vui lòng nhập số điện thoại hợp lệ (10-11 chữ số)">
+            <i class="fa-solid fa-phone"></i>
+                            <input type="tel" class="form-input" name ="user_phone" placeholder="Số điện thoại" required pattern="[0-9]{10,11}" title="Vui lòng nhập số điện thoại hợp lệ (10-11 chữ số)">
             </div>
             <div class="form-group">
                 <i class="far fa-user"></i>

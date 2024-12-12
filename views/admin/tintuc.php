@@ -1,23 +1,24 @@
 <?php
 // Kết nối tới cơ sở dữ liệu
 include '../../config/connect.php';
+
 // Xử lý xóa tin tức
 if (isset($_GET['delete_news_id'])) {
     $delete_news_id = $_GET['delete_news_id'];
 
-// Xóa tin tức khỏi cơ sở dữ liệu
-$sql = "DELETE FROM news WHERE news_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $delete_news_id);
+    // Xóa tin tức khỏi cơ sở dữ liệu
+    $sql = "DELETE FROM news WHERE news_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $delete_news_id);
 
-if ($stmt->execute()) {
-    echo "<script>alert('Xóa tin tức thành công!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
-    exit();
-} else {
-    echo "<script>alert('Có lỗi xảy ra khi xóa tin tức!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
-    exit();
-}
-$stmt->close();
+    if ($stmt->execute()) {
+        echo "<script>alert('Xóa tin tức thành công!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
+        exit();
+    } else {
+        echo "<script>alert('Có lỗi xảy ra khi xóa tin tức!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
+        exit();
+    }
+    $stmt->close();
 }
 
 // Xử lý thêm hoặc chỉnh sửa tin tức
@@ -27,11 +28,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $news_content = $_POST['news_content'];
     $action = $_POST['action'];
 
-    if ($action == 'edit') {
+    // Xử lý file upload
+    $news_img = '';
+    if (!empty($_FILES['news_img']['name'])) {
+        $news_img = basename($_FILES['news_img']['name']);
+        $target_dir = '../../assets/img/NEWS/';
+        $target_file = $target_dir . $news_img;
+
+        // Di chuyển file đến thư mục chỉ định
+        if (!move_uploaded_file($_FILES['news_img']['tmp_name'], $target_file)) {
+            echo "<script>alert('Có lỗi khi upload ảnh!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
+            exit();
+        }
+    }
+
+    if ($action === 'edit') {
+        // Chỉnh sửa tin tức
         $news_id = $_POST['news_id'];
-        $sql = "UPDATE news SET news_title = ?, publish_date  = ?, news_content = ?, news_img = ?, id_admin = ? WHERE news_id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssii", $news_title, $publish_date , $news_content, $news_img, $id_admin, $news_id);
+
+        // Kiểm tra nếu không upload ảnh mới thì giữ ảnh cũ
+        if (empty($news_img)) {
+            $sql = "UPDATE news SET news_title = ?, publish_date = ?, news_content = ?, id_admin = ? WHERE news_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssii", $news_title, $publish_date, $news_content, $id_admin, $news_id);
+        } else {
+            $sql = "UPDATE news SET news_title = ?, publish_date = ?, news_content = ?, news_img = ?, id_admin = ? WHERE news_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssssii", $news_title, $publish_date, $news_content, $news_img, $id_admin, $news_id);
+        }
+
         if ($stmt->execute()) {
             echo "<script>alert('Cập nhật tin tức thành công!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
             exit();
@@ -40,32 +65,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             exit();
         }
     } else {
+        // Thêm tin tức mới
         $sql = "INSERT INTO news (news_title, publish_date, news_content, news_img, id_admin) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssi", $news_title, $publish_date, $news_content, $news_img, $id_admin);
 
         if ($stmt->execute()) {
-            echo "<script>alert('Thêm tin tức thành công!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";//chưa sửa
+            echo "<script>alert('Thêm tin tức thành công!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
             exit();
         } else {
-            echo "<script>alert('Có lỗi xảy ra khi thêm tin tức!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";//chưa sửa
+            echo "<script>alert('Có lỗi xảy ra khi thêm tin tức!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
             exit();
         }
     }
-    if(isset($_POST['btn'])){
-        $news_title1 = $_POST['news_title'];
-        $publish_date1 = $_POST['publish_date'];
-        $news_content1 = $_POST['news_content'];
-        $news_img1 = $_FILES['news_img']['name']; // Chỉ lấy tên hình ảnh để gửi lên database
-        $image_tmp_name = $_FILES['news_img']['tmp_name'];
-        $sql1 = "INSERT INTO news(news_title, publish_date, news_content, news_img)
-        VALUE('$news_title1','$publish_date1','$news_content1', '$news_img1')";
-    
-        mysqli_query($conn, $sql1);
-        move_uploaded_file($image_tmp_name , '/assets/img/NEWS/'.$news_img1 );
-    }
     $stmt->close();
 }
+
 $sql = "SELECT * FROM news";
 $result = $conn->query($sql);
 ?>
@@ -363,18 +378,20 @@ $result = $conn->query($sql);
         <!-- Phần chỉnh sửa hoặc thêm mới tin tức-->
         <div class="form-section">
             <h3>Thêm hoặc cập nhật tin tức</h3>
-            <form method="POST" action="tintuc.php" enctype = "multipart/form-data"> 
+            <form method="POST" action="tintuc.php" enctype="multipart/form-data">
                 <input type="hidden" id="action" name="action" value="add">
+                <input type="hidden" id="news_id" name="news_id">
                 <label for="news_title">Tiêu đề</label>
                 <input type="text" id="news_title" name="news_title" required>
                 <label for="publish_date">Ngày đăng</label>
-                <input type = "date" id="publish_date" name="publish_date" required>
+                <input type="date" id="publish_date" name="publish_date" required>
                 <label for="news_content">Nội dung</label>
                 <input type="text" id="news_content" name="news_content" required>
                 <label for="news_img">Hình ảnh</label>
                 <input type="file" id="news_img" name="news_img">
-                <button type="submit" name ="btn">XÁC NHẬN</button>
+                <button type="submit">XÁC NHẬN</button>
             </form>
+
         </div>
     </main>
 </body>
