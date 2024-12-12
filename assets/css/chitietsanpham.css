@@ -176,11 +176,6 @@ h2 {
     
 }
 
-.add-to-cart {
-    background-color: #f90;
-    color: #fff;
-}
-
 .buy-now {
     background-color: #e91e63;
     color: #fff;
@@ -221,11 +216,13 @@ h2 {
 .quantity-selector {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     font-size: 16px;
     color: #333;
+    margin-bottom: 10px;
 }
-
+.quantity-selector label{
+    font-weight: bold;
+}
 .quantity-control {
     display: flex;
     align-items: center;
@@ -260,14 +257,16 @@ h2 {
 .action-buttons {
     display: flex;
     flex-direction: column; /* Đặt các nút theo chiều dọc */
-    align-items: flex-start;
     gap: 10px; /* Khoảng cách giữa các nút */
+    max-width: 90%;
 }
 
 .add-to-cart {
     background-color: #f90;
     color: #fff;
     transition: background-color 0.3s ease;
+    margin-top: 10px;
+
 }
 
 .add-to-cart:hover {
