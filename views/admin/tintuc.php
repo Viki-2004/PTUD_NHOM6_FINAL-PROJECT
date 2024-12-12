@@ -1,7 +1,6 @@
 <?php
 // Kết nối tới cơ sở dữ liệu
 include '../../config/connect.php';
-
 // Xử lý xóa tin tức
 if (isset($_GET['delete_news_id'])) {
     $delete_news_id = $_GET['delete_news_id'];
@@ -26,8 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $news_title = $_POST['news_title'];
     $publish_date = $_POST['publish_date'];
     $news_content = $_POST['news_content'];
-    $news_img = $_POST['news_img'];
-    $id_admin = $_POST['id_admin'];
     $action = $_POST['action'];
 
     if ($action == 'edit') {
@@ -54,6 +51,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             echo "<script>alert('Có lỗi xảy ra khi thêm tin tức!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";//chưa sửa
             exit();
         }
+    }
+    if(isset($_POST['btn'])){
+        $news_title1 = $_POST['news_title'];
+        $publish_date1 = $_POST['publish_date'];
+        $news_content1 = $_POST['news_content'];
+        $news_img1 = $_FILES['news_img']['name']; // Chỉ lấy tên hình ảnh để gửi lên database
+        $image_tmp_name = $_FILES['news_img']['tmp_name'];
+        $sql1 = "INSERT INTO news(news_title, publish_date, news_content, news_img)
+        VALUE('$news_title1','$publish_date1','$news_content1', '$news_img1')";
+    
+        mysqli_query($conn, $sql1);
+        move_uploaded_file($image_tmp_name , '/assets/img/NEWS/'.$news_img1 );
     }
     $stmt->close();
 }
@@ -354,8 +363,7 @@ $result = $conn->query($sql);
         <!-- Phần chỉnh sửa hoặc thêm mới tin tức-->
         <div class="form-section">
             <h3>Thêm hoặc cập nhật tin tức</h3>
-            <form method="POST" action="">
-                <input type="hidden" id="news_id" name="news_id">
+            <form method="POST" action="tintuc.php" enctype = "multipart/form-data"> 
                 <input type="hidden" id="action" name="action" value="add">
                 <label for="news_title">Tiêu đề</label>
                 <input type="text" id="news_title" name="news_title" required>
@@ -364,8 +372,8 @@ $result = $conn->query($sql);
                 <label for="news_content">Nội dung</label>
                 <input type="text" id="news_content" name="news_content" required>
                 <label for="news_img">Hình ảnh</label>
-                <input type="file" id="news_img" name="news_img" accept="image/*">
-                <button type="submit">XÁC NHẬN</button>
+                <input type="file" id="news_img" name="news_img">
+                <button type="submit" name ="btn">XÁC NHẬN</button>
             </form>
         </div>
     </main>
