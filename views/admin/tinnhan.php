@@ -41,6 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 }
 
 // Thực thi truy vấn SELECT để lấy dữ liệu
-$sql = "SELECT * FROM product";
+$sql = "SELECT * FROM contact";
 $result = $conn->query($sql);
 ?>
