@@ -67,7 +67,7 @@
                     </tr>
                     <?php }?>
                         <td colspan ="7">
-                            <button type="submit" name="update" class="update_btn">Cập nhật</button>
+                            <button type="submit" name="update" class="update_btn"><a style = "text-decoration: none; color: black" href="./product.php">Tiếp tục mua hàng</button>
                             <button type="submit" name="delete" class="delete_btn"><a style = "text-decoration: none; color: black" href="addcart.php?deleteall=1">Xóa tất cả</a></button>
                         </td>
             </table>
@@ -102,7 +102,7 @@
                 }   
                 ?> 
                 </p>
-                <input type="submit" name = "order_click" value = "Đặt Hàng" class ="order_btn"/>
+                <input type="submit" name = "order_click" value = "Đặt Hàng" class ="order_btn" onclick="window.location.href='./checkout.php';"/>
             </div>
     </div>
 </div>

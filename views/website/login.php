@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result_users = $stmt_users->get_result();
 
     if ($result_users->num_rows > 0) {
-        $user_id = $result_users = $stmt_uesers-> fetch_assoc()['user_id'];
+        $user_id = $result_users->fetch_assoc()['user_id'];
         session_start();
         $_SESSION['user_id']=$user_id;
         // Đăng nhập thành công với bảng users
