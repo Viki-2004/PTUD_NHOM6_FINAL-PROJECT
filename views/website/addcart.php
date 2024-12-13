@@ -1,28 +1,82 @@
 <?php
-    session_start();
-    include "../../config/connect.php";
-    // session_destroy();
-    //thêm số lượng
-    //trừ số lượng
-    //xóa sản phẩm
-    if (isset($_SESSION['cart']) && $_GET['delete']) {
-        $sku = $_GET['delete'];
-        foreach ($_SESSION['cart'] as $key => $cart_item) {
-            if ($cart_item['sku'] == $sku) {
-                unset($_SESSION['cart'][$key]); // Xóa sản phẩm
-            }
+session_start();
+include "../../config/connect.php";
+
+// Thêm số lượng
+if (isset($_GET['cong'])) {
+    $sku = $_GET['cong'];
+    foreach ($_SESSION['cart'] as $cart_item) {
+        if ($cart_item['sku'] != $sku) {
+            $product[] = array(
+                'product_name' => $cart_item['product_name'],
+                'sku' => $cart_item['sku'],
+                'quantity' => $cart_item['quantity'],
+                'product_img' => $cart_item['product_img'],
+                'price' => $cart_item['price']
+            );
+        } else {
+            $tangsoluong = $cart_item['quantity'] + 1;
+            $product[] = array(
+                'product_name' => $cart_item['product_name'],
+                'sku' => $cart_item['sku'],
+                'quantity' => min($tangsoluong, 10), // Giới hạn số lượng tối đa là 9
+                'product_img' => $cart_item['product_img'],
+                'price' => $cart_item['price']
+            );
         }
-        if (empty($_SESSION['cart'])) {
-            unset($_SESSION['cart']);
-        }
-        header('Location: ./cart.php');
-        exit;
-        }
-//     // xóa tất cả
-    if (isset($_GET['deleteall']) && $_GET['deleteall'] == 1) {
-        unset($_SESSION['cart']);
-        header('location: ./cart.php');
     }
+    $_SESSION['cart'] = $product;
+    header('Location: ./cart.php');
+    exit;
+}
+
+// Trừ số lượng
+if (isset($_GET['tru'])) {
+    $sku = $_GET['tru'];
+    foreach ($_SESSION['cart'] as $cart_item) {
+        if ($cart_item['sku'] != $sku) {
+            $product[] = array(
+                'product_name' => $cart_item['product_name'],
+                'sku' => $cart_item['sku'],
+                'quantity' => $cart_item['quantity'],
+                'product_img' => $cart_item['product_img'],
+                'price' => $cart_item['price']
+            );
+        } else {
+            $tangsoluong = $cart_item['quantity'] - 1;
+            $product[] = array(
+                'product_name' => $cart_item['product_name'],
+                'sku' => $cart_item['sku'],
+                'quantity' => max($tangsoluong, 1), // Giới hạn số lượng tối thiểu là 1
+                'product_img' => $cart_item['product_img'],
+                'price' => $cart_item['price']
+            );
+        }
+    }
+    $_SESSION['cart'] = $product;
+    header('Location: ./cart.php');
+    exit;
+}
+
+// Xóa sản phẩm
+if (isset($_SESSION['cart']) && isset($_GET['delete'])) {
+    $sku = $_GET['delete'];
+    foreach ($_SESSION['cart'] as $key => $cart_item) {
+        if ($cart_item['sku'] == $sku) {
+            unset($_SESSION['cart'][$key]);
+        }
+    }
+    $_SESSION['cart'] = array_values($_SESSION['cart']); // Sắp xếp lại chỉ số
+    header('Location: ./cart.php');
+    exit;
+}
+
+// Xóa tất cả
+if (isset($_GET['deleteall']) && $_GET['deleteall'] == 1) {
+    unset($_SESSION['cart']);
+    header('Location: ./cart.php');
+    exit;
+}
 //     // Thêm sản phẩm vào giỏ hàng
     if (isset($_POST['addcart'])){
         $sku = $_GET['sku'];
@@ -36,7 +90,7 @@
                 'sku' => $sku,
                 'quantity' => $quantity,
                 'price' => $row['product_price'], 
-                'img' => $row['product_img'] ));
+                'product_img' => $row['product_img'] ));
             // Kiem tra session gio hang ton tai
             if (isset($_SESSION['cart'])){
                 $found =false;

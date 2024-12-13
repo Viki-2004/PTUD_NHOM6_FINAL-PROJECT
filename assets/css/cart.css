@@ -170,7 +170,7 @@ body {
     cursor: pointer;
 }
 .order-summary button:hover {
-    background-color: #e9195f;
+    background-color: #fa8db2;
     font-weight: bold;
 }
 .order-summary .apply-btn {
@@ -466,4 +466,30 @@ h2{
 section {
     text-align: center;
     margin-bottom: 20px;
+}
+.apply-btn, .update_btn{
+    background-color: #e4e4e4;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+.delete_btn, .order_btn{
+    background-color: #e4e4e4;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: none;
+}
+.order_btn{
+    margin-top: 5px;
+    padding: 10px 60px;
+    background-color: #ffb4ce;
+    font-size: 100%;
+}
+.apply-btn:hover, .update_btn:hover, .delete_btn:hover{
+    background-color: #ffb4ce;
+}
+.order_btn:hover{
+    background-color: #ea0707;
+    color: white;
 }
