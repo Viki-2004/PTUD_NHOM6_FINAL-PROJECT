@@ -105,7 +105,7 @@
                                     </a>
                                     <button class="nav-buy-now-btn">Mua ngay</button>
                                 </div>
-                                    <p class="product-name"><a style="text-decoration: none; color: #f25a8c;" href = "chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
+                                    <p class="product-name"><a style="text-decoration: none; color: #f25a8c;" href = "views/website/chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
                                     </p>
                                     <p class="product-price"><?php echo number_format($row['product_price'], 0, ',', '.'); ?>đ</p>
                             </div>
@@ -148,7 +148,7 @@
                                     </a>
                                     <button class="nav-buy-now-btn">Mua ngay</button>
                                 </div>
-                                    <p class="nav-name"><a style="text-decoration: none; color: #f25a8c;" href = "chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
+                                    <p class="nav-name"><a style="text-decoration: none; color: #f25a8c;" href = "views/website/chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
                                     </p>
                                     <p class="nav-price"><?php echo number_format($row['product_price'], 0, ',', '.'); ?>đ</p>
                             </div>
