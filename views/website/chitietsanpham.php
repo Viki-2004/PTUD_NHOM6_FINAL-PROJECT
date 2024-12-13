@@ -61,17 +61,26 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
             <div class="product-details">
             <div class="product-title"><?=$product["product_name"]?></div>
             <div class="product_price"><?php echo number_format($product['product_price'], 0, ',', '.'); ?>đ</div>
-               
-                <!-- Hành động -->
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <a href="#" class="reviews">71 Đánh giá</a>
+              <span class="divider">|</span>
+              <span class="sold">7000+ Đã bán</span>
+              <div class="icons-details">
+                <i class="far fa-heart"></i>
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+            </div>
+               <!-- Hành động -->
                 <div class="product-actions">
                     <div class="action-buttons">
                         <form id = "add-to-cart-form" action = "addcart.php?sku=<?php echo $product['sku'] ?>" method = "POST">
-                        <div class="quantity-selector">
-                          <label for="quantity">Số lượng:</label>
-                            <div class="quantity-control">
-                                <input type = "text" id="quantity" value = "1" name = "quantity[<?=$product['sku']?>]" size ="2" />
-                            </div>
-                        </div>
                         <input type = "submit" id="addToCart" name="addcart" class="add-to-cart" value ="Thêm vào giỏ hàng"/>
                          </form>
                     </div>
