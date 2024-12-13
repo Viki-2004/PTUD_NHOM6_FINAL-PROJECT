@@ -61,8 +61,7 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
             <div class="product-details">
             <div class="product-title"><?=$product["product_name"]?></div>
             <div class="product_price"><?php echo number_format($product['product_price'], 0, ',', '.'); ?>đ</div>
-                <!-- Chọn số lượng -->
-                
+               
                 <!-- Hành động -->
                 <div class="product-actions">
                     <div class="action-buttons">
