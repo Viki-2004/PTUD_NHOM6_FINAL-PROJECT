@@ -108,13 +108,13 @@
             ('03f06.png', 'F06'),
             ('04f06.png', 'F06');
         
-        INSERT INTO orders (customer_name, customer_address, customer_phone, customer_email, created_at, user_id)
+        INSERT INTO orders (customer_name, customer_address, customer_phone, customer_email, total_bill, created_at, user_id)
             VALUES
-            ('Vĩnh Kim', '42 Nguyễn Huệ, Quận 1, Thành phố Hồ Chí Minh.', '0965432198', 'cloudyday22@gmail.com', '2015-09-15', 007),
-            ('Nhật Anh', '101 Nguyễn Văn Linh, Quận Hải Châu, Thành phố Đà Nẵng.', '0708123456', 'foresttrail7@yahoo.com', '2017-07-08', 008),
-            ('Hương Ly', '7 Nguyễn Trường Tộ, Thành phố Huế, Tỉnh Thừa Thiên Huế.', '0799876543', 'brightmoon6@hotmail.com', '2009-11-01', 009),
-            ('Gia Huy', '209 Đường 30 Tháng 4, Quận Ninh Kiều, Thành phố Cần Thơ.', '0886789012', 'cozyhome99@outlook.com', '2005-05-08', 010),
-            ('Khánh Linh', '36 Lý Thái Tổ, Quận Hoàn Kiếm, Thành phố Hà Nội.', '0823456789', 'morningdew5@gmail.com', '2013-02-03', 011);
+            ('Vĩnh Kim', '42 Nguyễn Huệ, Quận 1, Thành phố Hồ Chí Minh.', '0965432198', 'cloudyday22@gmail.com','657000', '2015-09-15', 007),
+            ('Nhật Anh', '101 Nguyễn Văn Linh, Quận Hải Châu, Thành phố Đà Nẵng.', '0708123456', 'foresttrail7@yahoo.com','4805000', '2017-07-08', 008),
+            ('Hương Ly', '7 Nguyễn Trường Tộ, Thành phố Huế, Tỉnh Thừa Thiên Huế.', '0799876543', 'brightmoon6@hotmail.com','700000', '2009-11-01', 009),
+            ('Gia Huy', '209 Đường 30 Tháng 4, Quận Ninh Kiều, Thành phố Cần Thơ.', '0886789012', 'cozyhome99@outlook.com','1619000', '2005-05-08', 010),
+            ('Khánh Linh', '36 Lý Thái Tổ, Quận Hoàn Kiếm, Thành phố Hà Nội.', '0823456789', 'morningdew5@gmail.com','1610000', '2013-02-03', 011);
 
 
         INSERT INTO order_details (sku, order_id, user_id, order_quantity, price, total)

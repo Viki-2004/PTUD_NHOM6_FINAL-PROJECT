@@ -46,6 +46,7 @@
     customer_address TEXT NOT NULL,
     customer_phone VARCHAR(10) NOT NULL,
     customer_email VARCHAR(255),
+    total_bill DECIMAL(10, 0) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     user_id INT(3),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -58,16 +59,12 @@
     order_quantity INT NOT NULL,
     price DECIMAL(10, 0) NOT NULL,
     total DECIMAL(10, 0) NOT NULL
-    /*PRIMARY KEY (order_id, user_id),
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),
-    FOREIGN KEY (user_id) REFERENCES users(user_id)*/
 );
 
     CREATE TABLE product_img (
     img_id INT(3) AUTO_INCREMENT PRIMARY KEY,
     img_url VARCHAR(255) NOT NULL,
     sku VARCHAR(20)
-    /*FOREIGN KEY (sku) REFERENCES product(sku)*/
 );
     CREATE TABLE contact (
     contact_id INT(3) AUTO_INCREMENT PRIMARY KEY,

@@ -117,7 +117,10 @@ $categories = mysqli_query($conn, "SELECT * FROM category");
                                     <img src="../../assets/img/products/<?= $row["product_img"] ?>" alt="<?= $row["product_img"] ?>" class="default_img">
                                     <img src="../../assets/img/products/<?= $row["product_hover"] ?>" alt="<?= $row["product_hover"] ?> hover" class="hover_img">
                                 </a>
-                                <button class="nav-buy-now-btn">Mua ngay</button>
+                                    <form id = "add-to-cart-form" action = "./addcart.php?sku=<?php echo $row['sku'] ?>" method = "POST">
+                                                <input type = "submit" id="addToCart" name="addcart" class="nav-buy-now-btn" value ="Mua ngay"/>
+                                    </form>
+
                             </div>
                             <div class="product_item_info">
                                 <h4 class="product_name">

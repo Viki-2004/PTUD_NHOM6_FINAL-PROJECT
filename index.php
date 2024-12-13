@@ -103,7 +103,9 @@
                                     <img src="assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
                                     <img src="assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
                                     </a>
-                                    <button class="nav-buy-now-btn">Mua ngay</button>
+                                            <form id = "add-to-cart-form" action = "views/website/addcart.php?sku=<?php echo $row['sku'] ?>" method = "POST">
+                                                <input type = "submit" id="addToCart" name="addcart" class="nav-buy-now-btn" value ="Mua ngay"/>
+                                            </form>
                                 </div>
                                     <p class="product-name"><a style="text-decoration: none; color: #f25a8c;" href = "views/website/chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
                                     </p>
@@ -146,7 +148,9 @@
                                     <img src="assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="nav-main-image">
                                     <img src="assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="nav-hover-image">
                                     </a>
-                                    <button class="nav-buy-now-btn">Mua ngay</button>
+                                    <form id = "add-to-cart-form" action = "views/website/addcart.php?sku=<?php echo $row['sku'] ?>" method = "POST">
+                                                <input type = "submit" id="addToCart" name="addcart" class="nav-buy-now-btn" value ="Mua ngay"/>
+                                    </form>
                                 </div>
                                     <p class="nav-name"><a style="text-decoration: none; color: #f25a8c;" href = "views/website/chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
                                     </p>

@@ -16,8 +16,32 @@
     </header>
  
 <body>
-<div class="container">
-    <h2>Thông tin thanh toán</h2>
+    <div class="container">
+        <!-- Form Section -->
+            
+            <!-- Form Section -->
+            <div class="checkout-form">
+                <h2>Thông tin đặt hàng</h2>
+                <form action="addcheckout.php" method="POST">
+
+                <label for="name">Tên người nhận:</label>
+                <input type="text" id="name" placeholder="Họ tên người nhận" name="name" required>
+                
+                <label for="address">Địa chỉ</label>
+                <input type="text" id="address" placeholder="Địa chỉ nhận"name="address" required>
+                
+                <label for="phone">Số điện thoại</label>
+                <input type="text" id="phone" placeholder="Số điện thoại người nhận" name="phone" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Nhập email của bạn" name="email" required>
+            
+                <button type="submit">Hoàn tất đặt hàng</button>
+                </form>
+            </div>
+    </div>
+<!-- <div class="container">
+    <h2>Thông tin đặt hàng</h2>
     <form action="addcheckout.php" method="POST">
         <label for="name">Tên người nhận:</label>
         <input type="text" id="name" name="name" required>
@@ -27,8 +51,8 @@
         <input type="text" id="phone" name="phone" required>
         <label for="email">Email người nhận:</label>
         <input type="email" id="email" name="email" required>
-        <button type="submit">Hoàn tất thanh toán</button>
+        <button type="submit">Hoàn tất đặt hàng</button>
     </form>
-</div>
+</div> -->
 </body>
 </html>
