@@ -176,11 +176,6 @@ h2 {
     
 }
 
-.add-to-cart {
-    background-color: #f90;
-    color: #fff;
-}
-
 .buy-now {
     background-color: #e91e63;
     color: #fff;
@@ -221,11 +216,13 @@ h2 {
 .quantity-selector {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     font-size: 16px;
     color: #333;
+    margin-bottom: 10px;
 }
-
+.quantity-selector label{
+    font-weight: bold;
+}
 .quantity-control {
     display: flex;
     align-items: center;
@@ -259,13 +256,20 @@ h2 {
 /* Container bao bọc nút để căn chỉnh */
 .action-buttons {
     display: flex;
+<<<<<<< HEAD
     flex-direction: column; /* Nút xếp dọc */
     align-items: left; /* Căn giữa nội dung */
     gap: 5px; /* Khoảng cách giữa các nút */
+=======
+    flex-direction: column; /* Đặt các nút theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa các nút */
+    max-width: 90%;
+>>>>>>> 8b167922122e35f9db9ba65d35316a6831ad7a7b
 }
 
 /* Nút Thêm vào giỏ */
 .add-to-cart {
+<<<<<<< HEAD
     width: 200px; /* Đặt chiều rộng cố định */
     padding: 12px 20px; /* Khoảng cách bên trong */
     font-size: 16px; /* Kích thước chữ */
@@ -282,6 +286,13 @@ h2 {
     background-color: #f90; /* Màu cam */
     color: #fff; /* Màu chữ */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+=======
+    background-color: #f90;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+
+>>>>>>> 8b167922122e35f9db9ba65d35316a6831ad7a7b
 }
 
 .add-to-cart:hover {
