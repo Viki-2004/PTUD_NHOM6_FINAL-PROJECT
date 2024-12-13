@@ -25,16 +25,17 @@
             $user_phone = $_POST['user_phone'];
             $user_name = $_POST['user_name'];
             $user_password = $_POST['user_password'];
-            if($conn -> query("INSERT INTO users(user_name, user_email, user_phone, user_password) VALUES (N'$user_name',N'$user_email',N'$user_phone',N'$user_password')")){
-                echo("<script>alert('Bạn đã đăng ký thành công');</script>");
+            $stmt = $conn->prepare("INSERT INTO users (user_name, user_email, user_phone, user_password) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $user_name, $user_email, $user_phone, $user_password);
+            
+            if ($stmt->execute()) {
+                echo "<script>alert('Bạn đã đăng ký thành công');</script>";
                 echo "<script>window.location.href='../../views/website/login.php';</script>";
-            }
-            else{
-                echo("<script>alert('Bạn đã đăng ký thất bại');</script>");
+            } else {
+                echo "<script>alert('Bạn đã đăng ký thất bại: " . htmlspecialchars($conn->error) . "');</script>";
                 echo "<script>window.location.href='../../views/website/trangdangky.php';</script>";
             }
         }
-        $conn->close();
         ?>
         <form action="" id="form-signup" method = "POST">
             <h1 class="form-heading">ĐĂNG KÝ TÀI KHOẢN</h1>

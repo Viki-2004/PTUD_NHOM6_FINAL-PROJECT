@@ -109,8 +109,13 @@
 
     <div class="comment-section">
         <form>
-            <textarea placeholder="Viết bình luận của bạn..." rows="4" cols="50"></textarea>
-            <button type="submit">Gửi bình luận</button>
+            <textarea placeholder="Viết ghi chú cho đơn hàng của bạn..." rows="4" cols="50"></textarea>
+            <button type="submit">Gửi</button>
         </form>
         </div>
     </div>
+    <footer>
+<?php include "./footer.php"; ?>
+</footer>
+            </body>
+            </html>

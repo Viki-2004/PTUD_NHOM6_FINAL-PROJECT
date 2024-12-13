@@ -35,7 +35,6 @@
     $order_items[] = $row;
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -44,48 +43,71 @@
     <title>GIỎ HÀNG</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../../assets/css/checkout.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/css/cart_queries.css">
-    <script src="../../assets/js/cart.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/donecheckout.css">
+
 </head>
 <body>
-    <div class="logo"><b>POLIDOLL</b></div>
     <div class="container">
-        <!-- Form Section -->
-        <div class="container">
-            <h1>ĐẶT HÀNG THÀNH CÔNG</h1>
-            <!-- Form Section -->
-            <div class="checkout-form">
-            <h2>Thông tin người đặt</h2>
-            <ul>
-                <li><strong>Họ và Tên:</strong><?php echo $customer_name?></li>
-                <li><strong>Địa chỉ:</strong><?php echo $customer_address?></li>
-                <li><strong>Số điện thoại:</strong><?php echo $customer_phone?></li>
-                <li><strong>Email:</strong><?php echo $customer_email?></li>
-            </ul>
+        <!-- Heading -->
+        <h1>ĐẶT HÀNG THÀNH CÔNG</h1>
+
+        <!-- Table: Thông tin người đặt -->
+        <h2>Thông tin người đặt</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Họ và Tên</th>
+                    <td><?php echo $customer_name; ?></td>
+                </tr>
+                <tr>
+                    <th>Địa chỉ</th>
+                    <td><?php echo $customer_address; ?></td>
+                </tr>
+                <tr>
+                    <th>Số điện thoại</th>
+                    <td><?php echo $customer_phone; ?></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><?php echo $customer_email; ?></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Table: Thông tin đơn hàng -->
+        <h2>Thông tin đơn hàng</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hình ảnh</th>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($order_items as $item) { ?>
+                <tr>
+                    <td><img src="../../assets/img/products/<?php echo $item['product_img']; ?>" alt="<?php echo $item['product_name']; ?>"></td>
+                    <td><?php echo $item['product_name']; ?></td>
+                    <td><?php echo $item['order_quantity']; ?></td>
+                    <td><?= number_format($item['price'], 0, ',', '.'); ?> đ</td>
+                </tr>
+                <tr col = 3>
+                    
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+
+        <!-- Tổng tiền -->
+        <div class="total">
+            <span>Tổng:</span>
+            <span><?= number_format($total_bill, 0, ',', '.'); ?> đ</span>
         </div>
-    
-            <!-- Order Summary Section -->
-            <div class="order-summary">
-                <h3>Thông tin đơn hàng</h3>
-                <ul>
-                    <?php foreach ($order_items as $item) {?>
-                    <li>
-                        <img src="../../assets/img/products/<?php echo $item['product_img']; ?>" alt="<?php echo $item['product_img']; ?>">
-                        <span><?php echo $item['product_name']; ?></span>
-                        <span><?php echo $item['order_quantity']; ?></span>
-                        <span><?=number_format($item['price'], 0, ',', '.')?> đ</span>
-                    </li>
-                    <?php } ?>
-                </ul>
-                
-                <div class="total">
-                    <span>Tổng:</span>
-                    <span><?=number_format($total_bill, 0, ',', '.')?> đ</span>
-                </div>
-                <button><a href="../../index.php">Quay về trang chủ</a></button>
-            </div>
-        </div>
+
+        <!-- Nút quay về -->
+        <button><a href="../../index.php">Quay về trang chủ</a></button>
+    </div>
 </body>
 </html>

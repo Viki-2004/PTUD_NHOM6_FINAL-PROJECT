@@ -4,22 +4,22 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-.logo {
-    display: block;
-    font-size: 3rem;
-    color: #ff69b4;
-    text-align: center;
-    margin-bottom: 20px;
-    top: 20px; /* Khoảng cách cố định từ trên cùng */
-    height: fit-content;
-    
+.header {
+    background-color: #fff;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f8c3d6;
 }
 .container {
-    max-width: 700px;
+    max-width: 1000px;
     margin: 0px auto;
     background-color: #fff; 
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 .checkout-form {
     flex: 2;
@@ -29,6 +29,9 @@ body {
 }
 .checkout-form h2 {
     margin-bottom: 20px;
+    text-align: center;
+    color: #df376f;
+    text-transform: uppercase;
 }
 .form-group {
     display: flex;
@@ -41,6 +44,11 @@ body {
     display: flex;
     margin: 5px 0 2px;
     padding: 1px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.checkout-form label i{
+    margin-right: 8px;
 }
 .checkout-form input, .checkout-form select {
     width: 100%;
@@ -48,6 +56,10 @@ body {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+.checkout-form input{
+    height: 30px;
+    font-size: 15px;
 }
 .order-summary {
     flex: 2;
@@ -86,14 +98,18 @@ body {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #ff84c6;
+    background-color: #df376f;
     color: white;
     border: none;
     border-radius: 5px;
     margin-top: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
 }
-button:hover { 
-    background-color: #ff85c1;
+.checkout-form button:hover, .checkout-form button:active{
+    background-color: #e70404;
+    color: white;
 }
 .order-summary button {
     padding: 10px;
