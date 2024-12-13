@@ -66,14 +66,14 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
                 <!-- Hành động -->
                 <div class="product-actions">
                     <div class="action-buttons">
-                        <form id = "add-to-cart-form" action = "cart.php?action=add" method = "POST">
+                        <form id = "add-to-cart-form" action = "addcart.php?sku=<?php echo $product['sku'] ?>" method = "POST">
                         <div class="quantity-selector">
                           <label for="quantity">Số lượng:</label>
                             <div class="quantity-control">
                                 <input type = "text" id="quantity" value = "1" name = "quantity[<?=$product['sku']?>]" size ="2" />
                             </div>
                         </div>
-                        <input type = "submit" id="addToCart" class="add-to-cart" value ="Thêm vào giỏ hàng"/>
+                        <input type = "submit" id="addToCart" name="addcart" class="add-to-cart" value ="Thêm vào giỏ hàng"/>
                          </form>
                     </div>
                 </div>
