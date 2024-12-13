@@ -48,11 +48,15 @@
                     <tr>
                         <td><?php echo $stt; ?></td>
                         <td><?php echo $cart_item['product_name']; ?></td>
-                        <td><img src="../../assets/img/products/<?php echo $cart_item['img']; ?>" width="150px" ></td>
+                        <td><img style = "width=200px"src="../../assets/img/products/<?php echo $cart_item['product_img'];?>"></td>
                         <td><?=number_format($cart_item['price'], 0, ',', '.')?> đ</td>
-                        <td><?php echo $cart_item['quantity']; ?></td>
+                        <td>
+                            <a style = "text-decoration: none; color: #df376f; font-size: 110%" href ="addcart.php?cong=<?php echo $cart_item['sku']?>"><i class="fa-regular fa-square-plus"></i></a>
+                            <?php echo $cart_item['quantity']; ?>
+                            <a style = "text-decoration: none; color: #df376f; font-size: 110%" href ="addcart.php?tru=<?php echo $cart_item['sku']?>"><i class="fa-regular fa-square-minus"></i></a>
+                        </td>
                         <td><?=number_format($thanhtien, 0, ',', '.')?> đ</td>
-                        <td><a href="addcart.php?delete=<?php echo $cart_item['sku']?>">Xóa</a></td>
+                        <td><a style = "text-decoration: none; color: #df376f" href="addcart.php?delete=<?php echo $cart_item['sku']?>"><i class="fa-solid fa-trash"></i></a></td>
                     </tr>
                     
                     <?php
@@ -64,7 +68,7 @@
                     <?php }?>
                         <td colspan ="7">
                             <button type="submit" name="update" class="update_btn">Cập nhật</button>
-                            <button type="submit" name="delete" class="delete_btn"><a href="addcart.php?deleteall=1">Xóa tất cả</a></button>
+                            <button type="submit" name="delete" class="delete_btn"><a style = "text-decoration: none; color: black" href="addcart.php?deleteall=1">Xóa tất cả</a></button>
                         </td>
             </table>
             <!-- <input type="submit" name = "action" value = "Cập nhật"/>
@@ -75,10 +79,30 @@
                 <h2>ĐƠN HÀNG</h2>
                 <input type="text" name="discount_code" placeholder="Mã giảm giá">
                 <button type="submit" name="apply_code" class="apply-btn">ÁP DỤNG</button>
-                <p class="total-bill"><span> Tổng tiền: </span><?=number_format($total, 0, ',', '.')?> đ</p>
+                <p class="total-bill">Tổng tiền:
+                    <?php 
+                    if (!empty($total)) {
+                        ?>
+                        <p style = "font-weight: bold ; color: red"><?= number_format($total, 0, ',', '.') ?>đ</p>
+                        <?php
+                    } else {
+                        echo "Chưa có sản phẩm trong giỏ hàng";
+                    }   
+                    ?>
+                </p>
                 <p class="discount">Giảm giá: 0 đ</p>
-                <p class="final-bill"><span> Tổng hóa đơn: <span><?=number_format($total, 0, ',', '.')?> đ</p>
-                <input type="submit" name = "order_click" value = "Đặt Hàng"/>
+                <p class="final-bill">Tổng hóa đơn:
+                <?php 
+                  if (!empty($total)) {
+                    ?>
+                    <p style = "font-weight: bold ; color: red"><?= number_format($total, 0, ',', '.') ?>đ</p>
+                    <?php
+                } else {
+                    echo "Chưa có sản phẩm trong giỏ hàng";
+                }   
+                ?> 
+                </p>
+                <input type="submit" name = "order_click" value = "Đặt Hàng" class ="order_btn"/>
             </div>
     </div>
 </div>

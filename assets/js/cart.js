@@ -9,7 +9,6 @@ const cartItems = document.querySelectorAll('.cart tbody tr');
 
 // Hàm cập nhật tổng tiền theo số lượng
 document.addEventListener('DOMContentLoaded', function () {
-    const quantityInputs = document.querySelectorAll('.quantity');
     const cartRows = document.querySelectorAll('tr[data-id]');
     const totalBillElement = document.querySelector('.total-bill');
     const finalBillElement = document.querySelector('.final-bill');
@@ -20,59 +19,52 @@ document.addEventListener('DOMContentLoaded', function () {
 
         cartRows.forEach(row => {
             const price = parseInt(row.querySelector('.price').textContent.replace(/\D/g, ''), 10);
-            const quantity = parseInt(row.querySelector('.quantity').value, 10);
+            const quantityInput = row.querySelector('.quantity input');
+            const quantity = parseInt(quantityInput.value, 10);
             const total = price * quantity;
 
             row.querySelector('.total').textContent = new Intl.NumberFormat('vi-VN').format(total) + 'đ';
             totalBill += total;
         });
 
-        const discount = parseFloat(<?= $discount ?>); // Lấy giảm giá từ PHP
+        const discount = parseFloat(<?= $discount ?> || 0); // Lấy giảm giá từ PHP
         const finalBill = totalBill * (1 - discount);
 
         totalBillElement.textContent = 'Tổng hóa đơn: ' + new Intl.NumberFormat('vi-VN').format(totalBill) + 'đ';
         finalBillElement.textContent = 'Thành tiền: ' + new Intl.NumberFormat('vi-VN').format(finalBill) + 'đ';
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // Lấy tất cả các nút tăng giảm
-        const increaseBtns = document.querySelectorAll('.increase-btn');
-        const decreaseBtns = document.querySelectorAll('.decrease-btn');
+    // Xử lý sự kiện khi số lượng thay đổi
+    cartRows.forEach(row => {
+        const quantityInput = row.querySelector('.quantity input');
         
-        // Thêm sự kiện cho nút tăng
-        increaseBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const productId = this.getAttribute('data-id');
-                const input = document.querySelector(`input[name="quantity[${productId}]"]`);
-                let quantity = parseInt(input.value);
-                input.value = quantity + 1;
-                updateTotalPrice(productId);
-            });
+        // Sự kiện khi nhấn nút tăng hoặc giảm
+        const increaseBtn = row.querySelector('.increase-btn');
+        const decreaseBtn = row.querySelector('.decrease-btn');
+
+        increaseBtn.addEventListener('click', () => {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+            calculateTotal();
         });
-    
-        // Thêm sự kiện cho nút giảm
-        decreaseBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const productId = this.getAttribute('data-id');
-                const input = document.querySelector(`input[name="quantity[${productId}]"]`);
-                let quantity = parseInt(input.value);
-                if (quantity > 1) {
-                    input.value = quantity - 1;
-                    updateTotalPrice(productId);
-                }
-            });
+
+        decreaseBtn.addEventListener('click', () => {
+            if (quantityInput.value > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+                calculateTotal();
+            }
         });
-    
-        // Cập nhật lại tổng tiền của sản phẩm
-        function updateTotalPrice(productId) {
-            const price = parseFloat(document.querySelector(`.price[data-id="${productId}"]`).textContent.replace('đ', '').replace(',', ''));
-            const quantity = parseInt(document.querySelector(`input[name="quantity[${productId}]"]`).value);
-            const total = price * quantity;
-            document.querySelector(`.total[data-id="${productId}"]`).textContent = total.toLocaleString() + 'đ';
-        }
+
+        // Sự kiện khi nhập trực tiếp vào ô số lượng
+        quantityInput.addEventListener('change', () => {
+            if (quantityInput.value < 1) {
+                quantityInput.value = 1; // Đảm bảo số lượng tối thiểu là 1
+            }
+            calculateTotal();
+        });
     });
 
-    calculateTotal(); // Tính toán ban đầu
+    // Tính tổng ngay khi load trang
+    calculateTotal();
 });
 
 function initCarousel(buttonLeft, buttonRight, track, itemSelector, visibleItems = 5) {
