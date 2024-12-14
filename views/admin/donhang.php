@@ -27,15 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $customer_address = $_POST['customer_address'];
     $customer_phone = $_POST['customer_phone'];
     $customer_email = $_POST['customer_email'];
+    $total_bill = $_POST['total_bill'];
     $created_at = $_POST['created_at'] ?? date('Y-m-d H:i:s');
     $user_id = $_POST['user_id'];
     $action = $_POST['action'];
 
     if ($action == 'edit') {
         $order_id = $_POST['order_id'];
-        $sql = "UPDATE orders SET customer_name = ?, customer_address = ?, customer_phone = ?, customer_email = ?, created_at = ?, user_id = ? WHERE order_id = ?";
+        $sql = "UPDATE orders SET customer_name = ?, customer_address = ?, customer_phone = ?, customer_email = ?, total_bill = ?, created_at = ?, user_id = ? WHERE order_id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssii", $customer_name, $customer_address, $customer_phone, $customer_email, $created_at, $user_id, $order_id);
+        $stmt->bind_param("ssssisii", $customer_name, $customer_address, $customer_phone, $customer_email, $total_bill, $created_at, $user_id, $order_id);
 
         if ($stmt->execute()) {
             echo "<script>alert('Cập nhật đơn hàng thành công!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
@@ -45,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             exit();
         }
     } else {
-        $sql = "INSERT INTO orders (customer_name, customer_address, customer_phone, customer_email, created_at, user_id) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO orders (customer_name, customer_address, customer_phone, customer_email, total_bill, created_at, user_id) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssi", $customer_name, $customer_address, $customer_phone, $customer_email, $created_at, $user_id);
+        $stmt->bind_param("ssssisi", $customer_name, $customer_address, $customer_phone, $customer_email, $total_bill, $created_at, $user_id);
 
         if ($stmt->execute()) {
             echo "<script>alert('Thêm đơn hàng thành công!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
@@ -311,6 +312,7 @@ $result = $conn->query($sql);
             document.getElementById('customer_address').value = order.customer_address;
             document.getElementById('customer_phone').value = order.customer_phone;
             document.getElementById('customer_email').value = order.customer_email;
+            document.getElementById('total_bill').value = order.total_bill;
             document.getElementById('created_at').value = order.created_at;
             document.getElementById('user_id').value = order.user_id;
             document.getElementById('action').value = 'edit';
@@ -331,6 +333,7 @@ $result = $conn->query($sql);
                         <th>Email</th>
                         <th>SDT</th>
                         <th>Thời gian đặt hàng</th>
+                        <th>Tổng hóa đơn</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
@@ -343,6 +346,7 @@ $result = $conn->query($sql);
                         <td><?= $row['customer_email'] ?></td>
                         <td><?= $row['customer_phone'] ?></td>
                         <td><?= $row['created_at'] ?></td>
+                        <td><?= $row['total_bill'] ?></td>
                         <td>
                             <a href="javascript:void(0);" onclick='editOrder(<?= json_encode($row) ?>)' class="action-btn">
                                 <i class="fas fa-edit"></i>
@@ -373,8 +377,8 @@ $result = $conn->query($sql);
                 <input type="email" id="customer_email" name="customer_email" required>
                 <label for="created_at">Thời gian đặt hàng</label>
                 <input type="date" id="created_at" name="created_at" required>
-                <label for="user_id">ID Người dùng</label>
-                <input type="text" id="user_id" name="user_id" required>
+                <label for="created_at">Tổng hóa đơn</label>
+                <input type="number" id="total_bill" name="total_bill" required>
                 <button type="submit">XÁC NHẬN</button>
             </form>
         </div>

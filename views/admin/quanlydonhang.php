@@ -248,13 +248,14 @@ button:hover {
                             <th>Địa chỉ nhận hàng</th>
                             <th>Email</th>
                             <th>SDT</th>
+                            <th>Tổng hóa đơn</th>
                             <th>Thời gian đặt hàng</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         include('../../config/connect.php');
-                        $query = "SELECT order_id,customer_name, customer_address, customer_phone, customer_email, created_at FROM orders";
+                        $query = "SELECT order_id,customer_name, customer_address, customer_phone, customer_email, total_bill, created_at FROM orders";
                         $result = $conn->query($query);
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) { ?>
@@ -264,12 +265,13 @@ button:hover {
                                     <td><?= $row['customer_address'] ?></td>
                                     <td><?= $row['customer_email'] ?></td>
                                     <td><?= $row['customer_phone'] ?></td>
+                                    <td><?= $row['total_bill'] ?></td>
                                     <td><?= $row['created_at'] ?></td> 
                                 </tr>
                                 <?php } 
                             } else { ?>
                                 <tr> 
-                                    <td colspan="6">Không có dữ liệu</td>
+                                    <td colspan="7">Không có dữ liệu</td>
     </tr>
 <?php } ?> 
                     </tbody>
