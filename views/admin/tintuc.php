@@ -20,67 +20,74 @@ if (isset($_GET['delete_news_id'])) {
     }
     $stmt->close();
 }
+?>
+<?php
+        // // Xử lý thêm hoặc chỉnh sửa tin tức
+        // if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+        //     $news_title = $_POST['news_title'];
+        //     $publish_date = $_POST['publish_date'];
+        //     $news_content = $_POST['news_content'];
+        //     $action = $_POST['action'];
 
-// Xử lý thêm hoặc chỉnh sửa tin tức
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
-    $news_title = $_POST['news_title'];
-    $publish_date = $_POST['publish_date'];
-    $news_content = $_POST['news_content'];
-    $action = $_POST['action'];
+        //     // Xử lý file upload
+        //     $news_img = '';
+        //     if (!empty($_FILES['news_img']['name'])) {
+        //         $news_img = basename($_FILES['news_img']['name']);
+        //         $target_dir = '../../assets/img/NEWS/';
+        //         $target_file = $target_dir . $news_img;
 
-    // Xử lý file upload
-    $news_img = '';
-    if (!empty($_FILES['news_img']['name'])) {
-        $news_img = basename($_FILES['news_img']['name']);
-        $target_dir = '../../assets/img/NEWS/';
-        $target_file = $target_dir . $news_img;
+        //         // Di chuyển file đến thư mục chỉ định
+        //         if (!move_uploaded_file($_FILES['news_img']['tmp_name'], $target_file)) {
+        //             echo "<script>alert('Có lỗi khi upload ảnh!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
+        //             exit();
+        //         }
+        //     }
 
-        // Di chuyển file đến thư mục chỉ định
-        if (!move_uploaded_file($_FILES['news_img']['tmp_name'], $target_file)) {
-            echo "<script>alert('Có lỗi khi upload ảnh!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
-            exit();
-        }
-    }
+        //     if ($action === 'edit') {
+        //         // Chỉnh sửa tin tức
+        //         if (isset($_POST['news_id'])) {
+        //         $news_id = $_POST['news_id'];
 
-    if ($action === 'edit') {
-        // Chỉnh sửa tin tức
-        $news_id = $_POST['news_id'];
+        //         // Kiểm tra nếu không upload ảnh mới thì giữ ảnh cũ
+        //         if (empty($news_img)) {
+        //             $sql = "UPDATE news SET news_title = ?, publish_date = ?, news_content = ?, id_admin = ? WHERE news_id = ?";
+        //             $stmt = $conn->prepare($sql);
+        //             $stmt->bind_param("sssii", $news_title, $publish_date, $news_content, $id_admin, $news_id);
+        //         } else {
+        //             $sql = "UPDATE news SET news_title = ?, publish_date = ?, news_content = ?, news_img = ?, id_admin = ? WHERE news_id = ?";
+        //             $stmt = $conn->prepare($sql);
+        //             $stmt->bind_param("ssssii", $news_title, $publish_date, $news_content, $news_img, $id_admin, $news_id);
+        //         }
 
-        // Kiểm tra nếu không upload ảnh mới thì giữ ảnh cũ
-        if (empty($news_img)) {
-            $sql = "UPDATE news SET news_title = ?, publish_date = ?, news_content = ?, id_admin = ? WHERE news_id = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssii", $news_title, $publish_date, $news_content, $id_admin, $news_id);
-        } else {
-            $sql = "UPDATE news SET news_title = ?, publish_date = ?, news_content = ?, news_img = ?, id_admin = ? WHERE news_id = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssssii", $news_title, $publish_date, $news_content, $news_img, $id_admin, $news_id);
-        }
+        //         if ($stmt->execute()) {
+        //             echo "<pre>";
+        //             print_r($_POST); // Kiểm tra dữ liệu form
+        //             echo "</pre>";
+        //             echo "<script>alert('Cập nhật tin tức thành công!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
+        //             exit();
+        //         } else {
+        //             echo "<script>alert('Có lỗi xảy ra khi cập nhật tin tức!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
+        //             exit();
+        //         }}
+        //         else {
+        //             // Thêm tin tức mới
+        //             $sql = "INSERT INTO news (news_title, publish_date, news_content, news_img, id_admin) VALUES (?, ?, ?, ?, ?)";
+        //             $stmt = $conn->prepare($sql);
+        //             $stmt->bind_param("ssssi", $news_title, $publish_date, $news_content, $news_img, $id_admin);
 
-        if ($stmt->execute()) {
-            echo "<script>alert('Cập nhật tin tức thành công!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
-            exit();
-        } else {
-            echo "<script>alert('Có lỗi xảy ra khi cập nhật tin tức!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
-            exit();
-        }
-    } else {
-        // Thêm tin tức mới
-        $sql = "INSERT INTO news (news_title, publish_date, news_content, news_img, id_admin) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssi", $news_title, $publish_date, $news_content, $news_img, $id_admin);
+        //             if ($stmt->execute()) {
+        //                 echo "<script>alert('Thêm tin tức thành công!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
+        //                 exit();
+        //             } else {
+        //                 echo "<script>alert('Có lỗi xảy ra khi thêm tin tức!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
+        //                 exit();
+        //             }
+        //             $stmt->close();
+        //         }}
 
-        if ($stmt->execute()) {
-            echo "<script>alert('Thêm tin tức thành công!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
-            exit();
-        } else {
-            echo "<script>alert('Có lỗi xảy ra khi thêm tin tức!'); window.location.href='../../views/admin/quanlytintuc.php';</script>";
-            exit();
-        }
-    }
-    $stmt->close();
-}
-
+        // }
+?>
+<?php
 $sql = "SELECT * FROM news";
 $result = $conn->query($sql);
 ?>
@@ -203,127 +210,127 @@ $result = $conn->query($sql);
         }
 
         @media (max-width: 768px) {
-    main {
-        margin: 20px;
-        padding: 10px;
-    }
+            main {
+                margin: 20px;
+                padding: 10px;
+            }
 
-    .card {
-        padding: 15px;
-    }
+            .card {
+                padding: 15px;
+            }
 
-    h3 {
-        font-size: 1.3rem;
-    }
+            h3 {
+                font-size: 1.3rem;
+            }
 
-    .card table th, .card table td {
-        font-size: 14px;
-        padding: 10px;
-    }
+            .card table th, .card table td {
+                font-size: 14px;
+                padding: 10px;
+            }
 
-    .action-btn {
-        font-size: 1rem;
-    }
+            .action-btn {
+                font-size: 1rem;
+            }
 
-    form button {
-        font-size: 1rem;
-        padding: 10px;
-    }
-}
+            form button {
+                font-size: 1rem;
+                padding: 10px;
+            }
+        }
 
-@media (max-width: 480px) {
-    header {
-        font-size: 1.5rem;
-    }
+        @media (max-width: 480px) {
+            header {
+                font-size: 1.5rem;
+            }
 
-    .card {
-        padding: 10px;
-    }
+            .card {
+                padding: 10px;
+            }
 
-    h3 {
-        font-size: 1.2rem;
-    }
+            h3 {
+                font-size: 1.2rem;
+            }
 
-    .card table {
-        width: 100%;
-        display: block; 
-        overflow-x: auto; 
-        -webkit-overflow-scrolling: touch; 
-    }
+            .card table {
+                width: 100%;
+                display: block; 
+                overflow-x: auto; 
+                -webkit-overflow-scrolling: touch; 
+            }
 
-    .card table th, 
-    .card table td {
-        font-size: 12px;
-        padding: 8px;
-    }
+            .card table th, 
+            .card table td {
+                font-size: 12px;
+                padding: 8px;
+            }
 
-    .card table th {
-        font-size: 14px;
-    }
+            .card table th {
+                font-size: 14px;
+            }
 
-    .card table td, .card table th {
-        text-align: center;
-        min-width: 80px;  
-        word-wrap: break-word; 
-    }
+            .card table td, .card table th {
+                text-align: center;
+                min-width: 80px;  
+                word-wrap: break-word; 
+            }
 
-    .action-btn {
-        font-size: 1rem;
-    }
+            .action-btn {
+                font-size: 1rem;
+            }
 
-    form button {
-        font-size: 1rem;
-        padding: 8px;
-    }
-}
+            form button {
+                font-size: 1rem;
+                padding: 8px;
+            }
+        }
 
-@media (min-width: 481px) and (max-width: 768px) {
-    header {
-        font-size: 1.7rem;
-    }
+        @media (min-width: 481px) and (max-width: 768px) {
+            header {
+                font-size: 1.7rem;
+            }
 
-    .card {
-        padding: 15px;
-    }
+            .card {
+                padding: 15px;
+            }
 
-    h3 {
-        font-size: 1.4rem;
-    }
+            h3 {
+                font-size: 1.4rem;
+            }
 
-    .card table th, .card table td {
-        font-size: 13px;
-        padding: 10px;
-    }
+            .card table th, .card table td {
+                font-size: 13px;
+                padding: 10px;
+            }
 
-    form button {
-        font-size: 1.1rem;
-    }
-}
+            form button {
+                font-size: 1.1rem;
+            }
+        }
 
-@media (min-width: 1024px) {
-    main {
-        margin: 30px auto;
-        padding: 20px;
-    }
+        @media (min-width: 1024px) {
+            main {
+                margin: 30px auto;
+                padding: 20px;
+            }
 
-    .card {
-        padding: 20px;
-    }
+            .card {
+                padding: 20px;
+            }
 
-    h3 {
-        font-size: 1.5rem;
-    }
+            h3 {
+                font-size: 1.5rem;
+            }
 
-    .card table th, .card table td {
-        font-size: 14px;
-        padding: 12px 16px;
-    }
+            .card table th, .card table td {
+                font-size: 14px;
+                padding: 12px 16px;
+            }
 
-    form button {
-        font-size: 1.2rem;
-        padding: 12px;
-    }
-}
+            form button {
+                font-size: 1.2rem;
+                padding: 12px;
+            }
+        }
     </style>
     <script>
         function editNews(news) {
@@ -378,8 +385,8 @@ $result = $conn->query($sql);
         <!-- Phần chỉnh sửa hoặc thêm mới tin tức-->
         <div class="form-section">
             <h3>Thêm hoặc cập nhật tin tức</h3>
-            <form method="POST" action="tintuc.php" enctype="multipart/form-data">
-                <input type="hidden" id="action" name="action" value="add">
+            <form method="POST" action="edit_tintuc.php" enctype="multipart/form-data">
+                <input type="hidden" id="action" name="action" value="edit">
                 <input type="hidden" id="news_id" name="news_id">
                 <label for="news_title">Tiêu đề</label>
                 <input type="text" id="news_title" name="news_title" required>
