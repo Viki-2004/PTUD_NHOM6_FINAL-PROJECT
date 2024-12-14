@@ -2,6 +2,13 @@
     session_start ();
     // Kết nối tới cơ sở dữ liệu
     include '../../config/connect.php';
+    if (!isset($_SESSION['user_id'])) {
+        echo "<script>
+                alert('Bạn cần đăng nhập để tiếp tục!');
+                window.location.href = '../../views/website/login.php';
+              </script>";
+        exit();
+    }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Lấy dữ liệu từ form
         $name = mysqli_real_escape_string($conn, $_POST['name']);
