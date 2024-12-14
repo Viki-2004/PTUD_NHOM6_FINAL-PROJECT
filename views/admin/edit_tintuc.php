@@ -1,9 +1,9 @@
 <?php
 // Kết nối tới cơ sở dữ liệu
 include '../../config/connect.php';
-echo "<pre>";
-print_r($_POST); // Kiểm tra dữ liệu form
-echo "</pre>";
+// echo "<pre>";
+// print_r($_POST); // Kiểm tra dữ liệu form
+// echo "</pre>";
 // Xử lý thêm hoặc chỉnh sửa tin tức
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $news_title = $_POST['news_title'];
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
     if ($action === 'edit') {
         // Chỉnh sửa tin tức
-        if (isset($_POST['news_id'])) {
+        if (!empty($_POST['news_id'])) {
         $news_id = $_POST['news_id'];
 
         // Kiểm tra nếu không upload ảnh mới thì giữ ảnh cũ
