@@ -11,28 +11,27 @@ $(document).ready(function(){
     });
 });
 
-    // Xử lý kiểm tra form khi nhấn nút đăng ký
-    $('#form-signup').on('submit', function(e) {
-        e.preventDefault(); // Ngăn form gửi đi nếu không hợp lệ
+// Xử lý kiểm tra form khi nhấn nút đăng ký
+$('#form-signup').on('submit', function(e) {
+    e.preventDefault(); // Ngăn form gửi đi nếu không hợp lệ
 
-        var isValid = true; // Biến kiểm tra hợp lệ
-        var message = "";   // Thông báo lỗi
-
-        // Kiểm tra từng trường trong form
-        $('#form-signup .form-input').each(function() {
-            var input = $(this);
-            var placeholder = input.attr('placeholder');
-            if (!input.val().trim()) { // Nếu trường bị bỏ trống
-                isValid = false;
-                message += placeholder + " không được bỏ trống!\n";
-            }
-        });
-
-        // Hiển thị thông báo nếu có lỗi
-        if (!isValid) {
-            alert(message);
-            return false; // Dừng form
+    var isValid = true; // Biến kiểm tra hợp lệ
+    var message = "";   // Thông báo lỗi
+    // Kiểm tra từng trường trong form
+    $('#form-signup .form-input').each(function() {
+        var input = $(this);
+        var placeholder = input.attr('placeholder');
+        if (!input.val().trim()) { // Nếu trường bị bỏ trống
+            isValid = false;
+            message += placeholder + " không được bỏ trống!\n";
         }
+    });
+
+    // Hiển thị thông báo nếu có lỗi
+    if (!isValid) {
+        alert(message);
+        return false; // Dừng form
+    }
 
         // // Nếu hợp lệ
         // alert("Đăng ký thành công!");
@@ -65,4 +64,4 @@ $(document).ready(function(){
             "Mật khẩu mạnh"
         ];
         $('#password-strength').text(messages[strength]).css('color', colors[strength]);
-    });
+});

@@ -15,8 +15,7 @@
 <header class="header">
     <?php include "./header.php"; ?>
     </header>
-    <div class="container">
-           
+    <div class="container">     
             <!-- Form Section -->
             <div class="checkout-form">
                 <h2>Thông tin đặt hàng</h2>

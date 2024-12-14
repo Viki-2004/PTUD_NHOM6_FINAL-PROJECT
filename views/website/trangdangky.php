@@ -32,7 +32,7 @@
             $stmt->bind_param("ssss", $user_name, $user_email, $user_phone, $user_password);
             
             if ($stmt->execute()) {
-                echo "<script>alert('Bạn đã');</script>";
+                echo "<script>alert('Bạn đã đăng ký thành công');</script>";
                 echo "<script>window.location.href='../../views/website/login.php';</script>";
             } else {
                 echo "<script>alert('Bạn đã đăng ký thất bại: " . htmlspecialchars($conn->error) . "');</script>";

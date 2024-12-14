@@ -135,23 +135,23 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
             <span class="score-total">/5</span>
           </div>
           <div class="danhgia-stars">★★★★★</div>
-          <div class="danhgia-count">Dựa trên 10 đánh giá</div>
+          <div class="danhgia-count">Dựa trên 71 đánh giá</div>
         </div>
         <div class="danhgia-distribution">
           <div class="danhgia-row">
             <span class="label">5 sao</span>
             <div class="bar"><div class="fill" style="width: 100%;"></div></div>
-            <span class="count">8</span>
+            <span class="count">45</span>
           </div>
           <div class="danhgia-row">
             <span class="label">4 sao</span>
-            <div class="bar"><div class="fill" style="width: 20%;"></div></div>
-            <span class="count">2</span>
+            <div class="bar"><div class="fill" style="width: 90%;"></div></div>
+            <span class="count">20</span>
           </div>
           <div class="danhgia-row">
             <span class="label">3 sao</span>
-            <div class="bar"><div class="fill" style="width: 0%;"></div></div>
-            <span class="count">0</span>
+            <div class="bar"><div class="fill" style="width: 20%;"></div></div>
+            <span class="count">6</span>
           </div>
           <div class="danhgia-row">
             <span class="label">2 sao</span>
