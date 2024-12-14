@@ -6,19 +6,19 @@ include '../../config/connect.php';
 if (isset($_GET['delete_order_id'])) {
     $delete_order_id = $_GET['delete_order_id'];
 
-// Xóa đơn hàng khỏi cơ sở dữ liệu
-$sql = "DELETE FROM orders WHERE order_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $delete_order_id);
+    // Xóa đơn hàng khỏi cơ sở dữ liệu
+    $sql = "DELETE FROM orders WHERE order_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $delete_order_id);
 
-if ($stmt->execute()) {
-    echo "<script>alert('Xóa đơn hàng thành công!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
-    exit();
-} else {
-    echo "<script>alert('Có lỗi xảy ra khi xóa đơn hàng!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
-    exit();
-}
-$stmt->close();
+    if ($stmt->execute()) {
+        echo "<script>alert('Xóa đơn hàng thành công!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
+        exit();
+    } else {
+        echo "<script>alert('Có lỗi xảy ra khi xóa đơn hàng!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
+        exit();
+    }
+    $stmt->close();
 }
 
 // Xử lý thêm hoặc chỉnh sửa đơn hàng
@@ -33,21 +33,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
     if ($action == 'edit') {
         $order_id = $_POST['order_id'];
-        $sql = "UPDATE orders SET customer_name  = ?, customer_address = ?, customer_phone = ?, customer_email = ?, created_at = ?, user_id = ? WHERE order_id = ?";
+        $sql = "UPDATE orders SET customer_name = ?, customer_address = ?, customer_phone = ?, customer_email = ?, created_at = ?, user_id = ? WHERE order_id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssii", $customer_name , $customer_address, $customer_phone ,$customer_email, $created_at, $user_id, $order_id);
+        $stmt->bind_param("sssssii", $customer_name, $customer_address, $customer_phone, $customer_email, $created_at, $user_id, $order_id);
 
         if ($stmt->execute()) {
             echo "<script>alert('Cập nhật đơn hàng thành công!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
             exit();
         } else {
-            echo "<script>alert('Có lỗi xảy ra khi cập nhật đơn hàng!'); window.location.href='.../../views/admin/quanlydonhang.php';</script>";
+            echo "<script>alert('Có lỗi xảy ra khi cập nhật đơn hàng!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
             exit();
         }
     } else {
         $sql = "INSERT INTO orders (customer_name, customer_address, customer_phone, customer_email, created_at, user_id) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssi", $customer_name , $customer_address, $customer_phone ,$customer_email, $created_at, $user_id);
+        $stmt->bind_param("sssssi", $customer_name, $customer_address, $customer_phone, $customer_email, $created_at, $user_id);
 
         if ($stmt->execute()) {
             echo "<script>alert('Thêm đơn hàng thành công!'); window.location.href='../../views/admin/quanlydonhang.php';</script>";
@@ -59,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     }
     $stmt->close();
 }
+
 $sql = "SELECT * FROM orders";
 $result = $conn->query($sql);
 ?>
@@ -304,14 +305,14 @@ $result = $conn->query($sql);
 }
     </style>
     <script>
-        function editOrdee(orders) {
-            document.getElementById('order_id').value = orders.order_id;
-            document.getElementById('customer_name').value = orders.customer_name;
-            document.getElementById('customer_address').value = orders.customer_address;
-            document.getElementById('customer_phone').value = orders.customer_name;
-            document.getElementById('customer_email').value = orders.order_id;
-            document.getElementById('created_at').value = orders.created_at;
-            document.getElementById('user_id').value = orders.user_id;
+        function editOrder(order) {
+            document.getElementById('order_id').value = order.order_id;
+            document.getElementById('customer_name').value = order.customer_name;
+            document.getElementById('customer_address').value = order.customer_address;
+            document.getElementById('customer_phone').value = order.customer_phone;
+            document.getElementById('customer_email').value = order.customer_email;
+            document.getElementById('created_at').value = order.created_at;
+            document.getElementById('user_id').value = order.user_id;
             document.getElementById('action').value = 'edit';
         }
     </script>
@@ -365,13 +366,15 @@ $result = $conn->query($sql);
                 <label for="customer_name">Tên người nhận</label>
                 <input type="text" id="customer_name" name="customer_name" required>
                 <label for="customer_address">Địa chỉ người nhận</label>
-                <input type = "text" id="customer_address" name="customer_address" required>
+                <input type="text" id="customer_address" name="customer_address" required>
                 <label for="customer_phone">SDT</label>
                 <input type="tel" id="customer_phone" name="customer_phone" required>
                 <label for="customer_email">Email</label>
-                <input type="mail" id="customer_email" name="customer_email" required>
+                <input type="email" id="customer_email" name="customer_email" required>
                 <label for="created_at">Thời gian đặt hàng</label>
                 <input type="date" id="created_at" name="created_at" required>
+                <label for="user_id">ID Người dùng</label>
+                <input type="text" id="user_id" name="user_id" required>
                 <button type="submit">XÁC NHẬN</button>
             </form>
         </div>
@@ -379,40 +382,3 @@ $result = $conn->query($sql);
 </body>
 </html>
 <?php $conn->close(); ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
