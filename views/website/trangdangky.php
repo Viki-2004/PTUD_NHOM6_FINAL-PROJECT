@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="../../assets/css/signup_queries.css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+        <script src="../../assets/js/signup.js"></script>
 </head>
 <body>
     <div class="container">
@@ -57,9 +57,9 @@
             <div class="form-group">
                 <i class="fas fa-key"></i>
                 <input type="password" class="form-input" name = "user_password" placeholder="Mật khẩu" required>
-                <div id="eye">
-                    <i class="far fa-eye"></i>
-                </div>
+                <div id="eye" onclick="togglePasswordVisibility()">
+                        <i class="far fa-eye" id="eye-icon"></i>
+                    </div>
             </div>
             <input type="submit" name = "submit" value="Đăng ký" class="form-submit">
             <div class="login-prompt">
@@ -72,6 +72,4 @@
         </form>
     </div>
 </body>
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
-<script src="../../assets/js/signup.js"></script>
 </html>

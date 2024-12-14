@@ -65,3 +65,18 @@ $('#form-signup').on('submit', function(e) {
         ];
         $('#password-strength').text(messages[strength]).css('color', colors[strength]);
 });
+// HIỆU ỨNG CON MẮT
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('user_password');
+    const eyeIcon = document.getElementById('eye-icon');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+    }
+}
