@@ -26,10 +26,13 @@
             $user_name = $_POST['user_name'];
             $user_password = $_POST['user_password'];
             $stmt = $conn->prepare("INSERT INTO users (user_name, user_email, user_phone, user_password) VALUES (?, ?, ?, ?)");
+            if (!$stmt) {
+                die("Lỗi prepare: " . $conn->error);
+            }
             $stmt->bind_param("ssss", $user_name, $user_email, $user_phone, $user_password);
             
             if ($stmt->execute()) {
-                echo "<script>alert('Bạn đã đăng ký thành công');</script>";
+                echo "<script>alert('Bạn đã');</script>";
                 echo "<script>window.location.href='../../views/website/login.php';</script>";
             } else {
                 echo "<script>alert('Bạn đã đăng ký thất bại: " . htmlspecialchars($conn->error) . "');</script>";
@@ -69,6 +72,6 @@
         </form>
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
 <script src="../../assets/js/signup.js"></script>
 </html>

@@ -34,9 +34,9 @@ $(document).ready(function(){
             return false; // Dừng form
         }
 
-        // Nếu hợp lệ
-        alert("Đăng ký thành công!");
-        window.location.href = '../../views/website/login.php'; 
+        // // Nếu hợp lệ
+        // alert("Đăng ký thành công!");
+        // window.location.href = '../../views/website/login.php'; 
     });
 
     // Xử lý kiểm tra mật khẩu và cập nhật thanh progress bar
