@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="../../assets/css/signup_queries.css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-        <script src="../../assets/js/signup.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
     <div class="container">
@@ -32,7 +32,6 @@
             $stmt->bind_param("ssss", $user_name, $user_email, $user_phone, $user_password);
             
             if ($stmt->execute()) {
-                echo "<script>alert('Bạn đã đăng ký thành công');</script>";
                 echo "<script>window.location.href='../../views/website/login.php';</script>";
             } else {
                 echo "<script>alert('Bạn đã đăng ký thất bại: " . htmlspecialchars($conn->error) . "');</script>";
@@ -72,4 +71,5 @@
         </form>
     </div>
 </body>
+<script src="../../assets/js/signup.js"></script>
 </html>

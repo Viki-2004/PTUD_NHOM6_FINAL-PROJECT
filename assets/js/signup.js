@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 // Xử lý kiểm tra form khi nhấn nút đăng ký
 $('#form-signup').on('submit', function(e) {
-    e.preventDefault(); // Ngăn form gửi đi nếu không hợp lệ
+    // e.preventDefault(); // Ngăn form gửi đi nếu không hợp lệ
 
     var isValid = true; // Biến kiểm tra hợp lệ
     var message = "";   // Thông báo lỗi
@@ -30,12 +30,10 @@ $('#form-signup').on('submit', function(e) {
     // Hiển thị thông báo nếu có lỗi
     if (!isValid) {
         alert(message);
-        return false; // Dừng form
+        e.preventDefault(); // Ngăn form gửi đi nếu không hợp lệ
     }
-
         // // Nếu hợp lệ
-        // alert("Đăng ký thành công!");
-        // window.location.href = '../../views/website/login.php'; 
+        alert("Đăng ký thành công!");
     });
 
     // Xử lý kiểm tra mật khẩu và cập nhật thanh progress bar
