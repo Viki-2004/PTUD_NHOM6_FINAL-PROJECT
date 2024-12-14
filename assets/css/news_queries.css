@@ -106,5 +106,22 @@
     .menu-toggle {
         display: block; /* Show the menu toggle on small screens */
     }
+<<<<<<< HEAD
   }
   
+=======
+<<<<<<< HEAD
+  }
+  
+=======
+    .post{
+        width: 80%;
+        margin-left: 9%;
+
+    }
+    .new1{
+        margin-top: 10px;
+    }
+  }
+>>>>>>> 1ee7ae1ea256fa4352c10092394373db640a76c1
+>>>>>>> origin/ABOUTUS
