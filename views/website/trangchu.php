@@ -47,19 +47,21 @@
                 <button class="arrow-btn left-btn" >&#10094;</button>
                 <div class="products-carousel-wrapper">
                     <div class="products-carousel">
-                            <?php
+                    <?php
                             while($row = mysqli_fetch_array($trendproducts)){                          
                             ?>
                             <!-- Product 1 -->
                             <div class="product-item">
                                 <div class="product-image">
-                                    <a href = "chitietsanpham.php?sku=<?=$row["sku"]?>">
+                                    <a href = "../website/chitietsanpham.php?sku=<?=$row["sku"]?>">
                                     <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
                                     <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
                                     </a>
-                                    <button class="nav-buy-now-btn">Mua ngay</button>
+                                            <form id = "add-to-cart-form" action = "../website/addcart.php?sku=<?php echo $row['sku'] ?>" method = "POST">
+                                                <input type = "submit" id="addToCart" name="addcart" class="nav-buy-now-btn" value ="Mua ngay"/>
+                                            </form>
                                 </div>
-                                    <p class="product-name"><a style="text-decoration: none; color: #f25a8c;" href = "chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
+                                    <p class="product-name"><a style="text-decoration: none; color: #f25a8c;" href = "views/website/chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
                                     </p>
                                     <p class="product-price"><?php echo number_format($row['product_price'], 0, ',', '.'); ?>đ</p>
                             </div>
