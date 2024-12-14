@@ -12,7 +12,12 @@
 
 <body>
 <header class="header">
-    <?php include "./header.php"; ?>
+    <?php include "./header.php";
+    include "../../config/connect.php";
+
+    $trendproducts = mysqli_query($conn, "SELECT * FROM product WHERE trending = 1");
+    $new_products = mysqli_query($conn, "SELECT * FROM product WHERE new_arrival = 1");
+    ?>
     </header>
     <section class="main-banner">
         <img src="../../assets/img/trang chu/ảnh bìa trang chủ.png" alt="Main Banner">
@@ -39,52 +44,29 @@
         <div class="content-container">
             <!-- Left: Product Carousel -->
             <div class="products-container">
-                <button class="arrow-btn left-btn" onclick="navigateCarousel(-1)">&#10094;</button>
+                <button class="arrow-btn left-btn" >&#10094;</button>
                 <div class="products-carousel-wrapper">
                     <div class="products-carousel">
-                        <!-- Product 1 -->
-                        <div class="product-item">
-                            <div class="product-image">
-                                <img src="../../assets/img/trang chu/trending now 1.png" alt="Product 1" class="default-img">
-                                <img src="../../assets/img/trang chu/trending now details 1.png" alt="Product 1 Hover" class="hover-img">
-                                <button class="nav-buy-now-btn">Mua ngay</button>
+                            <?php
+                            while($row = mysqli_fetch_array($trendproducts)){                          
+                            ?>
+                            <!-- Product 1 -->
+                            <div class="product-item">
+                                <div class="product-image">
+                                    <a href = "chitietsanpham.php?sku=<?=$row["sku"]?>">
+                                    <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="default_img">
+                                    <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="hover_img">
+                                    </a>
+                                    <button class="nav-buy-now-btn">Mua ngay</button>
+                                </div>
+                                    <p class="product-name"><a style="text-decoration: none; color: #f25a8c;" href = "chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
+                                    </p>
+                                    <p class="product-price"><?php echo number_format($row['product_price'], 0, ',', '.'); ?>đ</p>
                             </div>
-                            <p class="product-name">Ice Watery Lip Gloss - #01 Orange Flash</p>
-                            <p class="product-price">420.000đ</p>
-                        </div>
-                        <!-- Product 2 -->
-                        <div class="product-item">
-                            <div class="product-image">
-                                <img src="../../assets/img/trang chu/trending now 2.png" alt="Product 2" class="default-img">
-                                <img src="../../assets/img/trang chu/trending now details 2.png" alt="Product 2 Hover" class="hover-img">
-                                <button class="nav-buy-now-btn">Mua ngay</button>
-                            </div>
-                            <p class="product-name">Cushion Lip Powder Cream - N01 Cutie Peach</p>
-                            <p class="product-price">350.000đ</p>
-                        </div>
-                        <!-- Product 3 -->
-                        <div class="product-item">
-                            <div class="product-image">
-                                <img src="../../assets/img/trang chu/trending now 3.png" alt="Product 3" class="default-img">
-                                <img src="../../assets/img/trang chu/trending now details 3.png" alt="Product 3 Hover" class="hover-img">
-                                <button class="nav-buy-now-btn">Mua ngay</button>
-                            </div>
-                            <p class="product-name">Hearty Lip Tint</p>
-                            <p class="product-price">220.000đ</p>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-image">
-                                <img src="../../assets/img/trang chu/trending now 4.png" alt="Product 3" class="default-img">
-                                <img src="../../assets/img/trang chu/trending now details 4.png" alt="Product 3 Hover" class="hover-img">
-                                <button class="nav-buy-now-btn">Mua ngay</button>
-                            </div>
-                            <p class="product-name">Mist Lip Glaze
-                            </p>
-                            <p class="product-price">190.000đ</p>
-                        </div>
+                            <?php } ?>
                     </div>
                 </div>
-                <button class="arrow-btn right-btn" onclick="navigateCarousel(1)">&#10095;</button>
+                <button class="arrow-btn right-btn" >&#10095;</button>
             </div>
     
             <!-- Right: Banner -->
@@ -96,130 +78,41 @@
        
     
     <section class="top-selling-collection">
-        <h2>Bộ sưu tập bán chạy nhất</h2>
         <div class="top-selling-img">
             <img src="../../assets/img/trang chu/top selling collection.png" alt="Top Selling Collection">
         </div>
-    </section>
-    <section class="nav-carousel">
-        <button class="nav-carousel-btn nav-carousel-btn-left">&lt;</button>
-        <div class="nav-carousel-wrapper">
-            <ul class="nav-carousel-track">
-                <!-- Sản phẩm 1 -->
-                <li class="nav-carousel-item">
-                    <div class="nav-product-image">
-                        <img src="../../assets/img/trang chu/product list 1.png" alt="JudyDoll Iron Mascara" class="nav-main-image" />
-                        <a href = "chitietsanpham.html"><img src="../../assets/img/trang chu/product list detail 1.png" alt="JudyDoll Iron Mascara Hover"
-                            class="nav-hover-image" /></a>
-                            <a href = "chitietsanpham.html"><button class="nav-buy-now-btn">Mua ngay</button></a>
-                    </div>
-                    <div class="nav-product-info">
-                        <p>JudyDoll Brand New - Iron Mascara</p>
-                        <span>620.000đ</span>
-                    </div>
-                </li>
-                <!-- Sản phẩm 2 -->
-                <li class="nav-carousel-item">
-                    <div class="nav-product-image">
-                        <img src="../../assets/img/trang chu/product list 2.png" alt="3D Curling Mascara" class="nav-main-image" />
-                        <img src="../../assets/img/trang chu/product list detail 2.png" alt="3D Curling Mascara Hover"
-                            class="nav-hover-image" />
-                        <button class="nav-buy-now-btn">Mua ngay</button>
-                    </div>
-                    <div class="nav-product-info">
-                        <p>3D Curling Eyelash Iron Mascara</p>
-                        <span>420.000đ</span>
-                    </div>
-                </li>
-                <!-- Thêm các sản phẩm khác -->
-                <li class="nav-carousel-item">
-                    <div class="nav-product-image">
-                        <img src="../../assets/img/trang chu/product list 3.png" alt="3D Curling Mascara" class="nav-main-image" />
-                        <img src="../../assets/img/trang chu/product list detail 3.png" alt="3D Curling Mascara Hover"
-                            class="nav-hover-image" />
-                        <button class="nav-buy-now-btn">Mua ngay</button>
-                    </div>
-                    <div class="nav-product-info">
-                        <p>Cushion Comb Brow Mascara
-                        </p>
-                        <span>599.000đ</span>
-                    </div>
-                </li>
-                <li class="nav-carousel-item">
-                    <div class="nav-product-image">
-                        <img src="../../assets/img/trang chu/product list 4.png" alt="3D Curling Mascara" class="nav-main-image" />
-                        <img src="../../assets/img/trang chu/product list detail 4.png" alt="3D Curling Mascara Hover"
-                            class="nav-hover-image" />
-                        <button class="nav-buy-now-btn">Mua ngay</button>
-                    </div>
-                    <div class="nav-product-info">
-                        <p>Volume & Curling Mascara Duo
-                        </p>
-                        <span>210.000đ</span>
-                    </div>
-                </li>
-                <li class="nav-carousel-item">
-                    <div class="nav-product-image">
-                        <img src="../../assets/img/trang chu/product list 5.png" alt="3D Curling Mascara" class="nav-main-image" />
-                        <img src="../../assets/img/trang chu/product list detail 5.png" alt="3D Curling Mascara Hover"
-                            class="nav-hover-image" />
-                        <button class="nav-buy-now-btn">Mua ngay</button>
-                    </div>
-                    <div class="nav-product-info">
-                        <p>2 in 1 Eyebrow Mascara</p>
-                        <span>260.000đ</span>
-                    </div>
-                </li>
-                <li class="nav-carousel-item">
-                    <div class="nav-product-image">
-                        <img src="../../assets/img/trang chu/product list 6.png" alt="3D Curling Mascara" class="nav-main-image" />
-                        <img src="../../assets/img/trang chu/product list detail 6.png" alt="3D Curling Mascara Hover"
-                            class="nav-hover-image" />
-                        <button class="nav-buy-now-btn">Mua ngay</button>
-                    </div>
-                    <div class="nav-product-info">
-                        <p>Iron Mascara - Sport Chic
-                        </p>
-                        <span>320.000đ</span>
-                    </div>
-                </li>
-                <li class="nav-carousel-item">
-                    <div class="nav-product-image">
-                        <img src="../../assets/img/trang chu/product list 7.png" alt="3D Curling Mascara" class="nav-main-image" />
-                        <img src="../../assets/img/trang chu/product list detail 7.png" alt="3D Curling Mascara Hover"
-                            class="nav-hover-image" />
-                        <button class="nav-buy-now-btn">Mua ngay</button>
-                    </div>
-                    <div class="nav-product-info">
-                        <p>Forming Refined Eyelash Base Primer
-
-                        </p>
-                        <span>350.000đ</span>
-                    </div>
-                </li>
-                <li class="nav-carousel-item">
-                    <div class="nav-product-image">
-                        <img src="../../assets/img/trang chu/product list 8.png" alt="3D Curling Mascara" class="nav-main-image" />
-                        <img src="../../assets/img/trang chu/product list detail 8.png" alt="3D Curling Mascara Hover"
-                            class="nav-hover-image" />
-                        <button class="nav-buy-now-btn">Mua ngay</button>
-                    </div>
-                    <div class="nav-product-info">
-                        <p>Mascara Remover
-                        </p>
-                        <span>250.000đ</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <button class="nav-carousel-btn nav-carousel-btn-right">&gt;</button>
-    </section>
-    <section class="new-arrivals">
         <h2>Sản phẩm mới</h2>
-        <div class="arrivals">
-            <img src="../../assets/img/trang chu/new arrivals.png" alt="New Arrivals">
-        </div>
     </section>
+
+    <section class="nav-section">
+        <div class="content-container">
+    <div class="nav-container">
+                <!-- <button class="nav-btn nav-left-btn" >&#10094;</button> -->
+                <div class="nav-carousel-wrapper">
+                    <div class="nav-carousel">
+                            <?php
+                            while($row = mysqli_fetch_array($new_products)){                          
+                            ?>
+                            <!-- Product -->
+                            <div class="nav-item">
+                                <div class="nav-image">
+                                    <a href = "chitietsanpham.php?sku=<?=$row["sku"]?>">
+                                    <img src="../../assets/img/products/<?php echo $row["product_img"] ?>" alt="<?php echo $row["product_img"] ?>" class="nav-main-image">
+                                    <img src="../../assets/img/products/<?php echo $row["product_hover"] ?>" alt="<?php echo $row["product_hover"] ?> hover" class="nav-hover-image">
+                                    </a>
+                                    <button class="nav-buy-now-btn">Mua ngay</button>
+                                </div>
+                                    <p class="nav-name"><a style="text-decoration: none; color: #f25a8c;" href = "chitietsanpham.php?sku=<?=$row["sku"]?>"><?php echo $row["product_name"] ?></a>
+                                    </p>
+                                    <p class="nav-price"><?php echo number_format($row['product_price'], 0, ',', '.'); ?>đ</p>
+                            </div>
+                            <?php } ?>
+                    </div>
+                </div>
+                <!-- <button class="nav-btn nav-right-btn" >&#10095;</button> -->
+            </div>
+            </div>
+        </section>
     <section class="why-us-section">
         <h2>Đến với PoliDoll</h2>
         <div class="why-us-container">
@@ -267,8 +160,8 @@
             </form>
         </div>
     </section>
+    <footer>
+    <?php include "./footer.php"; ?>
+    </footer>
 </body>
-<footer>
-<?php include "./footer.php"; ?>
-</footer>
 </html>

@@ -18,22 +18,23 @@
     </header>
         <div class="form-container">
             <h1>LIÊN HỆ VỚI POLIDOLL</h1>
-            <form>
+            <form action="../../views/admin/tinnhan.php" method="POST">
+            <input type="hidden" name="action" value="submit">
                 <div class = "form-group">
-                    <label for="name">Họ tên</label>
-                    <input type = "text" id = "name" name ="name">
+                    <label for="contact_name">Họ tên</label>
+                    <input type = "text" id = "contact_name" name ="contact_name" required>
                 </div>
                 <div class = "form-group">
-                    <label for="email">Email</label>
-                    <input type = "email" id = "email" name ="email">
+                    <label for="contact_email">Email</label>
+                    <input type = "email" id = "contact_email" name ="contact_email" required>
                 </div>
                 <div class = "form-group">
-                    <label for="phone">Số điện thoại</label>
-                    <input type = "tel" name = "phone" id = "phone">
+                    <label for="contact_phone">Số điện thoại</label>
+                    <input type = "tel" id = "contact_phone" name = "contact_phone" required  pattern="^[0-9]{10}$" title="Số điện thoại phải có 10 chữ số">
                 </div>
                 <div class = "form-group">
-                    <label for="message">Tin nhắn của bạn</label>
-                    <textarea id = "message" name = "message"></textarea>
+                    <label for="contact_content">Tin nhắn của bạn</label>
+                    <textarea id = "contact_content" name = "contact_content" required></textarea>
                 </div>
                 <input type="submit" value="GỬI TIN NHẮN" class="form-submit">
             </form>

@@ -23,7 +23,7 @@
             VALUES
             ('Trang điểm mắt'),
             ('Trang điểm môi'),
-            ('Trang điểm mmặt');
+            ('Trang điểm mặt');
 
         INSERT INTO news (news_title, publish_date, news_content,news_img, id_admin)
             VALUES
@@ -139,7 +139,7 @@
                 ('Gia Huy', 'happy1234@hotmail.com', '0987654321', 'Tôi muốn học code'),
                 ('Khánh Linh', 'starrynight9@outlook.com', '0903456789', 'Code là dễ');
         ";
-
+        
         //Kiểm tra kết nối
         if ($conn->multi_query($insert)){
         do {

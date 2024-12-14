@@ -116,6 +116,113 @@
             background-color: #f64c8a7c;
             color: white;
         }
+
+        @media (max-width: 768px) {
+    .admin-panel {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    table th, table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    button {
+        width: 50%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        text-align: center;
+    }
+
+    .sidebar ul {
+        padding: 0;
+    }
+
+    .sidebar ul li {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .content {
+        padding: 5px;
+    }
+
+    table th, table td {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    button {
+        width: 80%; 
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .sidebar {
+        width: 60%;
+        padding: 20px;
+    }
+
+    .content {
+        flex: 1;
+        padding: 10px;
+    }
+
+    table th, table td {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    button {
+        width: 30%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .admin-panel {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        width: 250px;
+    }
+
+    .content {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    table th, table td {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    button {
+        width: 20%;
+    }
+}
     </style>
 </head>
 <body>
@@ -126,7 +233,8 @@
                 <li><a href="../../views/admin/quanlysanpham.php">Quản lý sản phẩm</a></li>
                 <li><a href="../../views/admin/quanlydonhang.php">Quản lý đơn hàng</a></li>
                 <li><a href="../../views/admin/quanlytinnhan.php">Quản lý tin nhắn</a></li>
-                <li><a href="../../views/website/login.html">Đăng xuất</a></li>
+                <li><a href="../../views/website/trangchu.php">Website</a></li>
+                <li><a href="../../views/website/login.php">Đăng xuất</a></li>
             </ul>
         </div>
         <div class="content">

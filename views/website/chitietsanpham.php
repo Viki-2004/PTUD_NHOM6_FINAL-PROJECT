@@ -12,20 +12,17 @@
 <body>
 <?php
 include "../../config/connect.php";
-
 if (!isset($_GET['sku']) || empty($_GET['sku'])) {
     // Nếu SKU không tồn tại, chuyển hướng về trang sản phẩm hoặc hiển thị thông báo
     echo "SKU không hợp lệ hoặc không được cung cấp.";
     exit;
 }
-
 $sku = mysqli_real_escape_string($conn, $_GET['sku']); // Escape để tránh SQL Injection
 $result = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
 if (!$result || mysqli_num_rows($result) == 0) {
     echo "Không tìm thấy sản phẩm với SKU đã cung cấp.";
     exit;
 }
-
 $product = mysqli_fetch_assoc($result);
 $imgLibrary = mysqli_query($conn, "SELECT * FROM product_img WHERE sku = '$sku'");
 $product["images"] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
@@ -36,7 +33,7 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
     <?php include "./header.php"; ?>
     </header>
     <div class="shop_breadcrumb">
-            <a href="./trangchu.php">Trang chủ</a>
+            <a href="../../index.php">Trang chủ</a>
             &gt; 
             <a href="./product.php">Trang sản phẩm</a>
             &gt; 
@@ -50,22 +47,20 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
         <div class="container">
             <!-- Thư viện ảnh -->
             <div class="image-gallery">
-                <img id="mainImage" src="../../assets/img/products/<?=$product["product_img"]?>" alt="Hình ảnh chính"
-                    class="main-image">
-                <?php if(!empty($product["images"])) { ?>
+            <img id="mainImage" src="../../assets/img/products/<?=$product["product_img"]?>" alt="Hình ảnh chính" class="main-image">
+            <?php if(!empty($product["images"])) { ?>
                 <div class="thumbnail-wrapper">
                     <?php foreach($product["images"] as $img) { ?>
-                    <img src="../../assets/img/products/<?=$img["img_url"]?>" alt="Ảnh nhỏ 1"
-                        class="thumbnail active" onclick="changeImage(this)">
+                    <img src="../../assets/img/products/<?=$img["img_url"]?>" alt="Ảnh nhỏ 1" class="thumbnail active" onclick="changeImage(this)">
                     <?php } ?>
                 </div>
                 <?php } ?>
-            </div>
+              </div>
     
             <!-- Chi tiết sản phẩm -->
             <div class="product-details">
-                <div class="product-title"><?=$product["product_name"]?></div>
-                <div class="product_price"><?php echo number_format($product['product_price'], 0, ',', '.'); ?>đ</div>
+            <div class="product-title"><?=$product["product_name"]?></div>
+            <div class="product_price"><?php echo number_format($product['product_price'], 0, ',', '.'); ?>đ</div>
                 <!-- Chọn số lượng -->
                 <div class="quantity-selector">
                     <label for="quantity">Số lượng:</label>
@@ -78,18 +73,13 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
                         <button type="button" data-action="increase" class="quantity-btn">+</button>
                     </div>
                 </div>
-    
                 <!-- Hành động -->
                 <div class="product-actions">
                     <div class="action-buttons">
                         <a href="#" id="addToCart" class="add-to-cart">Thêm vào giỏ hàng</a>
                         <a href="#" class="buy-now">Mua Ngay</a>
                     </div>
-                    <div class="wishlist">
-                        <i class="heart">❤️</i> Thêm vào yêu thích
-                    </div>
                 </div>
-    
                 <!-- Chính sách -->
                 <div class="policy">
                     <div class="policy-item">
@@ -111,6 +101,7 @@ $crumber = mysqli_query($conn, "SELECT * FROM product WHERE sku = '$sku'");
     <section class = "product-intro">
         <h2>Mô tả sản phẩm</h2>
         <p><?=$product["product_description"]?></p>
+        </div>
     </section>
     <section class = "related">
         <!-- Sản phẩm liên quan -->

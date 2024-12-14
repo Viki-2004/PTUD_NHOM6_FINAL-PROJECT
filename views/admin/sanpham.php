@@ -189,6 +189,129 @@ $result = $conn->query($sql);
         tbody tr td:nth-child(6){
             text-align: justify;
         }
+
+        @media (max-width: 768px) {
+    main {
+        margin: 20px;
+        padding: 10px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    .card table th, .card table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .action-btn {
+        font-size: 1rem;
+    }
+
+    form button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .card table {
+        width: 100%;
+        display: block; 
+        overflow-x: auto; 
+        -webkit-overflow-scrolling: touch; 
+    }
+
+    .card table th, 
+    .card table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .card table th {
+        font-size: 14px;
+    }
+
+    .card table td, .card table th {
+        text-align: center;
+        min-width: 80px;  
+        word-wrap: break-word; 
+    }
+
+    .action-btn {
+        font-size: 1rem;
+    }
+
+    form button {
+        font-size: 1rem;
+        padding: 8px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    header {
+        font-size: 1.7rem;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    .card table th, .card table td {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    form button {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    main {
+        margin: 30px auto;
+        padding: 20px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .card table th, .card table td {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+
+    form button {
+        font-size: 1.2rem;
+        padding: 12px;
+    }
+}
     </style>
     <script>
         function editProduct(product) {
@@ -269,7 +392,7 @@ $result = $conn->query($sql);
             <label for="product_description">Mô tả</label>
             <input type="text" id="product_description" name="product_description" required>
             <label for="product_quantity">Số lượng</label>
-            <input type="number" id="product_quantity" name="product_quantity" required>
+            <input type="number" id="product_quantity" name="product_quantity">
             <label for="trending">Xu hướng</label>
             <select id="trending" name="trending" required>
                 <option value="0">Không</option>

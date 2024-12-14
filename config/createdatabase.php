@@ -57,19 +57,18 @@
     user_id INT(3),
     order_quantity INT NOT NULL,
     price DECIMAL(10, 0) NOT NULL,
-    total DECIMAL(10, 0) NOT NULL,
-    PRIMARY KEY (sku, order_id, user_id),
-    FOREIGN KEY (sku) REFERENCES product(sku),
+    total DECIMAL(10, 0) NOT NULL
+    /*PRIMARY KEY (order_id, user_id),
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id)*/
 );
 
     CREATE TABLE product_img (
     img_id INT(3) AUTO_INCREMENT PRIMARY KEY,
     img_url VARCHAR(255) NOT NULL,
-    sku VARCHAR(20),
-    FOREIGN KEY (sku) REFERENCES product(sku)
-);  */
+    sku VARCHAR(20)
+    /*FOREIGN KEY (sku) REFERENCES product(sku)*/
+);
     CREATE TABLE contact (
     contact_id INT(3) AUTO_INCREMENT PRIMARY KEY,
     contact_name VARCHAR(255) NOT NULL,

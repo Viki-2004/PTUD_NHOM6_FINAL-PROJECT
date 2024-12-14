@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRANG SẢN PHẨM</title>
+    <title>TRANG TIN TỨC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -17,7 +17,7 @@
 <body>
 <?php
 include "../../config/connect.php";
-$item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 6;
+$item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 12;
 $current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại 
 $offset = ($current_page - 1) * $item_per_page;
 $products = mysqli_query($conn, "SELECT * FROM news ORDER BY news_id ASC LIMIT " . $item_per_page . " OFFSET " . $offset);
@@ -31,11 +31,12 @@ $totalPages = ceil($totalRecords / $item_per_page);
     </header>
     <main>
         <div class="content">
+        <div class="menu-toggle new1" onclick="toggleMenu1()"><i class="fa-solid fa-layer-group"></i></div>
+            <!-- Sidebar with mobile toggle -->
             <aside class="sidebar">
-                <p style="color: rgb(134, 134, 134);"><a href="trangchu.html">Home</a>/Tin tức</p>
-                <h2 style="color: #da4d6e; font-size: 27;">TIN TỨC</h2>
+                <p style="color: rgb(134, 134, 134);"><a href="trangchu.php">Home</a>/Tin tức</p>
+                <h2 style="color: #ff6f91; font-size: 130%;">TIN TỨC</h2>
                 <ul>
-                    <li><a href="#">TOP BÁN CHẠY</a></li>
                     <li><a href="#">MAKE UP - MẮT</a></li>
                     <li><a href="#">MAKE UP - MÔI</a></li>
                     <li><a href="#">MAKE UP - MẶT</a></li>
@@ -43,6 +44,7 @@ $totalPages = ceil($totalRecords / $item_per_page);
                 <div class="promo">
                     <span>ƯU ĐÃI GIẢM 15% CHO ĐƠN HÀNG ĐẦU TIÊN</span>
                 </div>
+
                 <div class="under-promo">
                     <h2 style="color: #da4d6e; font-size: 27;">Bài viết liên quan</h2>
                     <?php
@@ -57,7 +59,6 @@ $totalPages = ceil($totalRecords / $item_per_page);
             </aside>
             <section class="blog-grid">
                 <div class="row">
-                    <div class="row">         
                     <?php
                             while($row = mysqli_fetch_array($products)){                          
                             ?>          
@@ -73,7 +74,6 @@ $totalPages = ceil($totalRecords / $item_per_page);
                             </div> 
                             <?php } ?>
                         </div>
-                    </div>
                 </div>
                 <div class="page-item-container">
                     <?php include "./pagnition.php"; ?>
