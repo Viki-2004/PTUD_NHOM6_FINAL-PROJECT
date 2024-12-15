@@ -50,7 +50,7 @@
     <div class="container">
         <!-- Heading -->
         <h1>ĐẶT HÀNG THÀNH CÔNG</h1>
-
+        <p style="text-align: center; color:rgb(255, 116, 172);">Sản phẩm sẽ được giao đến bạn trong 2-4 ngày. Mã vận đơn sẽ được gửi đến bạn để bạn theo dõi đơn hàng. <br> Hãy chuẩn bị tiền để thanh toán cho shipper nhé!</p>
         <!-- Table: Thông tin người đặt -->
         <h2>Thông tin người đặt</h2>
         <table>
