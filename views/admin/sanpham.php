@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $product_quantity = $_POST['product_quantity'];
     $trending = $_POST['trending'];
     $new_arrival = $_POST['new_arrival'];
+    $id_category = $_POST['id_category'];
     $action = $_POST['action'];
 
     // Xử lý hình ảnh tải lên
@@ -53,8 +54,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         }
     }
 
-    if ($action == 'edit') {
-        $sql = "UPDATE product SET product_name  = ?, product_img = ?, product_hover = ?, product_price = ?, product_description = ?, product_quantity = ?, trending = ?, new_arrival = ? WHERE sku = ?";
+    if ($action === 'edit') {
+        $check_sku_sql = "SELECT sku FROM product WHERE sku = ?";
+        $check_stmt = $conn->prepare($check_sku_sql);
+        $check_stmt->bind_param("s", $sku);
+        $check_stmt->execute();
+        $check_stmt->store_result();
+        //Cập nhật nếu SKU trùng
+        if ($check_stmt->num_rows > 0) {
+        $sql = "UPDATE product SET product_name  = ?, product_img = ?, product_hover = ?, product_price = ?, product_description = ?, product_quantity = ?, trending = ?, new_arrival = ?, id_category = ? WHERE sku = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sssdsiiiis", $product_name, $product_img, $product_hover, $product_price, $product_description, $product_quantity, $trending, $new_arrival, $id_category, $sku);
 
@@ -66,41 +74,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             exit();
         }
     } else {
-        $check_sku_sql = "SELECT sku FROM product WHERE sku = ?";
-        $check_stmt = $conn->prepare($check_sku_sql);
-        $check_stmt->bind_param("s", $sku);
-        $check_stmt->execute();
-        $check_stmt->store_result();
 
-        if ($check_stmt->num_rows > 0) {
-            echo "<script>alert('Mã SKU đã tồn tại! Vui lòng nhập mã SKU khác.'); window.location.href='../../views/admin/sanpham.php';</script>";
-            $check_stmt->close();
-            exit();
-        }
+        // if ($check_stmt->num_rows > 0) {
+        //     echo "<script>alert('Mã SKU đã tồn tại! Vui lòng nhập mã SKU khác.'); window.location.href='../../views/admin/sanpham.php';</script>";
+        //     $check_stmt->close();
+        //     exit();
+        // }
 
         $check_stmt->close();
 
         $sql = "INSERT INTO product (sku, product_name, product_img, product_hover, product_price, product_description, product_quantity, trending, new_arrival, id_category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ssssdsiiii", $sku, $product_name, $product_img, $product_hover, $product_price, $product_description, $product_quantity, $trending, $new_arrival, $id_category);
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssdsiiii", $sku, $product_name, $product_img, $product_hover, $product_price, $product_description, $product_quantity, $trending, $new_arrival, $id_category);
 
-// Lấy `id_category` từ request hoặc đặt giá trị mặc định
-$id_category = isset($_POST['id_category']) ? $_POST['id_category'] : null;
+        // Lấy `id_category` từ request hoặc đặt giá trị mặc định
+        $id_category = isset($_POST['id_category']) ? $_POST['id_category'] : null;
 
-if ($stmt->execute()) {
-    echo "<script>alert('Thêm sản phẩm thành công!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";
-    exit();
-} else {
-    echo "<script>alert('Có lỗi xảy ra khi thêm sản phẩm!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";
-    exit();
-}
+        if ($stmt->execute()) {
+            echo "<script>alert('Thêm sản phẩm thành công!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";
+            exit();
+        } else {
+            echo "<script>alert('Có lỗi xảy ra khi thêm sản phẩm!'); window.location.href='../../views/admin/quanlysanpham.php';</script>";
+            exit();
+        }
+            }
+            $stmt->close();
+        }
     }
-    $stmt->close();
-}
 
-$sql = "SELECT * FROM product";
-$result = $conn->query($sql);
-?>
+        $sql = "SELECT * FROM product";
+        $result = $conn->query($sql);
+        //Lấy id_category
+        $sql_categories = "SELECT * FROM category";
+        $result_categories = $conn->query($sql_categories);
+        ?>
+        
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -228,134 +236,145 @@ $result = $conn->query($sql);
         }
 
         @media (max-width: 768px) {
-            main {
-                margin: 20px;
-                padding: 10px;
+                main {
+                    margin: 20px;
+                    padding: 10px;
+                }
+
+                .card {
+                    padding: 15px;
+                }
+
+                h3 {
+                    font-size: 1.3rem;
+                }
+
+                .card table th, .card table td {
+                    font-size: 14px;
+                    padding: 10px;
+                }
+
+                .action-btn {
+                    font-size: 1rem;
+                }
+
+                form button {
+                    font-size: 1rem;
+                    padding: 10px;
+                }
             }
 
-            .card {
-                padding: 15px;
+            @media (max-width: 480px) {
+                header {
+                    font-size: 1.5rem;
+                }
+
+                .card {
+                    padding: 10px;
+                }
+
+                h3 {
+                    font-size: 1.2rem;
+                }
+
+                .card table {
+                    width: 100%;
+                    display: block; 
+                    overflow-x: auto; 
+                    -webkit-overflow-scrolling: touch; 
+                }
+
+                .card table th, 
+                .card table td {
+                    font-size: 12px;
+                    padding: 8px;
+                }
+
+                .card table th {
+                    font-size: 14px;
+                }
+
+                .card table td, .card table th {
+                    text-align: center;
+                    min-width: 80px;  
+                    word-wrap: break-word; 
+                }
+
+                .action-btn {
+                    font-size: 1rem;
+                }
+
+                form button {
+                    font-size: 1rem;
+                    padding: 8px;
+                }
             }
 
-            h3 {
-                font-size: 1.3rem;
+            @media (min-width: 481px) and (max-width: 768px) {
+                header {
+                    font-size: 1.7rem;
+                }
+
+                .card {
+                    padding: 15px;
+                }
+
+                h3 {
+                    font-size: 1.4rem;
+                }
+
+                .card table th, .card table td {
+                    font-size: 13px;
+                    padding: 10px;
+                }
+
+                form button {
+                    font-size: 1.1rem;
+                }
             }
 
-            .card table th, .card table td {
-                font-size: 14px;
-                padding: 10px;
-            }
+            @media (min-width: 1024px) {
+                main {
+                    margin: 30px auto;
+                    padding: 20px;
+                }
 
-            .action-btn {
-                font-size: 1rem;
-            }
+                .card {
+                    padding: 20px;
+                }
 
-            form button {
-                font-size: 1rem;
-                padding: 10px;
-            }
-        }
+                h3 {
+                    font-size: 1.5rem;
+                }
 
-        @media (max-width: 480px) {
-            header {
-                font-size: 1.5rem;
-            }
+                .card table th, .card table td {
+                    font-size: 14px;
+                    padding: 12px 16px;
+                }
 
-            .card {
-                padding: 10px;
+                form button {
+                    font-size: 1.2rem;
+                    padding: 12px;
+                }
             }
-
-            h3 {
-                font-size: 1.2rem;
-            }
-
-            .card table {
-                width: 100%;
-                display: block; 
-                overflow-x: auto; 
-                -webkit-overflow-scrolling: touch; 
-            }
-
-            .card table th, 
-            .card table td {
-                font-size: 12px;
-                padding: 8px;
-            }
-
-            .card table th {
-                font-size: 14px;
-            }
-
-            .card table td, .card table th {
-                text-align: center;
-                min-width: 80px;  
-                word-wrap: break-word; 
-            }
-
-            .action-btn {
-                font-size: 1rem;
-            }
-
-            form button {
-                font-size: 1rem;
-                padding: 8px;
-            }
-        }
-
-        @media (min-width: 481px) and (max-width: 768px) {
-            header {
-                font-size: 1.7rem;
-            }
-
-            .card {
-                padding: 15px;
-            }
-
-            h3 {
-                font-size: 1.4rem;
-            }
-
-            .card table th, .card table td {
-                font-size: 13px;
-                padding: 10px;
-            }
-
-            form button {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            main {
-                margin: 30px auto;
-                padding: 20px;
-            }
-
-            .card {
-                padding: 20px;
-            }
-
-            h3 {
-                font-size: 1.5rem;
-            }
-
-            .card table th, .card table td {
-                font-size: 14px;
-                padding: 12px 16px;
-            }
-
-            form button {
-                font-size: 1.2rem;
-                padding: 12px;
-            }
-        }
     </style>
     <script>
         function editProduct(product) {
             document.getElementById('sku').value = product.sku;
             document.getElementById('product_name').value = product.product_name;
-            document.getElementById('product_img').value = product.product_img;
-            document.getElementById('product_hover').value = product.product_hover;
+            // document.getElementById('product_img').value = product.product_img;
+            // document.getElementById('product_hover').value = product.product_hover;
+            if (product.product_img) {
+                document.getElementById('old_product_img').innerHTML = `<img src='../../assets/img/products/${product.product_img}' alt='Product Image' width='100' height='100'>`;
+            }else {
+            document.getElementById('old_product_img').innerHTML = ''; // Không hiển thị gì nếu không có ảnh
+            }
+            if (product.product_hover) {
+                document.getElementById('old_product_hover').innerHTML = `<img src='../../assets/img/products/${product.product_hover}' alt='Product Hover Image' width='100' height='100'>`;
+            }
+            else {
+            document.getElementById('old_product_hover').innerHTML = ''; // Không hiển thị gì nếu không có ảnh
+            }
             document.getElementById('product_price').value = product.product_price;
             document.getElementById('product_description').value = product.product_description;
             document.getElementById('product_quantity').value = product.product_quantity;
@@ -398,6 +417,7 @@ $result = $conn->query($sql);
                         <td><?= $row['product_quantity'] ?></td>
                         <td><?= $row['trending'] ?></td>
                         <td><?= $row['new_arrival'] ?></td>
+                        <td><?= $row['id_category'] ?></td>
                         <td>
                             <a href="javascript:void(0);" onclick='editProduct(<?= json_encode($row) ?>)' class="action-btn">
                                 <i class="fas fa-edit"></i>
@@ -415,16 +435,18 @@ $result = $conn->query($sql);
         <!-- Phần chỉnh sửa hoặc thêm mới sản phẩm-->
         <div class="form-section">
             <h3>Thêm hoặc cập nhật sản phẩm</h3>
-            <form method="POST" enctype="multipart/form-data">
-            <input type="hidden" id="action" name="action" value="add">
+            <form method="POST" action="sanpham.php" enctype="multipart/form-data">
+            <input type="hidden" id="action" name="action" value="edit">
             <label for="product_name">Mã SKU Sản Phẩm</label>
             <input type="text" id="sku" name="sku">
             <label for="product_name">Tên Sản Phẩm</label>
             <input type="text" id="product_name" name="product_name" required>
             <label for="product_img">Hình Ảnh</label>
             <input type="file" id="product_img" name="product_img">
+            <div id="old_product_img"></div>
             <label for="product_hover">Hover Hình Ảnh</label>
             <input type="file" id="product_hover" name="product_hover">
+            <div id="old_product_hover"></div>
             <label for="product_price">Giá</label>
             <input type="number" id="product_price" name="product_price" required>
             <label for="product_description">Mô Tả</label>
@@ -441,6 +463,15 @@ $result = $conn->query($sql);
                 <option value="0">Không</option>
                 <option value="1">Có</option>
             </select>
+            <label for="id_category">Danh mục sản phẩm</label>
+            <select id="id_category" name="id_category">
+                <option value="" <?= !isset($row['id_category']) ? 'selected' : '' ?>>Lựa chọn danh mục</option>
+                <?php while ($row_category = $result_categories->fetch_assoc()) { ?>
+                <option value="<?= $row_category['category_id'] ?>" <?= isset($row['id_category']) && $row['id_category'] == $row_category['category_id'] ? 'selected' : '' ?>>
+                <?= $row_category['category_id'] ?> - <?= $row_category['category_name'] ?>
+                </option>
+                <?php } ?>
+            </select>
             <button type="submit">Lưu</button>
         </form>
         </div>
@@ -448,40 +479,3 @@ $result = $conn->query($sql);
 </body>
 </html>
 <?php $conn->close(); ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

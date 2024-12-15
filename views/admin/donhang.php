@@ -408,7 +408,7 @@ $result = $conn->query($sql);
         <!-- Phần chỉnh sửa hoặc thêm mới đơn hàng-->
         <div class="form-section">
             <h3>Thêm hoặc cập nhật đơn hàng</h3>
-            <form method="POST" action="edit_donhang.php" enctype="multipart/form-data">
+            <form method="POST" action="donhang.php" enctype="multipart/form-data">
                 <input type="hidden" id="order_id" name="order_id">
                 <input type="hidden" id="action" name="action" value="edit">
                 <label for="customer_name">Tên người nhận</label>
