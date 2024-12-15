@@ -402,6 +402,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                         <th>Số lượng</th>
                         <th>Xu hướng</th>
                         <th>Mới</th>
+                        <th>Danh mục sản phẩm</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
